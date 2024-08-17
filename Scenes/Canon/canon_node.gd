@@ -25,9 +25,11 @@ func nodeShoot():
 	for unit in targets:
 		if "health_component" in unit:
 			if unit.TEAM == DATA.TEAMS.ALLY:
-				GAME.allied_killed_list.append(unit)
+				if unit not in GAME.allied_killed_list:
+					GAME.allied_killed_list.append(unit)
 			elif unit.TEAM == DATA.TEAMS.ENEMY:
-				GAME.enemy_killed_list.append(unit)
+				if unit not in GAME.enemy_killed_list:
+					GAME.enemy_killed_list.append(unit)
 			unit.health_component.damage(9999)
 			GAME.last_shot_kills += 1
 # Local VFX
