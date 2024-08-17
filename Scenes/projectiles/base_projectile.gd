@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var SPEED := 40.0
+@export var SPEED := 80.0
 @export var DAMAGE := 2.0
 @export var COLOR := Color.RED
 

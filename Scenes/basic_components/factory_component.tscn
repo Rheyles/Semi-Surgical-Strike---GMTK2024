@@ -12,5 +12,6 @@ script = ExtResource("1_ys8g2")
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="."]
 visible = false
+enabled = false
 shape = SubResource("CircleShape2D_l3bmt")
 target_position = Vector2(0, 0)

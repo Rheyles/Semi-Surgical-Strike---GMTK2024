@@ -6,7 +6,7 @@ var loaded : bool = true
 var selected : bool = false
 
 	
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("Click") && selected && get_tree().get_current_scene().get_name() == "Create_pattern":
 		if loaded:
 			loaded = false

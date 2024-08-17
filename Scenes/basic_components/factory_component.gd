@@ -34,12 +34,14 @@ func create_unit():
 			rng.randomize()
 			var new_angle = rng.randf_range(0, 2 * PI)
 			var new_dist = clampf(rng.randfn(battlefield.radius/3, battlefield.radius/8),10.0,battlefield.radius)
-			print("new dist : ", new_dist)
-			print("battlefield radius : ", battlefield.radius)
+			#print("new dist : ", new_dist)
+			#print("battlefield radius : ", battlefield.radius)
 			shape_caster.global_position = (Vector2.ONE * new_dist).rotated(new_angle) + battlefield.global_position
+			shape_caster.enabled = true
 			shape_caster.force_shapecast_update()
 			if shape_caster.get_collision_count() == 0:
 				new_pos = (Vector2.ONE * new_dist).rotated(new_angle) + battlefield.global_position
+			shape_caster.enabled = false
 		new_unit.global_position = new_pos
 	else:
 		new_unit.global_position = global_position

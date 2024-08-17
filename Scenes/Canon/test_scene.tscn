@@ -1,22 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://cymeeyjo711fi"]
+[gd_scene load_steps=3 format=3 uid="uid://cymeeyjo711fi"]
 
-[ext_resource type="Texture2D" uid="uid://bmjftwk2wljrt" path="res://Ressources/Sprites/Placeholders/SunnySendLove.png" id="2_rtt3b"]
 [ext_resource type="PackedScene" uid="uid://cm1q2e2ttawy8" path="res://Scenes/Next_pattern_visual/next_pattern_visual.tscn" id="3_clacf"]
 [ext_resource type="PackedScene" uid="uid://puw8u16e2oqa" path="res://Scenes/Canon/canon.tscn" id="3_lbqeo"]
 
 [node name="Test_scene" type="Node2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-
-[node name="SunnySendLove" type="Sprite2D" parent="."]
-position = Vector2(114, 436)
-texture = ExtResource("2_rtt3b")
 
 [node name="Canon" parent="." node_paths=PackedStringArray("next_pattern_visual") instance=ExtResource("3_lbqeo")]
 scale = Vector2(0.15, 0.15)
 next_pattern_visual = NodePath("../next_pattern_visual")
 
 [node name="next_pattern_visual" parent="." instance=ExtResource("3_clacf")]
+position = Vector2(1808, 970)
 
 [node name="BackGround" type="Control" parent="."]
 layout_mode = 3
