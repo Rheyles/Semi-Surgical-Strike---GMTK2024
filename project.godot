@@ -13,6 +13,7 @@ config_version=5
 config/name="Semi-Surgical-Strike"
 run/main_scene="res://Scenes/Test/test.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
+boot_splash/image="res://Splashscreen.png"
 config/icon="res://icon.svg"
 
 [autoload]
@@ -20,6 +21,11 @@ config/icon="res://icon.svg"
 EVENTS="*res://Autoloads/Events.gd"
 DATA="*res://Autoloads/Data.gd"
 GAME="*res://Autoloads/Game.gd"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 
 [rendering]
 
