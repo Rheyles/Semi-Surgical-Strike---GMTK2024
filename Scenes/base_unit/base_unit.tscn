@@ -57,4 +57,5 @@ wait_time = 6.0
 PROJECTILE_SCENE = ExtResource("4_8dojy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent"]
+visible = false
 shape = SubResource("CircleShape2D_58jmq")

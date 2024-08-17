@@ -34,11 +34,12 @@ func _physics_process(_delta):
 ### LOGIC
 
 func attack(target:Node)->void:
-	print(get_parent(), " attacks ",target)
+	#print(get_parent(), " attacks ",target)
 	cooldown_timer.start(COOLDOWN)
 	in_cooldown = true
 	var new_projectile = PROJECTILE_SCENE.instantiate()
 	new_projectile.DAMAGE = DAMAGE
+	new_projectile.COLOR = DATA.team_color[get_parent().TEAM]
 	new_projectile.target_object = target
 	EVENTS.emit_signal("add_node_to_battlefield", new_projectile)
 	new_projectile.global_position = global_position

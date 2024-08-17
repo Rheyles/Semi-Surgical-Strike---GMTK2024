@@ -29,12 +29,12 @@ var first_frame = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#nav.radius = $CollisionShape2D.shape.radius
-	nav.velocity_computed.connect(_on_NavigationAgent_velocity_computed)
+	modulate = DATA.team_color[TEAM]
 	
 	attack_radius = attack_component.radius
 	vision_radius = $VisionZone/CollisionShape2D.shape.radius
 	
+	nav.velocity_computed.connect(_on_NavigationAgent_velocity_computed)
 	vision_zone.body_entered.connect(_on_VisionZone_body_entered)
 	vision_zone.body_exited.connect(_on_VisionZone_body_exited)
 	wandering_timer.timeout.connect(_on_WanderingTimer_timeout)

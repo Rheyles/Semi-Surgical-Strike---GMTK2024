@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cklhctcdf3wlq"]
+[gd_scene load_steps=7 format=3 uid="uid://cklhctcdf3wlq"]
 
 [ext_resource type="PackedScene" uid="uid://ouwypy3gld76" path="res://Scenes/base_city/base_city.tscn" id="1_4dj63"]
 [ext_resource type="Script" path="res://Scenes/battlefield/battlefield.gd" id="1_tcqix"]
 [ext_resource type="PackedScene" uid="uid://dioy76npxq04q" path="res://Scenes/base_unit/base_unit.tscn" id="2_3866f"]
+[ext_resource type="PackedScene" uid="uid://ta3blwa24sqb" path="res://Scenes/basic_components/factory_component.tscn" id="4_0k0eo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ls518"]
 radius = 382.221
@@ -49,3 +50,16 @@ position = Vector2(360, 443)
 [node name="BaseCity2" parent="." instance=ExtResource("1_4dj63")]
 position = Vector2(393, 253)
 TEAM = 1
+
+[node name="FactoryComponent" parent="." node_paths=PackedStringArray("battlefield") instance=ExtResource("4_0k0eo")]
+target_scene = ExtResource("1_4dj63")
+COOLDOWN = 1.0
+standalone = true
+battlefield = NodePath("../Battlefield")
+TEAM = 1
+
+[node name="FactoryComponent2" parent="." node_paths=PackedStringArray("battlefield") instance=ExtResource("4_0k0eo")]
+target_scene = ExtResource("1_4dj63")
+COOLDOWN = 1.0
+standalone = true
+battlefield = NodePath("../Battlefield")
