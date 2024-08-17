@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://4pibc52li4jo"]
+
+[ext_resource type="Script" path="res://Scenes/basic_components/attack_component.gd" id="1_d7eir"]
+
+[node name="AttackComponent" type="Area2D"]
+script = ExtResource("1_d7eir")
+
+[node name="CooldownTimer" type="Timer" parent="."]

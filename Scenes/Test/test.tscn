@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://cklhctcdf3wlq"]
+
+[ext_resource type="PackedScene" uid="uid://ouwypy3gld76" path="res://Scenes/base_city/base_city.tscn" id="1_4dj63"]
+[ext_resource type="Script" path="res://Scenes/battlefield/battlefield.gd" id="1_tcqix"]
+[ext_resource type="PackedScene" uid="uid://dioy76npxq04q" path="res://Scenes/base_unit/base_unit.tscn" id="2_3866f"]
+[ext_resource type="PackedScene" uid="uid://ta3blwa24sqb" path="res://Scenes/basic_components/factory_component.tscn" id="4_0k0eo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ls518"]
+radius = 382.221
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ylkdq"]
+vertices = PackedVector2Array(246, -316, 408, -99, 365, 192, 197, 378, -109, 410, -341, 232, -399, -12, -359, -198, -212, -334, -4, -413)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-369, -203, -410, -12, -351, 238, -112, 421, 202, 388, 375, 197, 419, -102, 253, -325, -4, -424, -218, -343)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[node name="Test" type="Node2D"]
+
+[node name="Battlefield" type="Area2D" parent="."]
+position = Vector2(905, 537)
+script = ExtResource("1_tcqix")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Battlefield"]
+shape = SubResource("CircleShape2D_ls518")
+metadata/_edit_lock_ = true
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Battlefield"]
+visible = false
+navigation_polygon = SubResource("NavigationPolygon_ylkdq")
+metadata/_edit_lock_ = true
+
+[node name="BaseUnit" parent="." instance=ExtResource("2_3866f")]
+position = Vector2(747, 537)
+
+[node name="BaseUnit5" parent="." instance=ExtResource("2_3866f")]
+position = Vector2(720, 439)
+TEAM = 1
+
+[node name="BaseUnit6" parent="." instance=ExtResource("2_3866f")]
+position = Vector2(702, 413)
+TEAM = 1
+
+[node name="BaseUnit7" parent="." instance=ExtResource("2_3866f")]
+position = Vector2(682, 391)
+TEAM = 1
+
+[node name="BaseCity" parent="." instance=ExtResource("1_4dj63")]
+position = Vector2(698, 679)
+
+[node name="BaseCity2" parent="." instance=ExtResource("1_4dj63")]
+position = Vector2(731, 489)
+TEAM = 1
+
+[node name="FactoryComponent" parent="." node_paths=PackedStringArray("battlefield") instance=ExtResource("4_0k0eo")]
+target_scene = ExtResource("1_4dj63")
+COOLDOWN = 1.0
+standalone = true
+battlefield = NodePath("../Battlefield")
+TEAM = 1
+
+[node name="FactoryComponent2" parent="." node_paths=PackedStringArray("battlefield") instance=ExtResource("4_0k0eo")]
+target_scene = ExtResource("1_4dj63")
+COOLDOWN = 1.0
+standalone = true
+battlefield = NodePath("../Battlefield")
