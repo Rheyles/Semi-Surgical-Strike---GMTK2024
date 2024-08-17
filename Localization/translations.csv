@@ -1,0 +1,41 @@
+id,fr,en
+TEST,test,test
+MM_CONTINUE,Continuer,Continue
+MM_NEW_GAME,Nouvelle Partie,New Game
+MM_CONFIRMATION,"Commencer une nouvelle partie ?
+(Votre précédente sauvegarde sera écrasée)","Start a new game?
+(Your previous save will be deleted)"
+MM_YES,Oui,Yes
+MM_NO,Non,No
+UI_PRESS_LABEL,"- Appuyez sur la cassette pour commencer -","- Press on the tape to start -"
+LVL_CONFIRMATION,"Retourner à la sélection de niveau ?
+Toute progression non sauvegardée sera perdue","Go back to level selection?
+Any unsaved progress will be lost"
+POPUP_LETS_GO,"C'est parti !","Let's go!"
+POPUP_ALMOST_THERE,Tu y es presque !,You're almost correct !
+POPUP_WIN,"Bravo, tu as réussi !","Congratulations, you did it!"
+POPUP_NOTHING_TO_DO,"Il n'y a plus rien à faire ici à part profiter et se détendre... ^^","There is nothing left to do here but enjoy and relax... ^^"
+INTRO_TITLE,"JUIN 2024,
+dans l'après-midi...","June 2024,
+in the afternoon..."
+INTRO_TITLE_2,"Un peu plus tard,
+chez Yasmine...","A little later,
+at Yasmine's place..."
+TUTO_0,"Pour résoudre ce puzzle, tu dois replacer ces pièces au bon endroit.","To solve this puzzle, you must place these pieces in the right spot."
+TUTO_1,Chaque pièce a un son associé émis depuis quelque part sur l'écran.,Each piece has an associated sound emitted from somewhere on the screen.
+TUTO_2,Déplace le personnage dans le niveau en le faisant glisser pour trouver l'origine des sons.,Move the character in the level by sliding it to find the source of the sounds.
+TUTO_3,"Quand tu as trouvé l'origine d'un son, places-y la pièce associée en la faisant glisser.","When you've found the source of a sound, place the associated piece there by sliding it."
+TUTO_4,"Une fois que tu as placé toutes les pièces, appuie sur le bouton de validation pour vérifier ta réponse.","Once you've placed all the pieces, press the validation button to check your answer."
+TUTO_5,Amuse-toi bien !,Have fun!
+TUTO_6,Amuse-toi bien !,Have fun!
+LVL_FOREST_TITLE,La Forêt,The Forest
+LVL_FOREST_DESCRIPTION,"L'odeur de la mousse fraîche fait remonter de vieux souvenirs d'un temps où tout était plus simple","The smell of fresh moss brings back old memories of a time when everything was simpler"
+LVL_FOREST_C0,"Le lendemain soir...","The next evening..."
+LVL_FOREST_C1,"Le lendemain soir...","The next evening..."
+LVL_FOREST_C2,"Le lendemain soir...","The next evening..."
+LVL_AQUARIUM_TITLE,L'Aquarium,The Aquarium
+LVL_AQUARIUM_DESCRIPTION,"Sous l'océan, sous l'océan...
+Doudou, c'est bien mieux, tout l'monde est heureux 
+Sous l'océan","Under the sea, under the sea...
+Darling it's better, down where it's wetter,
+take it from me"
