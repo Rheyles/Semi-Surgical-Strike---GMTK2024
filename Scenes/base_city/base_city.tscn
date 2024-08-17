@@ -1,0 +1,43 @@
+[gd_scene load_steps=9 format=3 uid="uid://ouwypy3gld76"]
+
+[ext_resource type="Script" path="res://Scenes/base_city/base_city.gd" id="1_65fsf"]
+[ext_resource type="Texture2D" uid="uid://b3yoliapk3bl0" path="res://Ressources/Sprites/Placeholders/PlaceHolder_Circle - Copie.png" id="1_xkpib"]
+[ext_resource type="PackedScene" uid="uid://dioy76npxq04q" path="res://Scenes/base_unit/base_unit.tscn" id="2_v1arg"]
+[ext_resource type="PackedScene" uid="uid://bcas4k2m4wmak" path="res://Scenes/basic_components/health_component.tscn" id="3_v75ac"]
+[ext_resource type="PackedScene" uid="uid://4pibc52li4jo" path="res://Scenes/basic_components/attack_component.tscn" id="4_ia1o0"]
+[ext_resource type="PackedScene" uid="uid://c1i11btexox5i" path="res://Scenes/projectiles/base_projectile.tscn" id="5_y4m43"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_plehk"]
+radius = 15.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_21fqf"]
+radius = 83.0963
+
+[node name="BaseCity" type="StaticBody2D"]
+script = ExtResource("1_65fsf")
+UNIT_SCENE = ExtResource("2_v1arg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_xkpib")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_plehk")
+metadata/_edit_lock_ = true
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_v75ac")]
+
+[node name="AttackComponent" parent="." instance=ExtResource("4_ia1o0")]
+DAMAGE = 5.0
+PROJECTILE_SCENE = ExtResource("5_y4m43")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent"]
+visible = false
+shape = SubResource("CircleShape2D_21fqf")
+
+[node name="UnitCreationTimer" type="Timer" parent="."]
+wait_time = 5.0

@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3 uid="uid://dioy76npxq04q"]
+
+[ext_resource type="Texture2D" uid="uid://ckffrsy26r0ei" path="res://Ressources/Sprites/Placeholders/PlaceHolder_One.png" id="1_qtgoc"]
+[ext_resource type="Script" path="res://Scenes/base_unit/base_unit.gd" id="1_wfj7a"]
+[ext_resource type="PackedScene" uid="uid://bcas4k2m4wmak" path="res://Scenes/basic_components/health_component.tscn" id="3_jichy"]
+[ext_resource type="PackedScene" uid="uid://4pibc52li4jo" path="res://Scenes/basic_components/attack_component.tscn" id="3_qg651"]
+[ext_resource type="PackedScene" uid="uid://c1i11btexox5i" path="res://Scenes/projectiles/base_projectile.tscn" id="4_8dojy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f387n"]
+radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2mcyu"]
+radius = 190.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ke17h"]
+radius = 58.8558
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_58jmq"]
+radius = 50.2494
+
+[node name="BaseUnit" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_wfj7a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_qtgoc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_f387n")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 5.0
+target_desired_distance = 5.0
+path_postprocessing = 1
+avoidance_enabled = true
+radius = 12.0
+debug_path_custom_color = Color(1, 0, 0, 1)
+
+[node name="VisionZone" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionZone"]
+shape = SubResource("CircleShape2D_2mcyu")
+
+[node name="WanderingZone" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_ke17h")
+disabled = true
+
+[node name="WanderingTimer" type="Timer" parent="."]
+wait_time = 6.0
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_jichy")]
+
+[node name="AttackComponent" parent="." instance=ExtResource("3_qg651")]
+PROJECTILE_SCENE = ExtResource("4_8dojy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent"]
+shape = SubResource("CircleShape2D_58jmq")
