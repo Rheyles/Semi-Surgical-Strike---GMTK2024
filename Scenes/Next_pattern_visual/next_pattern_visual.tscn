@@ -1,0 +1,213 @@
+[gd_scene load_steps=3 format=3 uid="uid://cm1q2e2ttawy8"]
+
+[ext_resource type="PackedScene" uid="uid://cujjyy8hd6kjk" path="res://Scenes/Canon/canon_node.tscn" id="1_6uye3"]
+[ext_resource type="Script" path="res://Scenes/Next_pattern_visual/next_pattern_visual.gd" id="1_xepb1"]
+
+[node name="next_pattern_visual" type="Node2D"]
+position = Vector2(1062, 562)
+scale = Vector2(0.1, 0.1)
+script = ExtResource("1_xepb1")
+
+[node name="Node_Container" type="Node2D" parent="."]
+
+[node name="LaserNode" parent="Node_Container" instance=ExtResource("1_6uye3")]
+
+[node name="LaserNode2" parent="Node_Container" instance=ExtResource("1_6uye3")]
+offset_left = 0.0
+offset_top = -275.0
+offset_right = 190.0
+offset_bottom = -53.0
+
+[node name="LaserNode3" parent="Node_Container" instance=ExtResource("1_6uye3")]
+offset_left = 0.0
+offset_top = 55.0
+offset_right = 190.0
+offset_bottom = 275.0
+
+[node name="LaserNode4" parent="Node_Container" instance=ExtResource("1_6uye3")]
+offset_left = 95.0
+offset_right = 285.0
+
+[node name="LaserNode5" parent="Node_Container" instance=ExtResource("1_6uye3")]
+offset_left = -285.0
+offset_right = -95.0
+
+[node name="LaserNode6" parent="Node_Container" instance=ExtResource("1_6uye3")]
+offset_left = -190.0
+offset_top = 55.0
+offset_right = 0.0
+offset_bottom = 275.0
+
+[node name="LaserNode7" parent="Node_Container" instance=ExtResource("1_6uye3")]
+offset_left = -190.0
+offset_top = -275.0
+offset_right = 0.0
+offset_bottom = -55.0
+
+[node name="LaserNode8" parent="Node_Container" instance=ExtResource("1_6uye3")]
+offset_left = -475.0
+offset_right = -285.0
+
+[node name="LaserNode9" parent="Node_Container" instance=ExtResource("1_6uye3")]
+offset_left = -380.0
+offset_top = 55.0
+offset_right = -190.0
+offset_bottom = 275.0
+
+[node name="LaserNode10" parent="Node_Container" instance=ExtResource("1_6uye3")]
+offset_left = -380.0
+offset_top = -275.0
+offset_right = -190.0
+offset_bottom = -55.0
+
+[node name="LaserNode11" parent="Node_Container" instance=ExtResource("1_6uye3")]
+offset_left = 190.0
+offset_top = -275.0
+offset_right = 380.0
+offset_bottom = -53.0
+
+[node name="LaserNode12" parent="Node_Container" instance=ExtResource("1_6uye3")]
+offset_left = 190.0
+offset_top = 55.0
+offset_right = 380.0
+offset_bottom = 275.0
+
+[node name="LaserNode13" parent="Node_Container" instance=ExtResource("1_6uye3")]
+offset_left = 285.0
+offset_right = 475.0
+
+[node name="LaserNode14" parent="Node_Container" instance=ExtResource("1_6uye3")]
+offset_top = -440.0
+offset_bottom = -220.0
+
+[node name="LaserNode15" parent="Node_Container" instance=ExtResource("1_6uye3")]
+offset_left = 95.0
+offset_top = -440.0
+offset_right = 285.0
+offset_bottom = -220.0
+
+[node name="LaserNode16" parent="Node_Container" instance=ExtResource("1_6uye3")]
+offset_left = -285.0
+offset_top = -440.0
+offset_right = -95.0
+offset_bottom = -220.0
+
+[node name="LaserNode17" parent="Node_Container" instance=ExtResource("1_6uye3")]
+offset_top = 220.0
+offset_bottom = 440.0
+
+[node name="LaserNode18" parent="Node_Container" instance=ExtResource("1_6uye3")]
+offset_left = 95.0
+offset_top = 220.0
+offset_right = 285.0
+offset_bottom = 440.0
+
+[node name="LaserNode19" parent="Node_Container" instance=ExtResource("1_6uye3")]
+offset_left = -285.0
+offset_top = 220.0
+offset_right = -95.0
+offset_bottom = 440.0
+
+[node name="LaserNode20" parent="Node_Container" instance=ExtResource("1_6uye3")]
+offset_left = -665.0
+offset_right = -475.0
+
+[node name="LaserNode21" parent="Node_Container" instance=ExtResource("1_6uye3")]
+offset_left = -570.0
+offset_top = 55.0
+offset_right = -380.0
+offset_bottom = 275.0
+
+[node name="LaserNode22" parent="Node_Container" instance=ExtResource("1_6uye3")]
+offset_left = -570.0
+offset_top = -275.0
+offset_right = -380.0
+offset_bottom = -55.0
+
+[node name="LaserNode23" parent="Node_Container" instance=ExtResource("1_6uye3")]
+offset_left = -475.0
+offset_top = -440.0
+offset_right = -285.0
+offset_bottom = -220.0
+
+[node name="LaserNode24" parent="Node_Container" instance=ExtResource("1_6uye3")]
+offset_left = -475.0
+offset_top = 220.0
+offset_right = -285.0
+offset_bottom = 440.0
+
+[node name="LaserNode25" parent="Node_Container" instance=ExtResource("1_6uye3")]
+offset_left = 380.0
+offset_top = -275.0
+offset_right = 570.0
+offset_bottom = -53.0
+
+[node name="LaserNode26" parent="Node_Container" instance=ExtResource("1_6uye3")]
+offset_left = 380.0
+offset_top = 55.0
+offset_right = 570.0
+offset_bottom = 275.0
+
+[node name="LaserNode27" parent="Node_Container" instance=ExtResource("1_6uye3")]
+offset_left = 475.0
+offset_right = 665.0
+
+[node name="LaserNode28" parent="Node_Container" instance=ExtResource("1_6uye3")]
+offset_left = 285.0
+offset_top = -440.0
+offset_right = 475.0
+offset_bottom = -220.0
+
+[node name="LaserNode29" parent="Node_Container" instance=ExtResource("1_6uye3")]
+offset_left = 285.0
+offset_top = 220.0
+offset_right = 475.0
+offset_bottom = 440.0
+
+[node name="LaserNode30" parent="Node_Container" instance=ExtResource("1_6uye3")]
+offset_left = 0.0
+offset_top = 385.0
+offset_right = 190.0
+offset_bottom = 605.0
+
+[node name="LaserNode31" parent="Node_Container" instance=ExtResource("1_6uye3")]
+offset_left = -190.0
+offset_top = 385.0
+offset_right = 0.0
+offset_bottom = 605.0
+
+[node name="LaserNode32" parent="Node_Container" instance=ExtResource("1_6uye3")]
+offset_left = -380.0
+offset_top = 385.0
+offset_right = -190.0
+offset_bottom = 605.0
+
+[node name="LaserNode33" parent="Node_Container" instance=ExtResource("1_6uye3")]
+offset_left = 190.0
+offset_top = 385.0
+offset_right = 380.0
+offset_bottom = 605.0
+
+[node name="LaserNode34" parent="Node_Container" instance=ExtResource("1_6uye3")]
+offset_left = 0.0
+offset_top = -605.0
+offset_right = 190.0
+offset_bottom = -385.0
+
+[node name="LaserNode35" parent="Node_Container" instance=ExtResource("1_6uye3")]
+offset_left = -190.0
+offset_top = -605.0
+offset_right = 0.0
+offset_bottom = -385.0
+
+[node name="LaserNode36" parent="Node_Container" instance=ExtResource("1_6uye3")]
+offset_left = -380.0
+offset_top = -605.0
+offset_right = -190.0
+offset_bottom = -385.0
+
+[node name="LaserNode37" parent="Node_Container" instance=ExtResource("1_6uye3")]
+offset_left = 190.0
+offset_top = -605.0
+offset_right = 380.0
+offset_bottom = -385.0
