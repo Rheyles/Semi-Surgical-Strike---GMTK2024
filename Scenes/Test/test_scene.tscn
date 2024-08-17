@@ -1,15 +1,15 @@
 [gd_scene load_steps=3 format=3 uid="uid://cymeeyjo711fi"]
 
-[ext_resource type="PackedScene" uid="uid://cm1q2e2ttawy8" path="res://Scenes/Next_pattern_visual/next_pattern_visual.tscn" id="3_clacf"]
-[ext_resource type="PackedScene" uid="uid://puw8u16e2oqa" path="res://Scenes/Canon/canon.tscn" id="3_lbqeo"]
+[ext_resource type="PackedScene" uid="uid://puw8u16e2oqa" path="res://Scenes/Canon/canon.tscn" id="1_leh1g"]
+[ext_resource type="PackedScene" uid="uid://cm1q2e2ttawy8" path="res://Scenes/Next_pattern_visual/next_pattern_visual.tscn" id="2_ixlsx"]
 
 [node name="Test_scene" type="Node2D"]
 
-[node name="Canon" parent="." node_paths=PackedStringArray("next_pattern_visual") instance=ExtResource("3_lbqeo")]
+[node name="Canon" parent="." node_paths=PackedStringArray("next_pattern_visual") instance=ExtResource("1_leh1g")]
 scale = Vector2(0.15, 0.15)
 next_pattern_visual = NodePath("../next_pattern_visual")
 
-[node name="next_pattern_visual" parent="." instance=ExtResource("3_clacf")]
+[node name="next_pattern_visual" parent="." instance=ExtResource("2_ixlsx")]
 position = Vector2(1808, 970)
 
 [node name="BackGround" type="Control" parent="."]

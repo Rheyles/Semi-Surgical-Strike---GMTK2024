@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cujjyy8hd6kjk"]
+[gd_scene load_steps=6 format=3 uid="uid://cujjyy8hd6kjk"]
 
 [ext_resource type="Script" path="res://Scenes/Canon/canon_node.gd" id="1_6jkgn"]
 [ext_resource type="Texture2D" uid="uid://d4af5hgd04148" path="res://Ressources/Sprites/Placeholders/HexSprite.png" id="1_k02mp"]
 [ext_resource type="PackedScene" uid="uid://i8q35jatvpul" path="res://Scenes/Canon/shoot_particle.tscn" id="2_v06oe"]
+[ext_resource type="Texture2D" uid="uid://knch436kaxjl" path="res://Ressources/Sprites/Placeholders/Crosshair test.png" id="4_ioe32"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b3mik"]
 radius = 95.0
@@ -30,6 +31,9 @@ shape = SubResource("CircleShape2D_b3mik")
 position = Vector2(95, 110)
 scale = Vector2(0.245, 0.245)
 texture = ExtResource("1_k02mp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+texture = ExtResource("4_ioe32")
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
