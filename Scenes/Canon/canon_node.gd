@@ -25,11 +25,13 @@ func nodeShoot():
 	for unit in targets:
 		if "health_component" in unit:
 			if unit.TEAM == DATA.TEAMS.ALLY:
-				GAME.allied_killed_list.append(unit)
+				if unit not in GAME.allied_killed_list:
+					GAME.allied_killed_list.append(unit)
 			elif unit.TEAM == DATA.TEAMS.ENEMY:
-				GAME.enemy_killed_list.append(unit)
+				if unit not in GAME.enemy_killed_list:
+					GAME.enemy_killed_list.append(unit)
+					GAME.last_shot_kills += 1
 			unit.health_component.damage(9999)
-			GAME.last_shot_kills += 1
 # Local VFX
 	var part = shoot_particule.instantiate()
 	get_tree().get_current_scene().add_child(part)
@@ -43,3 +45,12 @@ func _on_area_2d_mouse_entered():
 func _on_area_2d_mouse_exited():
 	selected = false
 
+func _on_area_2d_body_entered(body):
+	if "TEAM" in body:
+			get_node("Sprite2D").modulate = Color.FIREBRICK
+			get_node("Sprite2D/Sprite2D").modulate = Color.FIREBRICK
+
+
+func _on_area_2d_body_exited(body):
+	get_node("Sprite2D").modulate = Color.WHITE
+	get_node("Sprite2D/Sprite2D").modulate = Color.WHITE

@@ -30,6 +30,9 @@ uniform float scanlines_spacing: hint_range(0.3, 3., .01) = 1.;
 group_uniforms Noise;
 uniform sampler2D noise_texture: filter_linear_mipmap, repeat_enable;
 
+uniform float vhs_line_onoff = 0;
+uniform float disto_onoff = 1;
+
 float noise(vec2 p, vec2 uv)
 {
 	float s = texture(noise_texture,vec2(1.*TIME,2.*TIME)*8. + p*1.).x;
@@ -55,11 +58,17 @@ float stripes(vec2 uv)
 	return ramp(mod(uv.y*4.*scanlines_spacing + TIME*scanlines_speed/(2.*scanlines_spacing)+sin(TIME*scanlines_speed + sin(TIME*scanlines_speed*0.63*scanlines_spacing)),1.),scanline_thickness,.6)*noi;
 }
 
+float lilstrips(vec2 uv)
+{
+	float noi =  (12./small_scanlines_opacity+mod(uv.y*30.*small_scanlines_proximity+TIME*small_scanlines_speed,1.))/13.*(small_scanlines_opacity);
+	return noi;
+}
+
 vec3 getVideo(vec2 uv)
 {
 	vec2 look = uv;
-	//float window = 1./(1.+20.*(look.y-mod(TIME/4.,1.))*(look.y-mod(TIME/4.,1.)))*image_flicker;
-	//look.x = look.x + sin(look.y*10. + TIME)/50.*onOff(4.,4.,.3)*(1.+cos(TIME*80.))*window;
+	float window = 1./(1.+20.*(look.y-mod(TIME/4.,1.))*(look.y-mod(TIME/4.,1.)));
+	//look.x = (look.x + sin(look.y*50. + TIME)/120.*onOff(4.,4.,.3)*(1.+cos(TIME*120.))*window)*disto_onoff;
 	//float vShift = 0.4*onOff(2.,3.,.9)*(sin(TIME)*sin(TIME*20.)+(0.5 + 0.1*sin(TIME*200.)*cos(TIME)))*skip;
 	//look.y = mod(look.y + vShift, 1.);
 	vec3 video = texture(screen_texture,look).xyz;
@@ -86,10 +95,10 @@ void fragment()
 	vigAmt *= vignette_strength;
 	float vignette = (1.-vigAmt*(uv.y-.5)*(uv.y-.5))*(1.-vigAmt*(uv.x-.5)*(uv.x-.5));
 
-	//video += stripes(uv);
+	video += stripes(uv)*vhs_line_onoff;
 	video += noise(uv*2., uv)/2.;
 	video *= vignette;
-	//video *= (12./small_scanlines_opacity+mod(uv.y*30.*small_scanlines_proximity+TIME*small_scanlines_speed,1.))/13.*small_scanlines_opacity;
+	video *= lilstrips(uv);
 	
 	COLOR = vec4(video,1.0);
 }
