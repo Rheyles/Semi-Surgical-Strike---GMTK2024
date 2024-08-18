@@ -1,76 +1,326 @@
-[gd_scene load_steps=9 format=3 uid="uid://cklhctcdf3wlq"]
+[gd_scene load_steps=33 format=3 uid="uid://cklhctcdf3wlq"]
 
 [ext_resource type="PackedScene" uid="uid://ouwypy3gld76" path="res://Scenes/base_city/base_city.tscn" id="1_4dj63"]
+[ext_resource type="Texture2D" uid="uid://8k2dqrh2tglq" path="res://Ressources/Sprites/Battleground/background.png" id="1_ku2wl"]
+[ext_resource type="Shader" path="res://Scenes/battlefield/map_shader.gdshader" id="1_oon84"]
 [ext_resource type="Script" path="res://Scenes/battlefield/battlefield.gd" id="1_tcqix"]
 [ext_resource type="PackedScene" uid="uid://dioy76npxq04q" path="res://Scenes/base_unit/base_unit.tscn" id="2_3866f"]
+[ext_resource type="Texture2D" uid="uid://bqs04rc5eqhki" path="res://Ressources/Sprites/Battleground/battleground.png" id="3_4nynt"]
 [ext_resource type="PackedScene" uid="uid://ta3blwa24sqb" path="res://Scenes/basic_components/factory_component.tscn" id="4_0k0eo"]
+[ext_resource type="Texture2D" uid="uid://dheb2avfqvxhq" path="res://Ressources/Sprites/Battleground/grille.png" id="4_emky1"]
 [ext_resource type="PackedScene" uid="uid://puw8u16e2oqa" path="res://Scenes/Canon/canon.tscn" id="5_8vk76"]
+[ext_resource type="Texture2D" uid="uid://bjwgp8iufkxi5" path="res://Ressources/Sprites/Battleground/test_ui.png" id="5_elk6g"]
+[ext_resource type="Texture2D" uid="uid://cusg415dvvmt2" path="res://Ressources/Sprites/light.png" id="5_kciau"]
 [ext_resource type="PackedScene" uid="uid://cm1q2e2ttawy8" path="res://Scenes/Next_pattern_visual/next_pattern_visual.tscn" id="6_6txui"]
+[ext_resource type="Shader" path="res://Scenes/battlefield/distortion.gdshader" id="11_ktirh"]
+[ext_resource type="Texture2D" uid="uid://degatmmhecwwu" path="res://Ressources/Sprites/Battleground/border.png" id="12_41m50"]
+[ext_resource type="Material" uid="uid://cwx8868onn75y" path="res://Scenes/battlefield/border.tres" id="12_48rm8"]
+[ext_resource type="Texture2D" uid="uid://d080xw08m1733" path="res://Ressources/Sprites/Battleground/preview.png" id="14_4w7y5"]
+[ext_resource type="Script" path="res://Scenes/UI/WinJauge.gd" id="17_asl76"]
+[ext_resource type="Texture2D" uid="uid://dx1bubblpaprp" path="res://Ressources/Sprites/Battleground/jauge_body.png" id="17_ifk1d"]
+[ext_resource type="Texture2D" uid="uid://c41ir3vdkv7er" path="res://Ressources/Sprites/Battleground/jauge_bck.png" id="18_jlxx0"]
+[ext_resource type="Texture2D" uid="uid://buu1cgllhowag" path="res://Ressources/Sprites/Battleground/jauge_fill.png" id="19_8pmpo"]
+[ext_resource type="AudioStream" uid="uid://cjoc0y3c52bgf" path="res://Ressources/Musics/game_jam_3.wav" id="21_l4803"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ylkdq"]
+vertices = PackedVector2Array(282, -438, 489, -225, 512, 59, 426, 303, 176, 500, -176, 498, -447, 312, -533, -27, -439, -293, -244, -461, 15, -511)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-446, -301, -544, -27, -457, 318, -180, 508, 180, 511, 434, 310, 522, 58, 499, -230, 287, -448, 16, -522, -250, -471)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_c0362"]
+frequency = 0.0048
+fractal_octaves = 8
+fractal_lacunarity = 1.75
+fractal_gain = 0.455
+fractal_weighted_strength = 0.01
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7nn6t"]
+width = 1080
+height = 1080
+as_normal_map = true
+bump_strength = 32.0
+noise = SubResource("FastNoiseLite_c0362")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_obpiv"]
+shader = ExtResource("1_oon84")
+shader_parameter/density = 1.0
+shader_parameter/color = Color(0.0939291, 0.189776, 0.333378, 1)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_7nn6t")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ls518"]
 radius = 503.004
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_ylkdq"]
-vertices = PackedVector2Array(246, -316, 408, -99, 365, 192, 197, 378, -109, 410, -341, 232, -399, -12, -359, -198, -212, -334, -4, -413)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-369, -203, -410, -12, -351, 238, -112, 421, 202, 388, 375, 197, 419, -102, 253, -325, -4, -424, -218, -343)])
-source_geometry_group_name = &"navigation_polygon_source_group"
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_oxfgx"]
+frequency = 0.7305
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_feloi"]
+noise = SubResource("FastNoiseLite_oxfgx")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6dn6t"]
+shader = ExtResource("11_ktirh")
+shader_parameter/offset = 0.1
+shader_parameter/curvature = 10.0
+shader_parameter/skip = 0.53
+shader_parameter/image_flicker = 0.54
+shader_parameter/vignette_flicker_speed = 0.58
+shader_parameter/vignette_strength = 0.59
+shader_parameter/small_scanlines_speed = 1.0
+shader_parameter/small_scanlines_proximity = 1.0
+shader_parameter/small_scanlines_opacity = 1.0
+shader_parameter/scanlines_opacity = 1.0
+shader_parameter/scanlines_speed = 1.0
+shader_parameter/scanline_thickness = 0.5
+shader_parameter/scanlines_spacing = 1.0
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_feloi")
+
+[sub_resource type="Animation" id="Animation_sb3gn"]
+resource_name = "idle"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2.2, 2.7, 3, 3.9, 4.5, 4.8, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [5.07, 3.49, 3.92, 5.79, 4.35, 5.21, 3.34, 4.06, 4.35, 5.65, 5.07]
+}
+
+[sub_resource type="Animation" id="Animation_lrflb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [5.07]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_18rxl"]
+_data = {
+"RESET": SubResource("Animation_lrflb"),
+"idle": SubResource("Animation_sb3gn")
+}
 
 [node name="Test" type="Node2D"]
 
-[node name="Battlefield" type="Area2D" parent="."]
-position = Vector2(905, 537)
+[node name="Map" type="Node2D" parent="."]
+
+[node name="Battlefield" type="Area2D" parent="Map"]
+position = Vector2(960, 540)
+scale = Vector2(1.07, 1.07)
 script = ExtResource("1_tcqix")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Battlefield"]
-shape = SubResource("CircleShape2D_ls518")
-metadata/_edit_lock_ = true
-
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Battlefield"]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Map/Battlefield"]
 visible = false
 navigation_polygon = SubResource("NavigationPolygon_ylkdq")
 metadata/_edit_lock_ = true
 
-[node name="Units" type="Node2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="Map/Battlefield"]
+material = SubResource("ShaderMaterial_obpiv")
+position = Vector2(-7, 2)
+scale = Vector2(1.05, 1.05)
+texture = ExtResource("3_4nynt")
+metadata/_edit_lock_ = true
 
-[node name="BaseUnit" parent="Units" instance=ExtResource("2_3866f")]
+[node name="Sprite2D2" type="Sprite2D" parent="Map/Battlefield"]
+modulate = Color(0.811765, 0.960784, 1, 1)
+material = SubResource("ShaderMaterial_obpiv")
+position = Vector2(-6.99988, 2.00003)
+scale = Vector2(1.05, 1.05)
+texture = ExtResource("4_emky1")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Battlefield"]
+visible = false
+shape = SubResource("CircleShape2D_ls518")
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D" type="PointLight2D" parent="Map/Battlefield"]
+texture = ExtResource("5_kciau")
+texture_scale = 2.69
+
+[node name="Units" type="Node2D" parent="Map"]
+
+[node name="BaseUnit" parent="Map/Units" instance=ExtResource("2_3866f")]
 position = Vector2(747, 537)
 
-[node name="BaseUnit5" parent="Units" instance=ExtResource("2_3866f")]
+[node name="BaseUnit5" parent="Map/Units" instance=ExtResource("2_3866f")]
 position = Vector2(720, 439)
 TEAM = 1
 
-[node name="BaseUnit6" parent="Units" instance=ExtResource("2_3866f")]
+[node name="BaseUnit6" parent="Map/Units" instance=ExtResource("2_3866f")]
 position = Vector2(702, 413)
 TEAM = 1
 
-[node name="BaseUnit7" parent="Units" instance=ExtResource("2_3866f")]
+[node name="BaseUnit7" parent="Map/Units" instance=ExtResource("2_3866f")]
 position = Vector2(682, 391)
 TEAM = 1
 
-[node name="BaseCity" parent="Units" instance=ExtResource("1_4dj63")]
+[node name="BaseCity" parent="Map/Units" instance=ExtResource("1_4dj63")]
 position = Vector2(698, 679)
 
-[node name="BaseCity2" parent="Units" instance=ExtResource("1_4dj63")]
+[node name="BaseCity2" parent="Map/Units" instance=ExtResource("1_4dj63")]
 position = Vector2(731, 489)
 TEAM = 1
 
-[node name="FactoryComponent" parent="Units" node_paths=PackedStringArray("battlefield") instance=ExtResource("4_0k0eo")]
+[node name="FactoryComponent" parent="Map/Units" node_paths=PackedStringArray("battlefield") instance=ExtResource("4_0k0eo")]
 target_scene = ExtResource("1_4dj63")
 COOLDOWN = 1.0
 standalone = true
 battlefield = NodePath("../../Battlefield")
 TEAM = 1
 
-[node name="FactoryComponent2" parent="Units" node_paths=PackedStringArray("battlefield") instance=ExtResource("4_0k0eo")]
+[node name="FactoryComponent2" parent="Map/Units" node_paths=PackedStringArray("battlefield") instance=ExtResource("4_0k0eo")]
 target_scene = ExtResource("1_4dj63")
 COOLDOWN = 1.0
 standalone = true
 battlefield = NodePath("../../Battlefield")
 
-[node name="Canon" parent="." node_paths=PackedStringArray("next_pattern_visual") instance=ExtResource("5_8vk76")]
+[node name="Canon" parent="Map" node_paths=PackedStringArray("next_pattern_visual") instance=ExtResource("5_8vk76")]
+position = Vector2(960, 540)
 scale = Vector2(0.15, 0.15)
-next_pattern_visual = NodePath("../next_pattern_visual")
+next_pattern_visual = NodePath("../../UI/NextStrike/next_pattern_visual")
 
-[node name="next_pattern_visual" parent="." instance=ExtResource("6_6txui")]
-position = Vector2(1808, 970)
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="MapDistortion" type="ColorRect" parent="UI"]
+material = SubResource("ShaderMaterial_6dn6t")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 438.0
+offset_right = -438.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlanetBackGround" type="TextureRect" parent="UI"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_ku2wl")
+
+[node name="BorderTop" type="TextureRect" parent="UI"]
+modulate = Color(1, 1, 1, 0.619608)
+material = ExtResource("12_48rm8")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_41m50")
+expand_mode = 2
+flip_v = true
+
+[node name="BorderBottom" type="TextureRect" parent="UI"]
+modulate = Color(1, 1, 1, 0.619608)
+material = ExtResource("12_48rm8")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_41m50")
+expand_mode = 2
+
+[node name="MapBorder" type="TextureRect" parent="UI"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_elk6g")
+
+[node name="NextStrike" type="TextureRect" parent="UI"]
+modulate = Color(1, 1, 1, 0.694118)
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("14_4w7y5")
+
+[node name="next_pattern_visual" parent="UI/NextStrike" instance=ExtResource("6_6txui")]
+modulate = Color(0.960784, 0.462745, 0, 1)
+offset_left = 306.0
+offset_top = 292.0
+offset_right = 306.0
+offset_bottom = 292.0
+scale = Vector2(0.18, 0.18)
+
+[node name="WinJauge" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("17_asl76")
+
+[node name="JaugeBck" type="TextureRect" parent="UI/WinJauge"]
+modulate = Color(1, 1, 1, 0.545098)
+layout_mode = 0
+offset_top = 15.0
+offset_right = 1920.0
+offset_bottom = 1095.0
+texture = ExtResource("18_jlxx0")
+
+[node name="JaugeMask" type="ColorRect" parent="UI/WinJauge"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 371.0
+offset_top = 692.0
+offset_right = -372.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(960, 1080)
+
+[node name="JaugeFill" type="TextureRect" parent="UI/WinJauge/JaugeMask"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -1064.0
+offset_right = 960.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(960, 1080)
+texture = ExtResource("19_8pmpo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="JaugeBody" type="TextureRect" parent="UI/WinJauge"]
+layout_mode = 0
+offset_top = 15.0
+offset_right = 1920.0
+offset_bottom = 1095.0
+texture = ExtResource("17_ifk1d")
+
+[node name="PointLight2D" type="PointLight2D" parent="UI/WinJauge/JaugeBody"]
+position = Vector2(950, 960)
+color = Color(0.679059, 0.298798, 0.0707171, 1)
+energy = 5.07
+texture = ExtResource("5_kciau")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/WinJauge/JaugeBody"]
+libraries = {
+"": SubResource("AnimationLibrary_18rxl")
+}
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_l4803")
+autoplay = true
+bus = &"Music"

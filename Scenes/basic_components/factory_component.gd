@@ -33,7 +33,7 @@ func create_unit():
 			var rng = RandomNumberGenerator.new()
 			rng.randomize()
 			var new_angle = rng.randf_range(0, 2 * PI)
-			var new_dist = clampf(rng.randfn(battlefield.radius/3, battlefield.radius/8),10.0,battlefield.radius)
+			var new_dist = clampf(rng.randfn(battlefield.radius/3, battlefield.radius/8),10.0,battlefield.radius- 80)
 			#print("new dist : ", new_dist)
 			#print("battlefield radius : ", battlefield.radius)
 			shape_caster.global_position = (Vector2.ONE * new_dist).rotated(new_angle) + battlefield.global_position
