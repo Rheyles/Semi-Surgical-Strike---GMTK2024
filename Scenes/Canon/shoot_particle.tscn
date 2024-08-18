@@ -182,7 +182,7 @@ scale_curve = SubResource("CurveTexture_v01d2")
 color = Color(1, 1, 0.576471, 1)
 
 [sub_resource type="Curve" id="Curve_ktf0o"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0731707, 1), 0.0, 0.0, 0, 0, Vector2(0.536585, 1), -0.146124, -0.146124, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0731707, 1), 0.0, 0.0, 0, 0, Vector2(0.219512, 1), -0.146124, -0.146124, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [sub_resource type="CurveTexture" id="CurveTexture_lkqnp"]
@@ -224,6 +224,7 @@ libraries = {
 autoplay = "particule"
 
 [node name="debris" type="GPUParticles2D" parent="."]
+emitting = false
 amount = 4
 process_material = SubResource("ParticleProcessMaterial_wmts1")
 texture = ExtResource("1_812sx")
@@ -233,6 +234,7 @@ preprocess = 0.1
 explosiveness = 0.89
 
 [node name="smoke" type="GPUParticles2D" parent="."]
+emitting = false
 amount = 6
 process_material = SubResource("ParticleProcessMaterial_qh0nd")
 texture = ExtResource("1_yhrht")

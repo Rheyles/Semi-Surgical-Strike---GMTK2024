@@ -125,7 +125,6 @@ texture = ExtResource("2_a1prw")
 texture = ExtResource("2_8afc7")
 
 [node name="Contour" type="Sprite2D" parent="Art"]
-scale = Vector2(0.94636, 0.94636)
 texture = ExtResource("3_m2jqj")
 
 [node name="Glow" type="Sprite2D" parent="Art"]
@@ -140,6 +139,7 @@ libraries = {
 
 [node name="Cross" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.901961)
+z_index = 1
 scale = Vector2(0.047, 0.047)
 texture = ExtResource("6_fujnb")
 
