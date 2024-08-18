@@ -32,6 +32,8 @@ func _ready():
 	modulate = DATA.team_color[TEAM]
 	
 	$Art/AnimationPlayer.play("idle")
+	$Art.visible = true
+	$Cross.visible = false
 	
 	attack_radius = attack_component.radius
 	vision_radius = $VisionZone/CollisionShape2D.shape.radius
@@ -77,6 +79,8 @@ func _physics_process(_delta):
 			#move_and_slide()
 
 func destroy():
+	$AnimationPlayer.play("death")
+	await $AnimationPlayer.animation_finished
 	queue_free()
 
 ### LOGIC
@@ -96,7 +100,7 @@ func find_wandering_target() -> void:
 	var angle = rng.randf_range(0, 2 * PI)
 	var wander_direction = (Vector2.ONE * wandering_zone.shape.radius).rotated(angle)
 	wandering_target = global_position + wander_direction
-	wandering_timer.start()
+	wandering_timer.start(rng.randf_range(wandering_timer.wait_time*0.9,wandering_timer.wait_time*1.2))
 
 ### SIGNAL RESPONSES
 

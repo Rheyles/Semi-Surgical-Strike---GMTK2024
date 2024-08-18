@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ouwypy3gld76"]
+[gd_scene load_steps=19 format=3 uid="uid://ouwypy3gld76"]
 
 [ext_resource type="Script" path="res://Scenes/base_city/base_city.gd" id="1_65fsf"]
 [ext_resource type="PackedScene" uid="uid://dioy76npxq04q" path="res://Scenes/base_unit/base_unit.tscn" id="2_v1arg"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cusg415dvvmt2" path="res://Ressources/Sprites/light.png" id="5_46emf"]
 [ext_resource type="PackedScene" uid="uid://c1i11btexox5i" path="res://Scenes/projectiles/base_projectile.tscn" id="5_y4m43"]
 [ext_resource type="PackedScene" uid="uid://ta3blwa24sqb" path="res://Scenes/basic_components/factory_component.tscn" id="6_hxf1v"]
+[ext_resource type="Texture2D" uid="uid://dp1d2wjl5lgwe" path="res://Ressources/Sprites/Units/cross.png" id="6_ikl6y"]
 
 [sub_resource type="Animation" id="Animation_xn7aq"]
 resource_name = "idle"
@@ -38,6 +39,90 @@ radius = 15.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_21fqf"]
 radius = 83.0963
+
+[sub_resource type="Animation" id="Animation_f4at0"]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Art:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cross:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cross:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.901961), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_s2vfh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Art:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cross:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cross:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.631373)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vrlga"]
+_data = {
+"RESET": SubResource("Animation_s2vfh"),
+"death": SubResource("Animation_f4at0")
+}
 
 [node name="BaseCity" type="StaticBody2D"]
 script = ExtResource("1_65fsf")
@@ -69,6 +154,11 @@ libraries = {
 "": SubResource("AnimationLibrary_yhw6s")
 }
 
+[node name="Cross" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.631373)
+scale = Vector2(0.047, 0.047)
+texture = ExtResource("6_ikl6y")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CircleShape2D_plehk")
@@ -92,3 +182,8 @@ wait_time = 5.0
 [node name="FactoryComponent" parent="." instance=ExtResource("6_hxf1v")]
 target_scene = ExtResource("2_v1arg")
 COOLDOWN = 3.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vrlga")
+}
