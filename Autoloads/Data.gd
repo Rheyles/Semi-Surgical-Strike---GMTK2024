@@ -5,5 +5,5 @@ extends Node
 
 enum TEAMS {ALLY,ENEMY}
 
-var team_color = {TEAMS.ALLY : Color.GREEN_YELLOW,
-				  TEAMS.ENEMY : Color.RED}
+var team_color = {TEAMS.ALLY : Color("#92E9FF"),
+				  TEAMS.ENEMY : Color("#941C2F")}

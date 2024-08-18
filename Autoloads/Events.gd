@@ -14,3 +14,6 @@ signal lose_state()
 signal win_state()
 
 signal add_node_to_battlefield(obj)
+
+signal set_shake()
+signal freeze_frame()
