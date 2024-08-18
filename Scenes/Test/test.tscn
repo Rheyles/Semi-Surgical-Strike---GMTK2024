@@ -61,6 +61,105 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_7nn6t")
 [sub_resource type="CircleShape2D" id="CircleShape2D_ls518"]
 radius = 503.004
 
+[sub_resource type="Animation" id="Animation_tomcx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Map:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Map:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MapDistortion:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MapBorder:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BorderTop:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BorderBottom:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("WinJauge:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("WinJauge:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_skirg"]
 resource_name = "deploy_ui"
 length = 3.0
@@ -189,105 +288,6 @@ tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(3),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_tomcx"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../../Map:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../../Map:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("MapDistortion:color")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("MapBorder:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("BorderTop:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("BorderBottom:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 1)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("WinJauge:scale")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("WinJauge:modulate")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
@@ -803,40 +803,45 @@ metadata/_edit_lock_ = true
 texture = ExtResource("5_kciau")
 texture_scale = 2.69
 
+[node name="GameTimer" type="Timer" parent="Map/Battlefield"]
+one_shot = true
+
 [node name="Units" type="Node2D" parent="Map"]
 
-[node name="BaseUnit" parent="Map/Units" instance=ExtResource("2_3866f")]
-position = Vector2(747, 537)
-
 [node name="BaseUnit5" parent="Map/Units" instance=ExtResource("2_3866f")]
-position = Vector2(720, 439)
+position = Vector2(959, 200)
 TEAM = 1
 
 [node name="BaseUnit6" parent="Map/Units" instance=ExtResource("2_3866f")]
-position = Vector2(702, 413)
+position = Vector2(941, 174)
 TEAM = 1
 
 [node name="BaseUnit7" parent="Map/Units" instance=ExtResource("2_3866f")]
-position = Vector2(682, 391)
+position = Vector2(921, 152)
 TEAM = 1
 
-[node name="BaseCity" parent="Map/Units" instance=ExtResource("1_4dj63")]
-position = Vector2(698, 679)
+[node name="BaseUnit2" parent="Map/Units" instance=ExtResource("2_3866f")]
+position = Vector2(1016, 150)
+TEAM = 1
+
+[node name="BaseUnit" parent="Map/Units" instance=ExtResource("2_3866f")]
+position = Vector2(1001, 187)
+TEAM = 1
 
 [node name="BaseCity2" parent="Map/Units" instance=ExtResource("1_4dj63")]
-position = Vector2(731, 489)
+position = Vector2(972, 145)
 TEAM = 1
 
-[node name="FactoryComponent" parent="Map/Units" node_paths=PackedStringArray("battlefield") instance=ExtResource("4_0k0eo")]
+[node name="FactoryComponentEnemy" parent="Map/Units" node_paths=PackedStringArray("battlefield") instance=ExtResource("4_0k0eo")]
 target_scene = ExtResource("1_4dj63")
-COOLDOWN = 1.0
+nb_per_wave = 3
 standalone = true
 battlefield = NodePath("../../Battlefield")
 TEAM = 1
 
-[node name="FactoryComponent2" parent="Map/Units" node_paths=PackedStringArray("battlefield") instance=ExtResource("4_0k0eo")]
+[node name="FactoryComponent2Ally" parent="Map/Units" node_paths=PackedStringArray("battlefield") instance=ExtResource("4_0k0eo")]
 target_scene = ExtResource("1_4dj63")
-COOLDOWN = 1.0
+COOLDOWN = 20.0
 standalone = true
 battlefield = NodePath("../../Battlefield")
 
@@ -887,13 +892,11 @@ modulate = Color(1, 1, 1, 0.619608)
 light_mask = 3
 material = ExtResource("12_48rm8")
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 1922.0
+offset_bottom = 1080.0
 texture = ExtResource("12_41m50")
 expand_mode = 2
+stretch_mode = 2
 flip_v = true
 
 [node name="BorderBottom" type="TextureRect" parent="UI/Control"]
@@ -901,15 +904,12 @@ modulate = Color(1, 1, 1, 0.619608)
 light_mask = 3
 material = ExtResource("12_48rm8")
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
 offset_top = 1.0
-offset_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 1920.0
+offset_bottom = 1081.0
 texture = ExtResource("12_41m50")
 expand_mode = 2
+stretch_mode = 2
 
 [node name="CanonCoord" type="Control" parent="UI/Control/BorderBottom" node_paths=PackedStringArray("canon")]
 modulate = Color(1, 1, 1, 0.694118)

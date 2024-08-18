@@ -1,7 +1,8 @@
 extends Node2D
 
 @export var target_scene : Resource
-@export var COOLDOWN := 5.0
+@export var COOLDOWN :float = 5.0
+@export var nb_per_wave : int = 1
 @export_category("StandAlone")
 @export var standalone = false
 @export var battlefield : Node
@@ -48,9 +49,22 @@ func create_unit():
 	else:
 		new_unit.global_position = global_position
 
+func create_unit_at_position(pos : Vector2):
+	var new_unit = target_scene.instantiate()
+	new_unit.TEAM = TEAM
+	EVENTS.emit_signal("add_node_to_battlefield", new_unit)
+	
+	if standalone :
+		assert(battlefield, "Battlefield Object not referenced")
+		var new_pos = pos
+		new_unit.global_position = new_pos
+
 ### SIGNAL RESPONSES
 
 func _on_CooldownTimer_timeout():
 	if active:
-		create_unit()
+		var counter = nb_per_wave
+		while counter > 0:
+			create_unit()
+			counter -= 1
 		cooldown_timer.start(COOLDOWN)

@@ -9,7 +9,26 @@ extends Node2D
 
 var canonNode_array = []
 
-var pattern_array = [ 
+var pattern_array_lvl1 = [
+	[true, true, true, true, true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+,[false, true, true, true, true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+,[false, false, false, false, true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+,[false, false, false, true, false, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+,[true, false, false, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+]
+
+var pattern_array_lvl2 = [
+	[true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+,[false, false, false, false, false, false, false, true, true, true, true, true, true, true, true, true, true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+,[false, false, false, false, true, false, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+,[false, false, true, true, true, false, true, false, true, true, true, true, false, true, false, false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+,[false, true, false, true, true, false, true, true, false, false, false, false, true, true, false, false, true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+,[false, false, true, true, true, false, true, true, false, false, false, false, true, false, false, true, false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+,[true, true, false, false, false, true, false, false, true, false, true, false, false, false, true, false, false, false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+,[false, false, false, false, false, true, true, true, true, true, false, false, false, true, true, true, true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+]
+
+var pattern_array_lvl3 = [ 
 	#[false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false]
 	[true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true]
 	,[false,false,false,false,false,false,false,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true]
@@ -23,6 +42,8 @@ var pattern_array = [
 	,[true, false, false, true, true, false, false, false, true, true, true, true, false, false, false, false, false, false, false, false, false, false, true, true, false, false, false, true, true, true, true, true, true, true, true, true, true]
 	,[true, false, true, true, true, false, false, true, false, false, false, true, true, false, true, false, false, true, false, true, true, false, false, true, false, true, true, true, true, true, true, true, true, true, false, false, true]
 	]
+
+var canon_level : int = 1
 
 var move_tween
 @export var move_speed: float = 0.3
@@ -41,11 +62,13 @@ var next_pattern_index: int = 0
 
 var click_buffer : bool = false
 
-### Text & Visual
+### Intro
 var intro_text : bool = true
+var first_shoot: bool = true
 
 func _ready():
 	click_timer.timeout.connect(_on_ClickTimer_timeout)
+	GAME.freedom_change.connect(_on_GAME_freedom_change)
 	
 	#pattern_array = [pattern2,pattern3,pattern4,pattern5, pattern6]
 	
@@ -82,7 +105,11 @@ func _process(delta):
 	
 	if click_buffer && ready_to_shoot == true:
 		click_buffer = false
-		_CanonActivation()
+		if first_shoot:
+			first_shoot_spawn(get_global_mouse_position())
+			pass
+		else:
+			_CanonActivation()
 	
 	if follow_mouse:
 		var mouse_po = get_global_mouse_position()
@@ -123,9 +150,9 @@ func _CanonActivation():
 
 # End state
 	follow_mouse = true;
-	print("Shoot : " + str(last_pattern_index))
-	print(str(GAME.enemy_killed_list.size()) + " target erased from the surface....")
-	print(str(GAME.allied_killed_list.size()) + " friends fallen for democracy !! <3 <3")
+	#print("Shoot : " + str(last_pattern_index))
+	#print(str(GAME.enemy_killed_list.size()) + " target erased from the surface....")
+	#print(str(GAME.allied_killed_list.size()) + " friends fallen for democracy !! <3 <3")
 	reload_delay = base_reload_delay - (GAME.last_shot_kills * reload_delay_bonus)
 	if reload_delay <= 1:
 		reload_delay = 1
@@ -134,15 +161,34 @@ func _CanonActivation():
 
 func _load_Next_Pattern():
 	current_pattern_index = next_pattern_index
-	for hex in canonNode_array.size():
-			canonNode_array[hex].visible = pattern_array[current_pattern_index][hex]
-	last_pattern_index = current_pattern_index
-	next_pattern_index += 1
-	if next_pattern_index > pattern_array.size()-1:
-		next_pattern_index = 1
-		
-	for hex in canonNode_array.size():
-		next_pattern_visual.canonNode_array[hex].visible = pattern_array[next_pattern_index][hex]
+	match canon_level:
+		1:
+			for hex in canonNode_array.size():
+				canonNode_array[hex].visible = pattern_array_lvl1[current_pattern_index][hex]
+			next_pattern_index += 1
+			if next_pattern_index > pattern_array_lvl1.size()-1:
+				next_pattern_index = 0
+			for hex in canonNode_array.size():
+				next_pattern_visual.canonNode_array[hex].visible = pattern_array_lvl1[next_pattern_index][hex]
+		2:
+			for hex in canonNode_array.size():
+				canonNode_array[hex].visible = pattern_array_lvl2[current_pattern_index][hex]
+			next_pattern_index += 1
+			if next_pattern_index > pattern_array_lvl2.size()-1:
+				next_pattern_index = 0
+			for hex in canonNode_array.size():
+				next_pattern_visual.canonNode_array[hex].visible = pattern_array_lvl2[next_pattern_index][hex]
+		3:
+			for hex in canonNode_array.size():
+				canonNode_array[hex].visible = pattern_array_lvl3[current_pattern_index][hex]
+				last_pattern_index = current_pattern_index
+			next_pattern_index += 1
+			if next_pattern_index > pattern_array_lvl3.size()-1:
+				next_pattern_index = 1
+			for hex in canonNode_array.size():
+				next_pattern_visual.canonNode_array[hex].visible = pattern_array_lvl3[next_pattern_index][hex]
+				
+
 
 func shader_disto_toggle(onOff):
 	if !onOff:
@@ -156,8 +202,26 @@ func shader_disto_toggle(onOff):
 		await  get_tree().create_timer(0.5).timeout
 		shader_disto_toggle(false)
 		pass
-	
+
+func first_shoot_spawn(new_pos : Vector2):
+	_CanonActivation()
+	await  get_tree().create_timer(impact_delay+0.1).timeout
+	get_node("../Units/FactoryComponent2Ally").create_unit_at_position(new_pos)
+	EVENTS.start_battlefield.emit()
+	first_shoot = false
+
+#func upgrade_canon(level : int):
+	#if level == 1:
+		#for hex in canonNode_array.size():
+			#canonNode_array[hex].visible = canon_upgrade[current_pattern_index][hex]
+
 ### SIGNAL RESPONSES
+
+func _on_GAME_freedom_change() -> void:
+	if GAME.freedom_meter == 2 && canon_level < 2:
+		canon_level = 2
+	elif GAME.freedom_meter == 3 && canon_level < 3:
+		canon_level = 3
 
 func _on_ClickTimer_timeout() -> void:
 	click_buffer = false

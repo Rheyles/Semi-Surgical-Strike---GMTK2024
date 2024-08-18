@@ -84,9 +84,10 @@ func destroy():
 	attack_component.active = false
 	$CollisionShape2D.disabled = true
 	$NavigationAgent2D.avoidance_enabled = false
-	if TEAM == DATA.TEAMS.ENEMY:
-		GAME.freedom_meter += 1
-		GAME.freedom_change.emit()
+### Freedom point on kill optional
+	#if TEAM == DATA.TEAMS.ENEMY:
+		#GAME.freedom_meter += 1
+		#GAME.check_freedom_meter()
 	$AnimationPlayer.play("death")
 	await $AnimationPlayer.animation_finished
 	queue_free()
