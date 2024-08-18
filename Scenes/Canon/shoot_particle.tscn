@@ -70,14 +70,13 @@ point_count = 2
 [sub_resource type="CurveTexture" id="CurveTexture_jadcf"]
 curve = SubResource("Curve_6krrh")
 
-[sub_resource type="Curve" id="Curve_xnjbu"]
-min_value = -20.0
+[sub_resource type="Curve" id="Curve_noklo"]
 max_value = 20.0
-_data = [Vector2(0, 20), 0.0, 0.0, 0, 0]
-point_count = 1
+_data = [Vector2(0, 1.75824), 0.0, 0.0, 0, 0, Vector2(0.231707, 13.4066), -32.8502, 194.637, 0, 0]
+point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_nucsn"]
-curve = SubResource("Curve_xnjbu")
+[sub_resource type="CurveTexture" id="CurveTexture_0ixsc"]
+curve = SubResource("Curve_noklo")
 
 [sub_resource type="Curve" id="Curve_4kf1u"]
 max_value = 3.0
@@ -90,16 +89,17 @@ curve = SubResource("Curve_4kf1u")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wmts1"]
 particle_flag_disable_z = true
 spread = 180.0
-initial_velocity_min = 25.0
-initial_velocity_max = 50.0
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
 gravity = Vector3(0, 0, 0)
-linear_accel_min = -45.0
-linear_accel_max = -15.0
-linear_accel_curve = SubResource("CurveTexture_nucsn")
+damping_min = 60.0
+damping_max = 80.0
+damping_curve = SubResource("CurveTexture_0ixsc")
 scale_min = 0.1
 scale_max = 0.1
 scale_curve = SubResource("CurveTexture_t1qhr")
 scale_over_velocity_max = 2.0
+color = Color(0.101961, 0.443137, 0.67451, 1)
 alpha_curve = SubResource("CurveTexture_jadcf")
 
 [sub_resource type="Curve" id="Curve_v1ssi"]
@@ -111,14 +111,15 @@ curve = SubResource("Curve_v1ssi")
 
 [sub_resource type="Gradient" id="Gradient_wb10a"]
 offsets = PackedFloat32Array(0, 0.154412, 0.338235, 0.507353, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0.747646, 0.618847, 3.85046e-07, 1, 0.803922, 0, 0.215686, 1, 0.175445, 0.0961953, 0.147818, 0.435294, 1, 1, 1, 0)
+colors = PackedColorArray(1, 1, 1, 1, 0.564659, 0.791281, 0.648428, 1, 0.0810707, 0.0930454, 0.434963, 1, 0.175445, 0.0961953, 0.147818, 0.435294, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_3uned"]
 gradient = SubResource("Gradient_wb10a")
 
 [sub_resource type="Curve" id="Curve_12tpw"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.689024, 0.241758), 0.0, 0.0, 0, 0]
-point_count = 2
+max_value = 2.0
+_data = [Vector2(0, 0.373626), 0.0, 0.0, 0, 0, Vector2(0.0548781, 1.36264), -1.50183, -1.50183, 0, 0, Vector2(0.689024, 0.241758), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_eu3qe"]
 curve = SubResource("Curve_12tpw")
@@ -126,11 +127,11 @@ curve = SubResource("Curve_12tpw")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qh0nd"]
 particle_flag_disable_z = true
 spread = 180.0
-initial_velocity_min = 10.0
-initial_velocity_max = 10.0
-orbit_velocity_max = 0.1
+initial_velocity_min = 1.0
+initial_velocity_max = 4.0
+radial_velocity_min = 0.1
+radial_velocity_max = 0.1
 gravity = Vector3(0, 0, 0)
-linear_accel_min = -10.85
 scale_min = 0.1
 scale_max = 0.15
 scale_curve = SubResource("CurveTexture_eu3qe")
@@ -164,7 +165,7 @@ autoplay = "particule"
 
 [node name="debris" type="GPUParticles2D" parent="."]
 emitting = false
-amount = 12
+amount = 4
 process_material = SubResource("ParticleProcessMaterial_wmts1")
 texture = ExtResource("1_812sx")
 lifetime = 3.0
@@ -174,7 +175,7 @@ explosiveness = 0.89
 
 [node name="explo" type="GPUParticles2D" parent="."]
 emitting = false
-amount = 10
+amount = 6
 process_material = SubResource("ParticleProcessMaterial_qh0nd")
 texture = ExtResource("1_yhrht")
 lifetime = 2.0

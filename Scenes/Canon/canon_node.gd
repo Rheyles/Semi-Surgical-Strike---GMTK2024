@@ -47,7 +47,6 @@ func _on_area_2d_mouse_exited():
 
 func _on_area_2d_body_entered(body):
 	if "TEAM" in body:
-		if body.TEAM == DATA.TEAMS.ENEMY:
 			get_node("Sprite2D").modulate = Color.FIREBRICK
 			get_node("Sprite2D/Sprite2D").modulate = Color.FIREBRICK
 

@@ -20,6 +20,7 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="Battlefield" type="Area2D" parent="."]
 position = Vector2(905, 537)
+collision_layer = 2
 script = ExtResource("1_tcqix")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Battlefield"]

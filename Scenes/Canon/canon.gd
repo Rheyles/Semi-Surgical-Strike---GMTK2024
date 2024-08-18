@@ -1,6 +1,8 @@
 extends Node2D
 
 @onready var click_timer = $ClickTimer
+@onready var error_text=$"Canon UI/Label"
+@onready var caution_text=$"Canon UI/Label2"
 @export var next_pattern_visual : Node2D
 
 var canonNode_array = []
@@ -24,10 +26,10 @@ var move_tween
 @export var move_speed: float = 0.3
 @export var base_reload_delay: float = 2.5
 @export var reload_delay_bonus: float = 0.2
-var reload_delay : float
+var reload_delay : float = 4
 @export var follow_mouse = true
 
-var ready_to_shoot: bool = true
+var ready_to_shoot: bool = false
 var reload_timer: float = 0
 
 var last_pattern_index: int = 0
@@ -35,6 +37,9 @@ var current_pattern_index: int = 1
 var next_pattern_index: int = 2
 
 var click_buffer : bool = false
+
+### Text & Visual
+var intro_text : bool = true
 
 func _ready():
 	click_timer.timeout.connect(_on_ClickTimer_timeout)
@@ -44,14 +49,20 @@ func _ready():
 	for i in get_node("Node_Container").get_child_count():
 		var node = get_node("Node_Container").get_child(i)
 		canonNode_array.append(node)
+	error_text._start()
+	caution_text._start()
 
 func _process(delta):
 	if ready_to_shoot == false:
 		reload_timer += 1*delta
 		if reload_timer >= reload_delay:
+			if(intro_text):
+				intro_text = false
+				error_text.visible = false
 			ready_to_shoot = true
 			reload_timer = 0
 			_load_Next_Pattern()
+
 			for hex in canonNode_array.size():
 				canonNode_array[hex].get_node("Sprite2D").modulate = Color.WHITE
 	
@@ -67,6 +78,7 @@ func _process(delta):
 	
 	
 	if click_buffer && ready_to_shoot == true:
+		click_buffer = false
 		_CanonActivation()
 	
 	if follow_mouse:
@@ -93,6 +105,8 @@ func _CanonActivation():
 		if canonNode_array[hex].visible == true:
 			canonNode_array[hex].nodeShoot()
 			canonNode_array[hex].get_node("Sprite2D").modulate = Color.FIREBRICK
+	error_text._start(2,6,false)
+	caution_text._start(2,6,false)
 
 #SFX
 
