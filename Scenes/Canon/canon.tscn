@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/Canon/canon.gd" id="1_djkmq"]
 [ext_resource type="PackedScene" uid="uid://cujjyy8hd6kjk" path="res://Scenes/Canon/canon_node.tscn" id="2_ukktj"]
 [ext_resource type="Script" path="res://Scenes/Canon/TextVFX.gd" id="3_3bues"]
-[ext_resource type="FontFile" uid="uid://c5f6b8yw1e0yn" path="res://Ressources/Fonts/Linebeam.ttf" id="3_5ta48"]
+[ext_resource type="FontFile" uid="uid://dmveyiobget4p" path="res://Ressources/Fonts/Linebeam.ttf" id="3_7fwto"]
 
 [node name="Canon" type="Node2D"]
 script = ExtResource("1_djkmq")
@@ -237,7 +237,7 @@ offset_bottom = 434.085
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0.705882, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("3_5ta48")
+theme_override_fonts/font = ExtResource("3_7fwto")
 theme_override_font_sizes/font_size = 86
 text = "ERROR 142-C
 MANUAL AIM REQUIERED
@@ -265,7 +265,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0.705882, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("3_5ta48")
+theme_override_fonts/font = ExtResource("3_7fwto")
 theme_override_font_sizes/font_size = 86
 text = "/ ! \\ CAUTION / ! \\"
 horizontal_alignment = 1
