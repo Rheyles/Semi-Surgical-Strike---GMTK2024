@@ -11,6 +11,8 @@ var visible_bodies = []
 var radius : float = 0.0
 var in_cooldown = false
 
+var active = true
+
 ### BUILT-IN
 
 # Called when the node enters the scene tree for the first time.
@@ -24,11 +26,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
-	if visible_bodies.size() > 0 and not in_cooldown:
-		for body in visible_bodies :
-			if "health_component" in body:
-				attack(body)
-				break
+	if active :
+		if visible_bodies.size() > 0 and not in_cooldown:
+			for body in visible_bodies :
+				if "health_component" in body:
+					if body.health_component.health > 0.0:
+						attack(body)
+						break
 
 
 ### LOGIC

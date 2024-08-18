@@ -10,6 +10,8 @@ extends Node2D
 @onready var cooldown_timer = $CooldownTimer
 @onready var shape_caster = $ShapeCast2D
 
+var active = true
+
 ### BUILT-IN
 
 # Called when the node enters the scene tree for the first time.
@@ -49,5 +51,6 @@ func create_unit():
 ### SIGNAL RESPONSES
 
 func _on_CooldownTimer_timeout():
-	create_unit()
-	cooldown_timer.start(COOLDOWN)
+	if active:
+		create_unit()
+		cooldown_timer.start(COOLDOWN)

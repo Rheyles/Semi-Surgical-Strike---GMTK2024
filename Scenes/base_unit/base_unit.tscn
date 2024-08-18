@@ -44,8 +44,24 @@ radius = 58.8558
 [sub_resource type="CircleShape2D" id="CircleShape2D_58jmq"]
 radius = 50.2494
 
+[sub_resource type="Animation" id="Animation_t30pn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cross:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.901961)]
+}
+
 [sub_resource type="Animation" id="Animation_6p4jc"]
 resource_name = "death"
+length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -77,25 +93,10 @@ tracks/2/path = NodePath("Cross:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0.901961), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_t30pn"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Cross:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0.901961)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2droa"]

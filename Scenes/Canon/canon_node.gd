@@ -51,6 +51,6 @@ func _on_area_2d_body_entered(body):
 			get_node("Sprite2D/Sprite2D").modulate = Color.FIREBRICK
 
 
-func _on_area_2d_body_exited(body):
+func _on_area_2d_body_exited(_body):
 	get_node("Sprite2D").modulate = Color.WHITE
 	get_node("Sprite2D/Sprite2D").modulate = Color.WHITE

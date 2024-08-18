@@ -24,6 +24,7 @@ var wandering_target = null
 var moving = false
 var current_speed = 0.0
 var first_frame = true
+var active = true
 
 ### BUILT-IN
 
@@ -47,7 +48,7 @@ func _ready():
 func _physics_process(_delta):
 	if first_frame:
 		first_frame = false
-	else:
+	elif active:
 		find_closest_target()
 		
 		#print("\nNew turn:")
@@ -79,6 +80,10 @@ func _physics_process(_delta):
 			#move_and_slide()
 
 func destroy():
+	active = false
+	attack_component.active = false
+	$CollisionShape2D.disabled = true
+	$NavigationAgent2D.avoidance_enabled = false
 	$AnimationPlayer.play("death")
 	await $AnimationPlayer.animation_finished
 	queue_free()

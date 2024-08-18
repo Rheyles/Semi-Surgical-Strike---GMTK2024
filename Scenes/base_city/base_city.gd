@@ -20,6 +20,10 @@ func _process(_delta):
 	pass
 
 func destroy():
+	$AttackComponent.active = false
+	$FactoryComponent.active = false
+	$NavigationObstacle2D.avoidance_enabled = false
+	$CollisionShape2D.disabled = true
 	$AnimationPlayer.play("death")
 	await $AnimationPlayer.animation_finished
 	queue_free()
