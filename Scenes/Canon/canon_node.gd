@@ -2,6 +2,8 @@ extends Control
 
 @export var shoot_particule : Resource
 
+@onready var shoot_area = $Area2D
+
 var loaded : bool = true
 var selected : bool = false
 
@@ -19,13 +21,19 @@ func _process(_delta):
 
 func nodeShoot():
 # Detection collision overlaping
-
+	var targets = shoot_area.get_overlapping_bodies()
+	for unit in targets:
+		if "health_component" in unit:
+			if unit.TEAM == DATA.TEAMS.ALLY:
+				GAME.allied_killed_list.append(unit)
+			elif unit.TEAM == DATA.TEAMS.ENEMY:
+				GAME.enemy_killed_list.append(unit)
+			unit.health_component.damage(9999)
+			GAME.last_shot_kills += 1
 # Local VFX
 	var part = shoot_particule.instantiate()
 	get_tree().get_current_scene().add_child(part)
 	part.position = global_position
-
-	pass
 
 ### SIGNAL RESPONSES
 

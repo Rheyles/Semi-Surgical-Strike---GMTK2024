@@ -18,8 +18,8 @@ var pattern_array = [
 var move_tween
 @export var move_speed: float = 0.3
 @export var reload_delay: float = 1.0
-
 @export var follow_mouse = true
+
 var ready_to_shoot: bool = true
 var reload_timer: float = 0
 
@@ -51,6 +51,13 @@ func _process(delta):
 	if Input.is_action_just_pressed("Click"):
 		click_buffer = true
 		click_timer.start()
+	
+	if Input.is_action_just_pressed("Rotate_Up"):
+		get_node("Node_Container").rotation_degrees += 60
+	
+	if Input.is_action_just_pressed("Rotate_Down"):
+		get_node("Node_Container").rotation_degrees -= 60
+	
 	
 	if click_buffer && ready_to_shoot == true:
 		_CanonActivation()
@@ -85,6 +92,9 @@ func _CanonActivation():
 # End state
 	follow_mouse = true;
 	print("Shoot : " + str(last_pattern_index))
+	print(str(GAME.enemy_killed_list.size()) + " target erased from the surface....")
+	print(str(GAME.allied_killed_list.size()) + " friends fallen for democracy !! <3 <3")
+	GAME.last_shot_kills = 0
 
 func _load_Next_Pattern():
 	current_pattern_index = next_pattern_index

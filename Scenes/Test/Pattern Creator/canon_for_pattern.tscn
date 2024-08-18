@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://blkbd3a5esfiq"]
 
-[ext_resource type="Script" path="res://Scenes/Canon/canon_for_pattern.gd" id="1_smdj6"]
+[ext_resource type="Script" path="res://Scenes/Test/Pattern Creator/canon_for_pattern.gd" id="1_smdj6"]
 [ext_resource type="PackedScene" uid="uid://cujjyy8hd6kjk" path="res://Scenes/Canon/canon_node.tscn" id="2_34ym4"]
 
 [node name="Canon" type="Node2D"]

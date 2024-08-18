@@ -172,7 +172,6 @@ one_shot = true
 explosiveness = 0.89
 
 [node name="trace" type="GPUParticles2D" parent="."]
-scale = Vector2(1, 1)
 emitting = false
 amount = 3
 process_material = SubResource("ParticleProcessMaterial_b4bj2")
