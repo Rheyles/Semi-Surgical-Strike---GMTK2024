@@ -11,8 +11,8 @@ var canonNode_array = []
 
 var pattern_array = [ 
 	#[false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false]
-	#,[true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true]
-	[false,false,false,false,false,false,false,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true]
+	[true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true]
+	,[false,false,false,false,false,false,false,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true]
 	,[true,false,true,false,false,false,true,false,false,false,false,false,false,false,false,true,false,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,true,false,false,true,false]
 	,[false, false, false, false, false, false, false, false, true, true, true, true, false, false, true, true, false, true, true, false, true, true, true, true, true, true, false, true, true, false, false, true, true, false, false, true, true]
 	,[true, true, true, true, true, true, true, true, true, true, true, true, true, false, false, false, false, false, false, true, true, true, false, false, true, true, true, false, false, false, false, false, false, false, false, false, false]
@@ -36,8 +36,8 @@ var ready_to_shoot: bool = false
 var reload_timer: float = 0
 
 var last_pattern_index: int = 0
-var current_pattern_index: int = 1
-var next_pattern_index: int = 2
+var current_pattern_index: int = 0
+var next_pattern_index: int = 0
 
 var click_buffer : bool = false
 
@@ -139,7 +139,7 @@ func _load_Next_Pattern():
 	last_pattern_index = current_pattern_index
 	next_pattern_index += 1
 	if next_pattern_index > pattern_array.size()-1:
-		next_pattern_index = 0
+		next_pattern_index = 1
 		
 	for hex in canonNode_array.size():
 		next_pattern_visual.canonNode_array[hex].visible = pattern_array[next_pattern_index][hex]
