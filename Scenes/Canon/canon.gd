@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var click_timer = $ClickTimer
-@export var next_pattern_visual : Node2D
+@export var next_pattern_visual : Control
 
 var canonNode_array = []
 
@@ -96,7 +96,7 @@ func _load_Next_Pattern():
 		next_pattern_index = 0
 		
 	for hex in canonNode_array.size():
-			next_pattern_visual.canonNode_array[hex].visible = pattern_array[next_pattern_index][hex]
+		next_pattern_visual.canonNode_array[hex].visible = pattern_array[next_pattern_index][hex]
 
 
 ### SIGNAL RESPONSES

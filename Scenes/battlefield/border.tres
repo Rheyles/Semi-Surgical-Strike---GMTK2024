@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cwx8868onn75y"]
+
+[ext_resource type="Shader" path="res://Scenes/battlefield/roundish.gdshader" id="1_d7q5y"]
+
+[resource]
+shader = ExtResource("1_d7q5y")
+shader_parameter/curvature = -5.21

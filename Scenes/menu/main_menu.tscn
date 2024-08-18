@@ -1,6 +1,21 @@
-[gd_scene format=3 uid="uid://cxiyp2bivakl1"]
+[gd_scene load_steps=4 format=3 uid="uid://cxiyp2bivakl1"]
+
+[ext_resource type="Texture2D" uid="uid://bl7y40u7xwddw" path="res://Ressources/Sprites/UI/planet.png" id="2_fe17r"]
+[ext_resource type="Texture2D" uid="uid://bwnodsj4i53bo" path="res://Ressources/Sprites/UI/planet_n.png" id="3_ved2y"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_jjfob"]
+diffuse_texture = ExtResource("2_fe17r")
+normal_texture = ExtResource("3_ved2y")
 
 [node name="MainMenu" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 540)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = SubResource("CanvasTexture_jjfob")
+metadata/_edit_lock_ = true
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -11,6 +26,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_lock_ = true
 
 [node name="Label" type="Label" parent="UI/Base"]
 layout_mode = 1
@@ -26,6 +42,7 @@ offset_bottom = -74.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Semi Surgical Strike"
+metadata/_edit_lock_ = true
 
 [node name="Button" type="Button" parent="UI/Base"]
 layout_mode = 1
@@ -41,3 +58,4 @@ offset_bottom = 42.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "New mission"
+metadata/_edit_lock_ = true
