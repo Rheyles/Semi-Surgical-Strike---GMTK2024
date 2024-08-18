@@ -1,12 +1,37 @@
-[gd_scene load_steps=10 format=3 uid="uid://ouwypy3gld76"]
+[gd_scene load_steps=15 format=3 uid="uid://ouwypy3gld76"]
 
 [ext_resource type="Script" path="res://Scenes/base_city/base_city.gd" id="1_65fsf"]
-[ext_resource type="Texture2D" uid="uid://b3yoliapk3bl0" path="res://Ressources/Sprites/Placeholders/PlaceHolder_Circle - Copie.png" id="1_xkpib"]
 [ext_resource type="PackedScene" uid="uid://dioy76npxq04q" path="res://Scenes/base_unit/base_unit.tscn" id="2_v1arg"]
+[ext_resource type="Texture2D" uid="uid://mmnb81msxtbp" path="res://Ressources/Sprites/Shadow.png" id="2_xej13"]
+[ext_resource type="Texture2D" uid="uid://bdheytk1e3wjw" path="res://Ressources/Sprites/Units/factory.png" id="3_pxpf6"]
 [ext_resource type="PackedScene" uid="uid://bcas4k2m4wmak" path="res://Scenes/basic_components/health_component.tscn" id="3_v75ac"]
+[ext_resource type="Texture2D" uid="uid://cc6wog45c7uas" path="res://Ressources/Sprites/Units/contour.png" id="4_d3i7x"]
 [ext_resource type="PackedScene" uid="uid://4pibc52li4jo" path="res://Scenes/basic_components/attack_component.tscn" id="4_ia1o0"]
+[ext_resource type="Texture2D" uid="uid://cusg415dvvmt2" path="res://Ressources/Sprites/light.png" id="5_46emf"]
 [ext_resource type="PackedScene" uid="uid://c1i11btexox5i" path="res://Scenes/projectiles/base_projectile.tscn" id="5_y4m43"]
 [ext_resource type="PackedScene" uid="uid://ta3blwa24sqb" path="res://Scenes/basic_components/factory_component.tscn" id="6_hxf1v"]
+
+[sub_resource type="Animation" id="Animation_xn7aq"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Contour:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.86, 0.86), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yhw6s"]
+_data = {
+"idle": SubResource("Animation_xn7aq")
+}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_plehk"]
 radius = 15.0
@@ -18,10 +43,32 @@ radius = 83.0963
 collision_mask = 3
 script = ExtResource("1_65fsf")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_xkpib")
-metadata/_edit_lock_ = true
+[node name="Art" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0.901961)
+position = Vector2(-1.19209e-07, 0)
+scale = Vector2(0.087, 0.087)
+
+[node name="Shadow" type="Sprite2D" parent="Art"]
+position = Vector2(-4.76837e-06, -4.76837e-06)
+scale = Vector2(14.1844, 14.1844)
+texture = ExtResource("2_xej13")
+
+[node name="Icon" type="Sprite2D" parent="Art"]
+texture = ExtResource("3_pxpf6")
+
+[node name="Contour" type="Sprite2D" parent="Art"]
+scale = Vector2(0.94636, 0.94636)
+texture = ExtResource("4_d3i7x")
+
+[node name="Glow" type="Sprite2D" parent="Art"]
+modulate = Color(1, 1, 1, 0.286275)
+scale = Vector2(1.20512, 1.20512)
+texture = ExtResource("5_46emf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Art"]
+libraries = {
+"": SubResource("AnimationLibrary_yhw6s")
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
