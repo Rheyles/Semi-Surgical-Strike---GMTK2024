@@ -82,6 +82,7 @@ func _CanonActivation():
 	
 
 #Global VFX (ScreenShake, distortion sur l'écran ?) 
+	EVENTS.emit_signal("set_shake")
 	for hex in canonNode_array.size():
 		if canonNode_array[hex].visible == true:
 			canonNode_array[hex].nodeShoot()

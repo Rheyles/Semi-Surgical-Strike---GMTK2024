@@ -1,6 +1,7 @@
-[gd_scene load_steps=33 format=3 uid="uid://cklhctcdf3wlq"]
+[gd_scene load_steps=34 format=3 uid="uid://cklhctcdf3wlq"]
 
 [ext_resource type="PackedScene" uid="uid://ouwypy3gld76" path="res://Scenes/base_city/base_city.tscn" id="1_4dj63"]
+[ext_resource type="PackedScene" uid="uid://c3viq5fif4hiv" path="res://Scenes/basic_components/shake_component.tscn" id="1_jsxv7"]
 [ext_resource type="Texture2D" uid="uid://8k2dqrh2tglq" path="res://Ressources/Sprites/Battleground/background.png" id="1_ku2wl"]
 [ext_resource type="Shader" path="res://Scenes/battlefield/map_shader.gdshader" id="1_oon84"]
 [ext_resource type="Script" path="res://Scenes/battlefield/battlefield.gd" id="1_tcqix"]
@@ -74,29 +75,12 @@ shader_parameter/scanline_thickness = 0.5
 shader_parameter/scanlines_spacing = 1.0
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_feloi")
 
-[sub_resource type="Animation" id="Animation_sb3gn"]
-resource_name = "idle"
-length = 5.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PointLight2D:energy")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2.2, 2.7, 3, 3.9, 4.5, 4.8, 5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [5.07, 3.49, 3.92, 5.79, 4.35, 5.21, 3.34, 4.06, 4.35, 5.65, 5.07]
-}
-
 [sub_resource type="Animation" id="Animation_lrflb"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/path = NodePath("../PointLight2D:energy")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -104,6 +88,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [5.07]
+}
+
+[sub_resource type="Animation" id="Animation_sb3gn"]
+resource_name = "idle"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2.2, 2.7, 3, 3.9, 4.5, 4.8, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [5.07, 3.49, 3.92, 5.79, 4.35, 5.21, 3.34, 4.06, 4.35, 5.65, 5.07]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_18rxl"]
@@ -114,7 +115,17 @@ _data = {
 
 [node name="Test" type="Node2D"]
 
+[node name="ShakeComponent" parent="." node_paths=PackedStringArray("TARGETS") instance=ExtResource("1_jsxv7")]
+TARGETS = [NodePath("../Map"), NodePath("../UI/Control")]
+SHAKE_OFFSET = 1.5
+RANDOM_SHAKE_STRENGTH = 8.0
+SHAKE_DECAY_RATE = 7.0
+
 [node name="Map" type="Node2D" parent="."]
+
+[node name="ShakeComponent" parent="Map" node_paths=PackedStringArray("TARGETS") instance=ExtResource("1_jsxv7")]
+TARGETS = [NodePath("..")]
+SHAKE_DECAY_RATE = 40.0
 
 [node name="Battlefield" type="Area2D" parent="Map"]
 position = Vector2(960, 540)
@@ -190,28 +201,40 @@ battlefield = NodePath("../../Battlefield")
 [node name="Canon" parent="Map" node_paths=PackedStringArray("next_pattern_visual") instance=ExtResource("5_8vk76")]
 position = Vector2(960, 540)
 scale = Vector2(0.15, 0.15)
-next_pattern_visual = NodePath("../../UI/NextStrike/next_pattern_visual")
+next_pattern_visual = NodePath("../../UI/Control/NextStrike/next_pattern_visual")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="MapDistortion" type="ColorRect" parent="UI"]
-material = SubResource("ShaderMaterial_6dn6t")
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 438.0
-offset_right = -438.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PlanetBackGround" type="TextureRect" parent="UI"]
+[node name="MapDistortion" type="ColorRect" parent="UI/Control"]
+material = SubResource("ShaderMaterial_6dn6t")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = -3.0
+offset_right = -15.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlanetBackGround" type="TextureRect" parent="UI/Control"]
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("1_ku2wl")
 
-[node name="BorderTop" type="TextureRect" parent="UI"]
+[node name="BorderTop" type="TextureRect" parent="UI/Control"]
 modulate = Color(1, 1, 1, 0.619608)
 material = ExtResource("12_48rm8")
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -221,9 +244,10 @@ texture = ExtResource("12_41m50")
 expand_mode = 2
 flip_v = true
 
-[node name="BorderBottom" type="TextureRect" parent="UI"]
+[node name="BorderBottom" type="TextureRect" parent="UI/Control"]
 modulate = Color(1, 1, 1, 0.619608)
 material = ExtResource("12_48rm8")
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -234,18 +258,18 @@ grow_vertical = 2
 texture = ExtResource("12_41m50")
 expand_mode = 2
 
-[node name="MapBorder" type="TextureRect" parent="UI"]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="MapBorder" type="TextureRect" parent="UI/Control"]
+offset_right = 1920.0
+offset_bottom = 1080.0
 texture = ExtResource("5_elk6g")
 
-[node name="NextStrike" type="TextureRect" parent="UI"]
+[node name="NextStrike" type="TextureRect" parent="UI/Control"]
 modulate = Color(1, 1, 1, 0.694118)
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 texture = ExtResource("14_4w7y5")
 
-[node name="next_pattern_visual" parent="UI/NextStrike" instance=ExtResource("6_6txui")]
+[node name="next_pattern_visual" parent="UI/Control/NextStrike" instance=ExtResource("6_6txui")]
 modulate = Color(0.960784, 0.462745, 0, 1)
 offset_left = 306.0
 offset_top = 292.0
@@ -253,16 +277,20 @@ offset_right = 306.0
 offset_bottom = 292.0
 scale = Vector2(0.18, 0.18)
 
-[node name="WinJauge" type="Control" parent="UI"]
-layout_mode = 3
+[node name="WinJauge" type="Control" parent="UI/Control"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 4.0
+offset_right = 7.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("17_asl76")
 
-[node name="JaugeBck" type="TextureRect" parent="UI/WinJauge"]
+[node name="JaugeBck" type="TextureRect" parent="UI/Control/WinJauge"]
 modulate = Color(1, 1, 1, 0.545098)
 layout_mode = 0
 offset_top = 15.0
@@ -270,7 +298,7 @@ offset_right = 1920.0
 offset_bottom = 1095.0
 texture = ExtResource("18_jlxx0")
 
-[node name="JaugeMask" type="ColorRect" parent="UI/WinJauge"]
+[node name="JaugeMask" type="ColorRect" parent="UI/Control/WinJauge"]
 clip_children = 1
 layout_mode = 1
 anchors_preset = 15
@@ -284,7 +312,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(960, 1080)
 
-[node name="JaugeFill" type="TextureRect" parent="UI/WinJauge/JaugeMask"]
+[node name="JaugeFill" type="TextureRect" parent="UI/Control/WinJauge/JaugeMask"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -302,20 +330,21 @@ texture = ExtResource("19_8pmpo")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="JaugeBody" type="TextureRect" parent="UI/WinJauge"]
+[node name="JaugeBody" type="TextureRect" parent="UI/Control/WinJauge"]
 layout_mode = 0
 offset_top = 15.0
 offset_right = 1920.0
 offset_bottom = 1095.0
 texture = ExtResource("17_ifk1d")
 
-[node name="PointLight2D" type="PointLight2D" parent="UI/WinJauge/JaugeBody"]
-position = Vector2(950, 960)
-color = Color(0.679059, 0.298798, 0.0707171, 1)
+[node name="PointLight2D" type="PointLight2D" parent="UI/Control/WinJauge"]
+position = Vector2(950, 975)
+color = Color(1, 0.447059, 0.027451, 1)
 energy = 5.07
 texture = ExtResource("5_kciau")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/WinJauge/JaugeBody"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Control/WinJauge"]
+root_node = NodePath("../JaugeBody")
 libraries = {
 "": SubResource("AnimationLibrary_18rxl")
 }
