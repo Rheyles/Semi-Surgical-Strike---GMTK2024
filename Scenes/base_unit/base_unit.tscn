@@ -44,8 +44,24 @@ radius = 58.8558
 [sub_resource type="CircleShape2D" id="CircleShape2D_58jmq"]
 radius = 50.2494
 
+[sub_resource type="Animation" id="Animation_t30pn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cross:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.901961)]
+}
+
 [sub_resource type="Animation" id="Animation_6p4jc"]
 resource_name = "death"
+length = 2.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -77,25 +93,10 @@ tracks/2/path = NodePath("Cross:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(1.5, 2.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0.901961), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_t30pn"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Cross:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0.901961)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2droa"]
@@ -124,7 +125,6 @@ texture = ExtResource("2_a1prw")
 texture = ExtResource("2_8afc7")
 
 [node name="Contour" type="Sprite2D" parent="Art"]
-scale = Vector2(0.94636, 0.94636)
 texture = ExtResource("3_m2jqj")
 
 [node name="Glow" type="Sprite2D" parent="Art"]
@@ -139,6 +139,7 @@ libraries = {
 
 [node name="Cross" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.901961)
+z_index = 1
 scale = Vector2(0.047, 0.047)
 texture = ExtResource("6_fujnb")
 

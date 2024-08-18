@@ -7,21 +7,24 @@ var MIN_SIZE_Y = 53.0
 var MAX_POS_Y = 698.0
 var MIN_POS_Y = 1026.0
 
-var monitored_variable : float = 100.0
+var monitored_variable : float = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#MAX_SIZE_Y = 1177.0
-	#MAX_POS_Y = 698.0
-	pass
+	GAME.freedom_change.connect(on_freedom_meter_change)
+	update_display()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	monitored_variable -= delta * 10
-	monitored_variable = clamp(monitored_variable, 0.0,100.0)
-	update_display()
+	pass
 
 func update_display():
-	var diff_y = monitored_variable * (MAX_SIZE_Y-MIN_SIZE_Y) / 100.0
+	var diff_y = monitored_variable * (MAX_SIZE_Y-MIN_SIZE_Y) / 1000.0
 	jauge_mask.size.y = MIN_SIZE_Y + diff_y
 	jauge_mask.position.y = MIN_POS_Y - diff_y
+
+### SIGNAL RESPONSES ###
+
+func on_freedom_meter_change():
+	monitored_variable = GAME.freedom_meter
+	update_display()

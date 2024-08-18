@@ -20,6 +20,9 @@ func _process(_delta):
 	pass
 
 func destroy():
+	if TEAM == DATA.TEAMS.ENEMY:
+		GAME.freedom_meter += 5
+		GAME.freedom_change.emit()
 	$AnimationPlayer.play("death")
 	await $AnimationPlayer.animation_finished
 	queue_free()

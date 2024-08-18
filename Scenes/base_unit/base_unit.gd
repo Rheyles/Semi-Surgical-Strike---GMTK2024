@@ -79,6 +79,9 @@ func _physics_process(_delta):
 			#move_and_slide()
 
 func destroy():
+	if TEAM == DATA.TEAMS.ENEMY:
+		GAME.freedom_meter += 1
+		GAME.freedom_change.emit()
 	$AnimationPlayer.play("death")
 	await $AnimationPlayer.animation_finished
 	queue_free()
