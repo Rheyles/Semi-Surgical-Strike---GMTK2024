@@ -30,6 +30,7 @@ metadata/_edit_lock_ = true
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_v75ac")]
+MAX_HEALTH = 20.0
 
 [node name="AttackComponent" parent="." instance=ExtResource("4_ia1o0")]
 DAMAGE = 5.0

@@ -12,12 +12,19 @@ var pattern_array = [
 	,[true,false,true,false,false,false,true,false,false,false,false,false,false,false,false,true,false,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,true,false,false,true,false]
 	,[false, false, false, false, false, false, false, false, true, true, true, true, false, false, true, true, false, true, true, false, true, true, true, true, true, true, false, true, true, false, false, true, true, false, false, true, true]
 	,[true, true, true, true, true, true, true, true, true, true, true, true, true, false, false, false, false, false, false, true, true, true, false, false, true, true, true, false, false, false, false, false, false, false, false, false, false]
-	,[false, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false, false, true, true, false, false, true, true, false, true, false, false, true, false, false, false, false, false, true, true, true, true]
+	#,[false, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false, false, true, true, false, false, true, true, false, true, false, false, true, false, false, false, false, false, true, true, true, true]
+	,[false, false, false, false, false, false, false, false, false, false, false, false, false, true, true, true, true, true, true, false, false, false, true, true, false, false, false, true, true, true, true, false, false, true, true, false, false]
+	,[false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+	,[true, false, true, true, true, false, true, false, false, false, false, false, false, false, false, true, false, true, false, false, false, false, false, false, false, false, false, false, false, true, true, true, true, true, true, true, true]
+	,[true, false, false, true, true, false, false, false, true, true, true, true, false, false, false, false, false, false, false, false, false, false, true, true, false, false, false, true, true, true, true, true, true, true, true, true, true]
+	,[true, false, true, true, true, false, false, true, false, false, false, true, true, false, true, false, false, true, false, true, true, false, false, true, false, true, true, true, true, true, true, true, true, true, false, false, true]
 	]
 
 var move_tween
 @export var move_speed: float = 0.3
-@export var reload_delay: float = 1.0
+@export var base_reload_delay: float = 2.5
+@export var reload_delay_bonus: float = 0.2
+var reload_delay : float
 @export var follow_mouse = true
 
 var ready_to_shoot: bool = true
@@ -94,6 +101,10 @@ func _CanonActivation():
 	print("Shoot : " + str(last_pattern_index))
 	print(str(GAME.enemy_killed_list.size()) + " target erased from the surface....")
 	print(str(GAME.allied_killed_list.size()) + " friends fallen for democracy !! <3 <3")
+	reload_delay = base_reload_delay - (GAME.last_shot_kills * reload_delay_bonus)
+	if reload_delay <= 1:
+		reload_delay = 1
+	print("reload delay after : " + str(GAME.last_shot_kills) + "kills is " + str(reload_delay))
 	GAME.last_shot_kills = 0
 
 func _load_Next_Pattern():

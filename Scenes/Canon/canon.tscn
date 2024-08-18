@@ -7,6 +7,7 @@
 script = ExtResource("1_djkmq")
 
 [node name="Node_Container" type="Node2D" parent="."]
+z_index = 10
 
 [node name="LaserNode" parent="Node_Container" instance=ExtResource("2_ukktj")]
 

@@ -69,7 +69,7 @@ standalone = true
 battlefield = NodePath("../../Battlefield")
 
 [node name="Canon" parent="." node_paths=PackedStringArray("next_pattern_visual") instance=ExtResource("5_8vk76")]
-scale = Vector2(0.15, 0.15)
+scale = Vector2(0.3, 0.3)
 next_pattern_visual = NodePath("../next_pattern_visual")
 
 [node name="next_pattern_visual" parent="." instance=ExtResource("6_6txui")]
