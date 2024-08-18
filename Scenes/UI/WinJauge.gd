@@ -15,13 +15,18 @@ func _ready():
 	update_display()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 func update_display():
 	var diff_y = monitored_variable * (MAX_SIZE_Y-MIN_SIZE_Y) / 10.0
-	jauge_mask.size.y = MIN_SIZE_Y + diff_y
-	jauge_mask.position.y = MIN_POS_Y - diff_y
+	var new_size = jauge_mask.size
+	new_size.y = MIN_SIZE_Y + diff_y
+	var new_pos = jauge_mask.position
+	new_pos.y = MIN_POS_Y - diff_y
+	
+	jauge_mask.set_deferred("size",new_size)
+	jauge_mask.set_deferred("position",new_pos)
 
 ### SIGNAL RESPONSES ###
 

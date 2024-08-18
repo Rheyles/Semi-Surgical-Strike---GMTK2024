@@ -1,9 +1,12 @@
 extends Control
 
+var state = "MainMenu"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$"Music Player/AudioBars/AnimationPlayer".play("idle")
-	$WinJauge/AnimationPlayer.play("idle")
-	$NextStrike/AnimationPlayer.play("appear")
-	$"Music Player/AnimationPlayer".play("appear")
+	$AnimationPlayer.play("start_game")
+	
+func _process(_delta):
+	if Input.is_action_just_pressed("Click") and state=="MainMenu":
+		$AnimationPlayer.play("deploy_ui")
+		state="InGame"
