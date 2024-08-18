@@ -5,3 +5,4 @@ extends Control
 func _ready():
 	$"Music Player/AudioBars/AnimationPlayer".play("idle")
 	$WinJauge/AnimationPlayer.play("idle")
+	$NextStrike/AnimationPlayer.play("appear")

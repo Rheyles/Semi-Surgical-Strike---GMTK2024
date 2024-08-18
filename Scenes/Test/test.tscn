@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://cklhctcdf3wlq"]
+[gd_scene load_steps=51 format=3 uid="uid://cklhctcdf3wlq"]
 
 [ext_resource type="PackedScene" uid="uid://ouwypy3gld76" path="res://Scenes/base_city/base_city.tscn" id="1_4dj63"]
 [ext_resource type="PackedScene" uid="uid://c3viq5fif4hiv" path="res://Scenes/basic_components/shake_component.tscn" id="1_jsxv7"]
@@ -83,6 +83,90 @@ shader_parameter/scanlines_speed = 1.0
 shader_parameter/scanline_thickness = 0.5
 shader_parameter/scanlines_spacing = 1.0
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_feloi")
+
+[sub_resource type="Animation" id="Animation_ifwx0"]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1920, 0), Vector2(1920, 1080)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.694118)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("next_pattern_visual:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.960784, 0.462745, 0, 0), Color(0.960784, 0.462745, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jfsw6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1920, 1080)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.694118)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("next_pattern_visual:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.960784, 0.462745, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ijlsy"]
+_data = {
+"RESET": SubResource("Animation_jfsw6"),
+"appear": SubResource("Animation_ifwx0")
+}
 
 [sub_resource type="FontVariation" id="FontVariation_poo3n"]
 base_font = ExtResource("19_rggjf")
@@ -340,6 +424,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PlanetBackGround" type="TextureRect" parent="UI/Control"]
+layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("1_ku2wl")
@@ -372,15 +457,18 @@ texture = ExtResource("12_41m50")
 expand_mode = 2
 
 [node name="MapBorder" type="TextureRect" parent="UI/Control"]
+layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("5_elk6g")
 
 [node name="NextStrike" type="TextureRect" parent="UI/Control"]
 modulate = Color(1, 1, 1, 0.694118)
+layout_mode = 1
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("14_4w7y5")
+expand_mode = 1
 
 [node name="next_pattern_visual" parent="UI/Control/NextStrike" instance=ExtResource("6_6txui")]
 modulate = Color(0.960784, 0.462745, 0, 1)
@@ -389,6 +477,11 @@ offset_top = 292.0
 offset_right = 306.0
 offset_bottom = 292.0
 scale = Vector2(0.18, 0.18)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Control/NextStrike"]
+libraries = {
+"": SubResource("AnimationLibrary_ijlsy")
+}
 
 [node name="Memo" type="NinePatchRect" parent="UI/Control"]
 modulate = Color(1, 1, 1, 0.694118)
@@ -505,6 +598,7 @@ theme_override_font_sizes/font_size = 40
 text = "MUSIC PLAYER_"
 
 [node name="Legend" type="Label" parent="UI/Control/Music Player"]
+layout_mode = 0
 offset_left = 84.0
 offset_top = 798.0
 offset_right = 438.0
@@ -545,7 +639,7 @@ scale = Vector2(-1, -1)
 layout_mode = 2
 offset_left = -0.165
 offset_right = 18.165
-offset_bottom = 114.009
+offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(9.165, 141)
@@ -556,7 +650,7 @@ expand_mode = 3
 layout_mode = 2
 offset_left = 22.0
 offset_right = 40.33
-offset_bottom = 48.3177
+offset_bottom = 10.0
 pivot_offset = Vector2(9.165, 141)
 texture = ExtResource("23_fiaqb")
 expand_mode = 3
@@ -565,7 +659,7 @@ expand_mode = 3
 layout_mode = 2
 offset_left = 45.0
 offset_right = 63.33
-offset_bottom = 98.0635
+offset_bottom = 10.0
 pivot_offset = Vector2(9.165, 141)
 texture = ExtResource("23_fiaqb")
 expand_mode = 3
@@ -574,7 +668,7 @@ expand_mode = 3
 layout_mode = 2
 offset_left = 68.0
 offset_right = 86.33
-offset_bottom = 66.1337
+offset_bottom = 10.0
 pivot_offset = Vector2(9.165, 141)
 texture = ExtResource("23_fiaqb")
 expand_mode = 3
@@ -583,7 +677,7 @@ expand_mode = 3
 layout_mode = 2
 offset_left = 90.0
 offset_right = 108.33
-offset_bottom = 61.8585
+offset_bottom = 10.0
 pivot_offset = Vector2(9.165, 141)
 texture = ExtResource("23_fiaqb")
 expand_mode = 3
@@ -592,7 +686,7 @@ expand_mode = 3
 layout_mode = 2
 offset_left = 112.0
 offset_right = 130.33
-offset_bottom = 97.8736
+offset_bottom = 10.0
 pivot_offset = Vector2(9.165, 141)
 texture = ExtResource("23_fiaqb")
 expand_mode = 3
@@ -601,7 +695,7 @@ expand_mode = 3
 layout_mode = 2
 offset_left = 135.0
 offset_right = 153.33
-offset_bottom = 39.8746
+offset_bottom = 10.0
 pivot_offset = Vector2(9.165, 141)
 texture = ExtResource("23_fiaqb")
 expand_mode = 3
