@@ -31,6 +31,8 @@ var first_frame = true
 func _ready():
 	modulate = DATA.team_color[TEAM]
 	
+	$Art/AnimationPlayer.play("idle")
+	
 	attack_radius = attack_component.radius
 	vision_radius = $VisionZone/CollisionShape2D.shape.radius
 	

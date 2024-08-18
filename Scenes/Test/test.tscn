@@ -25,12 +25,12 @@
 [ext_resource type="Texture2D" uid="uid://buu1cgllhowag" path="res://Ressources/Sprites/Battleground/jauge_fill.png" id="19_8pmpo"]
 [ext_resource type="FontFile" uid="uid://dn3uk4r35blam" path="res://Ressources/Fonts/BorgenBold.ttf" id="19_rggjf"]
 [ext_resource type="Texture2D" uid="uid://bxlada3plcdt3" path="res://Ressources/Sprites/UI/left_click.png" id="20_viy54"]
-[ext_resource type="AudioStream" uid="uid://cjoc0y3c52bgf" path="res://Ressources/Musics/game_jam_3.wav" id="21_l4803"]
 [ext_resource type="Texture2D" uid="uid://ltie3itbc25u" path="res://Ressources/Sprites/UI/molette.png" id="21_ylq0g"]
 [ext_resource type="Texture2D" uid="uid://cyqatjp5xws50" path="res://Ressources/Sprites/UI/190521.png" id="22_mqgrw"]
 [ext_resource type="Script" path="res://Scenes/UI/CanonCoord.gd" id="22_yk8t1"]
 [ext_resource type="FontFile" uid="uid://c8f0ndoan20ok" path="res://Ressources/Fonts/BorgenBoldOblique.ttf" id="23_1qr2o"]
 [ext_resource type="Texture2D" uid="uid://bntk58cqucmdh" path="res://Ressources/Sprites/UI/audio_bar.png" id="23_fiaqb"]
+[ext_resource type="AudioStream" uid="uid://3nho6m56acmh" path="res://Ressources/Musics/game_jam_5.wav" id="31_u6hdj"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ylkdq"]
 vertices = PackedVector2Array(282, -438, 489, -225, 512, 59, 426, 303, 176, 500, -176, 498, -447, 312, -533, -27, -439, -293, -244, -461, 15, -511)
@@ -834,6 +834,6 @@ text = "LON - 300"
 vertical_alignment = 1
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("21_l4803")
+stream = ExtResource("31_u6hdj")
 autoplay = true
 bus = &"Music"
