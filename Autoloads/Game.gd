@@ -3,16 +3,21 @@ extends Node
 ## GAME
 ## This autoload contains all the method and variable used along the game
 
-var last_shot_kills : int = 0
 
+var freedom_meter = 0
+var stress_meter = 0
 var enemy_killed_list = []
 var allied_killed_list = []
+
+var last_shot_kills : int = 0
 
 var current_scene = null
 var current_path = ""
 
 var item_hold = null
 
+signal freedom_change()
+signal stress_change()
 
 ### BUILT-IN
 
