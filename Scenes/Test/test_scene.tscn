@@ -10,7 +10,10 @@ scale = Vector2(0.15, 0.15)
 next_pattern_visual = NodePath("../next_pattern_visual")
 
 [node name="next_pattern_visual" parent="." instance=ExtResource("2_ixlsx")]
-position = Vector2(1808, 970)
+offset_left = 1808.0
+offset_top = 970.0
+offset_right = 1808.0
+offset_bottom = 970.0
 
 [node name="BackGround" type="Control" parent="."]
 layout_mode = 3

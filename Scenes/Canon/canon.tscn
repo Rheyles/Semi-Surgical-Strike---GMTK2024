@@ -1,12 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://puw8u16e2oqa"]
+[gd_scene load_steps=5 format=3 uid="uid://puw8u16e2oqa"]
 
 [ext_resource type="Script" path="res://Scenes/Canon/canon.gd" id="1_djkmq"]
 [ext_resource type="PackedScene" uid="uid://cujjyy8hd6kjk" path="res://Scenes/Canon/canon_node.tscn" id="2_ukktj"]
+[ext_resource type="Script" path="res://Scenes/Canon/TextVFX.gd" id="3_3bues"]
+[ext_resource type="FontFile" uid="uid://dmveyiobget4p" path="res://Ressources/Fonts/Linebeam.ttf" id="3_7fwto"]
 
 [node name="Canon" type="Node2D"]
 script = ExtResource("1_djkmq")
 
 [node name="Node_Container" type="Node2D" parent="."]
+z_index = 10
 
 [node name="LaserNode" parent="Node_Container" instance=ExtResource("2_ukktj")]
 
@@ -212,3 +215,63 @@ offset_bottom = -385.0
 
 [node name="ClickTimer" type="Timer" parent="."]
 wait_time = 0.3
+
+[node name="Canon UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -818.0
+offset_top = -1042.0
+offset_right = 813.0
+offset_bottom = 906.0
+
+[node name="Label" type="Label" parent="Canon UI"]
+z_index = 10
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -593.0
+offset_top = 138.23
+offset_right = 593.0
+offset_bottom = 434.085
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0.705882, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_7fwto")
+theme_override_font_sizes/font_size = 86
+text = "ERROR 142-C
+MANUAL AIM REQUIERED
+PATTERN MALFUNCTION ..."
+vertical_alignment = 2
+script = ExtResource("3_3bues")
+speed = 4
+numberOfFlashes = 5
+delay = 0.5
+fade = true
+
+[node name="Label2" type="Label" parent="Canon UI"]
+z_index = 10
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -588.5
+offset_top = -273.0
+offset_right = 530.5
+offset_bottom = -155.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0.705882, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_7fwto")
+theme_override_font_sizes/font_size = 86
+text = "/ ! \\ CAUTION / ! \\"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_3bues")
+speed = 4
+numberOfFlashes = 5
+delay = 0.5
+fade = true

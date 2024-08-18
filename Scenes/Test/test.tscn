@@ -85,11 +85,13 @@ shader_parameter/vignette_flicker_speed = 0.58
 shader_parameter/vignette_strength = 0.59
 shader_parameter/small_scanlines_speed = 1.0
 shader_parameter/small_scanlines_proximity = 1.0
-shader_parameter/small_scanlines_opacity = 1.0
-shader_parameter/scanlines_opacity = 1.0
+shader_parameter/small_scanlines_opacity = 0.01
+shader_parameter/scanlines_opacity = 0.0
 shader_parameter/scanlines_speed = 1.0
 shader_parameter/scanline_thickness = 0.5
 shader_parameter/scanlines_spacing = 1.0
+shader_parameter/vhs_line_onoff = 1.0
+shader_parameter/disto_onoff = 1.0
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_feloi")
 
 [sub_resource type="Animation" id="Animation_o6f4e"]
@@ -527,7 +529,6 @@ base_font = ExtResource("23_1qr2o")
 
 [node name="ShakeComponent" parent="." node_paths=PackedStringArray("TARGETS") instance=ExtResource("1_jsxv7")]
 TARGETS = [NodePath("../Map"), NodePath("../UI/Control")]
-SHAKE_OFFSET = 1.5
 RANDOM_SHAKE_STRENGTH = 8.0
 SHAKE_DECAY_RATE = 7.0
 
@@ -535,6 +536,7 @@ SHAKE_DECAY_RATE = 7.0
 
 [node name="ShakeComponent" parent="Map" node_paths=PackedStringArray("TARGETS") instance=ExtResource("1_jsxv7")]
 TARGETS = [NodePath("..")]
+SHAKE_OFFSET = 1.0
 SHAKE_DECAY_RATE = 40.0
 
 [node name="Battlefield" type="Area2D" parent="Map"]
@@ -608,9 +610,11 @@ COOLDOWN = 1.0
 standalone = true
 battlefield = NodePath("../../Battlefield")
 
-[node name="Canon" parent="Map" node_paths=PackedStringArray("next_pattern_visual") instance=ExtResource("5_8vk76")]
+[node name="Canon" parent="Map" node_paths=PackedStringArray("map_disto", "laserLight", "next_pattern_visual") instance=ExtResource("5_8vk76")]
 position = Vector2(960, 540)
-scale = Vector2(0.15, 0.15)
+scale = Vector2(0.25, 0.25)
+map_disto = NodePath("../../UI/Control/MapDistortion")
+laserLight = NodePath("../../UI/Control/WinJauge/LaserLight")
 next_pattern_visual = NodePath("../../UI/Control/NextStrike/next_pattern_visual")
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -650,6 +654,7 @@ texture = ExtResource("1_ku2wl")
 
 [node name="BorderTop" type="TextureRect" parent="UI/Control"]
 modulate = Color(1, 1, 1, 0.619608)
+light_mask = 3
 material = ExtResource("12_48rm8")
 layout_mode = 1
 anchors_preset = 15
@@ -663,6 +668,7 @@ flip_v = true
 
 [node name="BorderBottom" type="TextureRect" parent="UI/Control"]
 modulate = Color(1, 1, 1, 0.619608)
+light_mask = 3
 material = ExtResource("12_48rm8")
 layout_mode = 1
 anchors_preset = 15
@@ -1015,6 +1021,20 @@ position = Vector2(950, 975)
 color = Color(1, 0.447059, 0.027451, 1)
 energy = 5.07
 texture = ExtResource("5_kciau")
+
+[node name="LaserLight" type="PointLight2D" parent="UI/Control/WinJauge"]
+light_mask = 3
+z_index = 4
+position = Vector2(826, 332)
+scale = Vector2(1.92, 1)
+color = Color(0.92549, 0.360784, 0.0470588, 1)
+energy = 0.0
+range_layer_min = 1
+range_layer_max = 5
+range_item_cull_mask = 2
+texture = ExtResource("5_kciau")
+texture_scale = 5.0
+height = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Control/WinJauge"]
 root_node = NodePath("../JaugeBody")
