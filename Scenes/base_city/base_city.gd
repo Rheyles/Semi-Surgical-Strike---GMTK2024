@@ -9,6 +9,7 @@ extends StaticBody2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	modulate = DATA.team_color[TEAM]
+	$Art/AnimationPlayer.play("idle")
 	$NavigationObstacle2D.radius = $CollisionShape2D.shape.radius
 
 
