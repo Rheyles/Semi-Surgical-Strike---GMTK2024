@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cklhctcdf3wlq"]
+[gd_scene load_steps=48 format=3 uid="uid://cklhctcdf3wlq"]
 
 [ext_resource type="PackedScene" uid="uid://ouwypy3gld76" path="res://Scenes/base_city/base_city.tscn" id="1_4dj63"]
 [ext_resource type="PackedScene" uid="uid://c3viq5fif4hiv" path="res://Scenes/basic_components/shake_component.tscn" id="1_jsxv7"]
@@ -14,14 +14,23 @@
 [ext_resource type="Texture2D" uid="uid://cusg415dvvmt2" path="res://Ressources/Sprites/light.png" id="5_kciau"]
 [ext_resource type="PackedScene" uid="uid://cm1q2e2ttawy8" path="res://Scenes/Next_pattern_visual/next_pattern_visual.tscn" id="6_6txui"]
 [ext_resource type="Shader" path="res://Scenes/battlefield/distortion.gdshader" id="11_ktirh"]
+[ext_resource type="Script" path="res://Scenes/UI/MainUI.gd" id="11_venl4"]
 [ext_resource type="Texture2D" uid="uid://degatmmhecwwu" path="res://Ressources/Sprites/Battleground/border.png" id="12_41m50"]
 [ext_resource type="Material" uid="uid://cwx8868onn75y" path="res://Scenes/battlefield/border.tres" id="12_48rm8"]
 [ext_resource type="Texture2D" uid="uid://d080xw08m1733" path="res://Ressources/Sprites/Battleground/preview.png" id="14_4w7y5"]
 [ext_resource type="Script" path="res://Scenes/UI/WinJauge.gd" id="17_asl76"]
 [ext_resource type="Texture2D" uid="uid://dx1bubblpaprp" path="res://Ressources/Sprites/Battleground/jauge_body.png" id="17_ifk1d"]
+[ext_resource type="Texture2D" uid="uid://byo108b83wae" path="res://Ressources/Sprites/Battleground/window.png" id="18_5ci8y"]
 [ext_resource type="Texture2D" uid="uid://c41ir3vdkv7er" path="res://Ressources/Sprites/Battleground/jauge_bck.png" id="18_jlxx0"]
 [ext_resource type="Texture2D" uid="uid://buu1cgllhowag" path="res://Ressources/Sprites/Battleground/jauge_fill.png" id="19_8pmpo"]
+[ext_resource type="FontFile" uid="uid://dn3uk4r35blam" path="res://Ressources/Fonts/BorgenBold.ttf" id="19_rggjf"]
+[ext_resource type="Texture2D" uid="uid://bxlada3plcdt3" path="res://Ressources/Sprites/UI/left_click.png" id="20_viy54"]
 [ext_resource type="AudioStream" uid="uid://cjoc0y3c52bgf" path="res://Ressources/Musics/game_jam_3.wav" id="21_l4803"]
+[ext_resource type="Texture2D" uid="uid://ltie3itbc25u" path="res://Ressources/Sprites/UI/molette.png" id="21_ylq0g"]
+[ext_resource type="Texture2D" uid="uid://cyqatjp5xws50" path="res://Ressources/Sprites/UI/190521.png" id="22_mqgrw"]
+[ext_resource type="Script" path="res://Scenes/UI/CanonCoord.gd" id="22_yk8t1"]
+[ext_resource type="FontFile" uid="uid://c8f0ndoan20ok" path="res://Ressources/Fonts/BorgenBoldOblique.ttf" id="23_1qr2o"]
+[ext_resource type="Texture2D" uid="uid://bntk58cqucmdh" path="res://Ressources/Sprites/UI/audio_bar.png" id="23_fiaqb"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ylkdq"]
 vertices = PackedVector2Array(282, -438, 489, -225, 512, 59, 426, 303, 176, 500, -176, 498, -447, 312, -533, -27, -439, -293, -244, -461, 15, -511)
@@ -75,6 +84,103 @@ shader_parameter/scanline_thickness = 0.5
 shader_parameter/scanlines_spacing = 1.0
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_feloi")
 
+[sub_resource type="FontVariation" id="FontVariation_poo3n"]
+base_font = ExtResource("19_rggjf")
+
+[sub_resource type="Animation" id="Animation_gtf36"]
+resource_name = "idle"
+length = 1.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioBar1:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(18.33, 10), Vector2(18.33, 100), Vector2(18.33, 141)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioBar2:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5, 1.6, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(18.33, 10), Vector2(18.33, 105), Vector2(18.33, 141), Vector2(18.33, 105.603)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioBar3:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(18.33, 10), Vector2(18.33, 141), Vector2(18.33, 20)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioBar4:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(18.33, 10), Vector2(18.33, 20), Vector2(18.33, 141)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioBar5:size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(18.33, 10), Vector2(18.33, 70), Vector2(18.33, 141)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioBar6:size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(18.33, 10), Vector2(18.33, 91.357), Vector2(18.33, 141)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AudioBar7:size")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(18.33, 10), Vector2(18.33, 30), Vector2(18.33, 60), Vector2(18.33, 40)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wls6v"]
+_data = {
+"idle": SubResource("Animation_gtf36")
+}
+
 [sub_resource type="Animation" id="Animation_lrflb"]
 length = 0.001
 tracks/0/type = "value"
@@ -112,6 +218,12 @@ _data = {
 "RESET": SubResource("Animation_lrflb"),
 "idle": SubResource("Animation_sb3gn")
 }
+
+[sub_resource type="FontVariation" id="FontVariation_7f0nf"]
+base_font = ExtResource("23_1qr2o")
+
+[sub_resource type="FontVariation" id="FontVariation_atf0k"]
+base_font = ExtResource("23_1qr2o")
 
 [node name="Test" type="Node2D"]
 
@@ -212,6 +324,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("11_venl4")
 
 [node name="MapDistortion" type="ColorRect" parent="UI/Control"]
 material = SubResource("ShaderMaterial_6dn6t")
@@ -277,6 +390,227 @@ offset_right = 306.0
 offset_bottom = 292.0
 scale = Vector2(0.18, 0.18)
 
+[node name="Memo" type="NinePatchRect" parent="UI/Control"]
+modulate = Color(1, 1, 1, 0.694118)
+layout_mode = 2
+offset_left = 1448.0
+offset_top = 513.0
+offset_right = 1857.0
+offset_bottom = 1039.0
+texture = ExtResource("18_5ci8y")
+region_rect = Rect2(5, 5, 370, 369)
+patch_margin_left = 78
+patch_margin_top = 95
+patch_margin_right = 88
+patch_margin_bottom = 80
+axis_stretch_horizontal = 2
+
+[node name="Title" type="Label" parent="UI/Control/Memo"]
+layout_mode = 1
+offset_left = 26.0
+offset_top = 16.0
+offset_right = 205.0
+offset_bottom = 57.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_poo3n")
+theme_override_font_sizes/font_size = 40
+text = "MEMO_"
+
+[node name="Command1" type="Label" parent="UI/Control/Memo"]
+layout_mode = 1
+offset_left = 26.0
+offset_top = 81.0
+offset_right = 376.0
+offset_bottom = 122.0
+theme_override_colors/font_color = Color(0.960784, 0.462745, 0, 1)
+theme_override_colors/font_outline_color = Color(0.960784, 0.462745, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = SubResource("FontVariation_poo3n")
+theme_override_font_sizes/font_size = 40
+text = "To strike use :"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="UI/Control/Memo"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 133.0
+offset_right = 268.0
+offset_bottom = 253.0
+texture = ExtResource("20_viy54")
+expand_mode = 1
+
+[node name="Command2" type="Label" parent="UI/Control/Memo"]
+layout_mode = 1
+offset_left = 26.0
+offset_top = 278.0
+offset_right = 384.0
+offset_bottom = 363.0
+theme_override_colors/font_color = Color(0.960784, 0.462745, 0, 1)
+theme_override_colors/font_outline_color = Color(0.960784, 0.462745, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_constants/line_spacing = -9
+theme_override_fonts/font = SubResource("FontVariation_poo3n")
+theme_override_font_sizes/font_size = 40
+text = "To rotate the canon use :"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="UI/Control/Memo"]
+layout_mode = 0
+offset_left = 171.0
+offset_top = 379.0
+offset_right = 249.0
+offset_bottom = 476.0
+texture = ExtResource("21_ylq0g")
+expand_mode = 1
+
+[node name="Music Player" type="Control" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 38.0
+offset_top = 71.0
+offset_right = 38.0
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MusicPlayer" type="NinePatchRect" parent="UI/Control/Music Player"]
+modulate = Color(1, 1, 1, 0.694118)
+layout_mode = 2
+offset_left = 492.0
+offset_top = 725.0
+offset_right = 986.0
+offset_bottom = 951.0
+scale = Vector2(-1, 1)
+texture = ExtResource("18_5ci8y")
+region_rect = Rect2(5, 5, 370, 369)
+patch_margin_left = 78
+patch_margin_top = 95
+patch_margin_right = 88
+patch_margin_bottom = 80
+axis_stretch_horizontal = 2
+
+[node name="Title" type="Label" parent="UI/Control/Music Player"]
+layout_mode = 1
+offset_left = 25.0
+offset_top = 742.0
+offset_right = 298.0
+offset_bottom = 783.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_poo3n")
+theme_override_font_sizes/font_size = 40
+text = "MUSIC PLAYER_"
+
+[node name="Legend" type="Label" parent="UI/Control/Music Player"]
+offset_left = 84.0
+offset_top = 798.0
+offset_right = 438.0
+offset_bottom = 913.0
+theme_override_colors/font_color = Color(0.960784, 0.462745, 0, 1)
+theme_override_colors/font_outline_color = Color(0.960784, 0.462745, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_poo3n")
+theme_override_font_sizes/font_size = 32
+text = "Now playing:
+Big Laser
+by PercheSoleil"
+horizontal_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/Control/Music Player"]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 814.0
+offset_right = 128.0
+offset_bottom = 885.0
+texture = ExtResource("22_mqgrw")
+expand_mode = 1
+
+[node name="AudioBars" type="Control" parent="UI/Control/Music Player"]
+modulate = Color(1, 1, 1, 0.694118)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 184.0
+offset_top = 737.0
+offset_right = -1573.0
+offset_bottom = -202.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(-1, -1)
+
+[node name="AudioBar1" type="TextureRect" parent="UI/Control/Music Player/AudioBars"]
+layout_mode = 2
+offset_left = -0.165
+offset_right = 18.165
+offset_bottom = 114.009
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(9.165, 141)
+texture = ExtResource("23_fiaqb")
+expand_mode = 3
+
+[node name="AudioBar2" type="TextureRect" parent="UI/Control/Music Player/AudioBars"]
+layout_mode = 2
+offset_left = 22.0
+offset_right = 40.33
+offset_bottom = 48.3177
+pivot_offset = Vector2(9.165, 141)
+texture = ExtResource("23_fiaqb")
+expand_mode = 3
+
+[node name="AudioBar3" type="TextureRect" parent="UI/Control/Music Player/AudioBars"]
+layout_mode = 2
+offset_left = 45.0
+offset_right = 63.33
+offset_bottom = 98.0635
+pivot_offset = Vector2(9.165, 141)
+texture = ExtResource("23_fiaqb")
+expand_mode = 3
+
+[node name="AudioBar4" type="TextureRect" parent="UI/Control/Music Player/AudioBars"]
+layout_mode = 2
+offset_left = 68.0
+offset_right = 86.33
+offset_bottom = 66.1337
+pivot_offset = Vector2(9.165, 141)
+texture = ExtResource("23_fiaqb")
+expand_mode = 3
+
+[node name="AudioBar5" type="TextureRect" parent="UI/Control/Music Player/AudioBars"]
+layout_mode = 2
+offset_left = 90.0
+offset_right = 108.33
+offset_bottom = 61.8585
+pivot_offset = Vector2(9.165, 141)
+texture = ExtResource("23_fiaqb")
+expand_mode = 3
+
+[node name="AudioBar6" type="TextureRect" parent="UI/Control/Music Player/AudioBars"]
+layout_mode = 2
+offset_left = 112.0
+offset_right = 130.33
+offset_bottom = 97.8736
+pivot_offset = Vector2(9.165, 141)
+texture = ExtResource("23_fiaqb")
+expand_mode = 3
+
+[node name="AudioBar7" type="TextureRect" parent="UI/Control/Music Player/AudioBars"]
+layout_mode = 2
+offset_left = 135.0
+offset_right = 153.33
+offset_bottom = 39.8746
+pivot_offset = Vector2(9.165, 141)
+texture = ExtResource("23_fiaqb")
+expand_mode = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Control/Music Player/AudioBars"]
+libraries = {
+"": SubResource("AnimationLibrary_wls6v")
+}
+
 [node name="WinJauge" type="Control" parent="UI/Control"]
 layout_mode = 1
 anchors_preset = 15
@@ -289,6 +623,7 @@ offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("17_asl76")
+metadata/_edit_lock_ = true
 
 [node name="JaugeBck" type="TextureRect" parent="UI/Control/WinJauge"]
 modulate = Color(1, 1, 1, 0.545098)
@@ -297,6 +632,7 @@ offset_top = 15.0
 offset_right = 1920.0
 offset_bottom = 1095.0
 texture = ExtResource("18_jlxx0")
+metadata/_edit_lock_ = true
 
 [node name="JaugeMask" type="ColorRect" parent="UI/Control/WinJauge"]
 clip_children = 1
@@ -329,6 +665,7 @@ pivot_offset = Vector2(960, 1080)
 texture = ExtResource("19_8pmpo")
 expand_mode = 1
 stretch_mode = 5
+metadata/_edit_lock_ = true
 
 [node name="JaugeBody" type="TextureRect" parent="UI/Control/WinJauge"]
 layout_mode = 0
@@ -336,6 +673,7 @@ offset_top = 15.0
 offset_right = 1920.0
 offset_bottom = 1095.0
 texture = ExtResource("17_ifk1d")
+metadata/_edit_lock_ = true
 
 [node name="PointLight2D" type="PointLight2D" parent="UI/Control/WinJauge"]
 position = Vector2(950, 975)
@@ -348,6 +686,58 @@ root_node = NodePath("../JaugeBody")
 libraries = {
 "": SubResource("AnimationLibrary_18rxl")
 }
+
+[node name="CanonCoord" type="Control" parent="UI/Control" node_paths=PackedStringArray("canon")]
+modulate = Color(1, 1, 1, 0.556863)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -449.0
+offset_top = -189.0
+offset_right = 515.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("22_yk8t1")
+canon = NodePath("../../../Map/Canon")
+
+[node name="Lat" type="Label" parent="UI/Control/CanonCoord"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -465.0
+offset_top = -56.0
+offset_right = -110.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.572549, 0.913725, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_7f0nf")
+theme_override_font_sizes/font_size = 40
+text = "LAT - 250"
+vertical_alignment = 1
+
+[node name="Lon" type="Label" parent="UI/Control/CanonCoord"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 115.0
+offset_top = -51.0
+offset_right = 539.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.572549, 0.913725, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_atf0k")
+theme_override_font_sizes/font_size = 40
+text = "LON - 300"
+vertical_alignment = 1
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("21_l4803")
