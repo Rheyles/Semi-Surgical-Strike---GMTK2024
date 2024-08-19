@@ -1,8 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://ouwypy3gld76"]
+[gd_scene load_steps=21 format=3 uid="uid://ouwypy3gld76"]
 
 [ext_resource type="Script" path="res://Scenes/base_city/base_city.gd" id="1_65fsf"]
+[ext_resource type="AudioStream" uid="uid://c5qhh0g5nqdum" path="res://Ressources/Sounds/Placeholders/minecraft-fireworks.wav" id="2_nwdb8"]
 [ext_resource type="PackedScene" uid="uid://dioy76npxq04q" path="res://Scenes/base_unit/base_unit.tscn" id="2_v1arg"]
 [ext_resource type="Texture2D" uid="uid://mmnb81msxtbp" path="res://Ressources/Sprites/Shadow.png" id="2_xej13"]
+[ext_resource type="AudioStream" uid="uid://c2tx7td6ngbr6" path="res://Ressources/Sounds/Placeholders/fuse.wav" id="3_1335b"]
 [ext_resource type="Texture2D" uid="uid://bdheytk1e3wjw" path="res://Ressources/Sprites/Units/factory.png" id="3_pxpf6"]
 [ext_resource type="PackedScene" uid="uid://bcas4k2m4wmak" path="res://Scenes/basic_components/health_component.tscn" id="3_v75ac"]
 [ext_resource type="Texture2D" uid="uid://cc6wog45c7uas" path="res://Ressources/Sprites/Units/contour.png" id="4_d3i7x"]
@@ -129,6 +131,8 @@ _data = {
 [node name="BaseCity" type="StaticBody2D"]
 collision_mask = 3
 script = ExtResource("1_65fsf")
+sound_spawn = ExtResource("2_nwdb8")
+sound_destruction = ExtResource("3_1335b")
 
 [node name="Art" type="Node2D" parent="."]
 modulate = Color(1, 1, 1, 0.901961)
@@ -200,5 +204,8 @@ COOLDOWN = 3.0
 libraries = {
 "": SubResource("AnimationLibrary_vrlga")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -4.0
 
 [editable path="HealthComponent"]

@@ -3,7 +3,12 @@ extends StaticBody2D
 @export var TEAM : DATA.TEAMS
 @export var UNIT_TYPE : DATA.UNIT_TYPE
 
+@export var sound_spawn : Resource
+@export var sound_destruction : Resource
+
+
 @onready var health_component = $HealthComponent
+@onready var sound_player = $AudioStreamPlayer
 
 var waiting_for_destroy : bool = false
 
@@ -16,11 +21,15 @@ func _ready():
 	$Cross.visible = false
 	$Art/AnimationPlayer.play("idle")
 	$NavigationObstacle2D.radius = $CollisionShape2D.shape.radius
+
 ### Freedom win point on Allied base spawn
 	if TEAM == DATA.TEAMS.ALLY:
 		GAME.freedom_meter += 1
 		print("Freedom : " + str(GAME.freedom_meter))
 		GAME.check_freedom_meter()
+		### ALLY SFX
+		sound_player.stream = sound_spawn
+		sound_player.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -44,6 +53,10 @@ func destroy():
 			GAME.freedom_meter -= 1
 			print("Freedom : " + str(GAME.freedom_meter))
 			GAME.check_freedom_meter()
+			### ALLY SFX
+			sound_player.stream = sound_destruction
+			sound_player.play()
+	
 	$AnimationPlayer.play("death")
 	await $AnimationPlayer.animation_finished
 	queue_free()
