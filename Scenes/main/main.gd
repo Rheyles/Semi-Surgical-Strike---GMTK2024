@@ -1,5 +1,7 @@
 extends Node2D
 
+@export var victory_sound : Resource
+@export var defeat_sound : Resource
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,6 +23,12 @@ func _ready():
 
 
 func end_game_transition():
+	if GAME.end_condition == DATA.END_TYPE.VICTORY:
+		$AudioStreamPlayer.stream = victory_sound
+	else :
+		$AudioStreamPlayer.stream = defeat_sound
+	$AudioStreamPlayer.play()
+	
 	var anim_player = $UI/Control/AnimationPlayer
 	anim_player.play("close_windows")
 	await anim_player.animation_finished

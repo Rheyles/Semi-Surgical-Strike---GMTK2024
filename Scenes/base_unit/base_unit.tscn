@@ -108,7 +108,7 @@ _data = {
 collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_wfj7a")
-TARGET_SPEED = 25.0
+TARGET_SPEED = 20.0
 WANDERING_SPEED = 15.0
 UNIT_TYPE = 1
 

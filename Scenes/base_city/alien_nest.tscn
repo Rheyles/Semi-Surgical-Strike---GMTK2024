@@ -33,11 +33,12 @@ MAX_HEALTH = 25.0
 offset_top = -30.0
 offset_bottom = -25.0
 
+[node name="AttackComponent" parent="." index="5"]
+DAMAGE = 2.0
+
 [node name="FactoryComponent" parent="." index="7"]
 target_scene = ExtResource("3_uk8x0")
 COOLDOWN = 5.0
 nb_per_wave = 3
-standalone = false
-TEAM = 0
 
 [editable path="HealthComponent"]
