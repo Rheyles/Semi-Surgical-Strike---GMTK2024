@@ -1,17 +1,17 @@
 [gd_scene load_steps=8 format=3 uid="uid://puw8u16e2oqa"]
 
 [ext_resource type="Script" path="res://Scenes/Canon/canon.gd" id="1_djkmq"]
-[ext_resource type="AudioStream" uid="uid://c5qhh0g5nqdum" path="res://Ressources/Sounds/Placeholders/minecraft-fireworks.wav" id="2_df7xa"]
+[ext_resource type="AudioStream" uid="uid://cr56u7sqfktt" path="res://Ressources/Sounds/Canon/Plasma Grenade 005.wav" id="2_kwa1q"]
 [ext_resource type="PackedScene" uid="uid://cujjyy8hd6kjk" path="res://Scenes/Canon/canon_node.tscn" id="2_ukktj"]
+[ext_resource type="AudioStream" uid="uid://cmststv1wsgrp" path="res://Ressources/Sounds/Canon/Megaton Far 002.wav" id="3_1uhqg"]
 [ext_resource type="Script" path="res://Scenes/Canon/TextVFX.gd" id="3_3bues"]
 [ext_resource type="FontFile" uid="uid://bxno7c1h1ee5j" path="res://Ressources/Fonts/Linebeam.ttf" id="3_7fwto"]
-[ext_resource type="AudioStream" uid="uid://xi2rt3ax8cyk" path="res://Ressources/Sounds/Megaton Near 003.wav" id="3_c68wa"]
 [ext_resource type="AudioStream" uid="uid://dvkgim1xpsm0b" path="res://Ressources/Sounds/Placeholders/win.wav" id="4_2vr8l"]
 
 [node name="Canon" type="Node2D"]
 script = ExtResource("1_djkmq")
-canon_shoot_sound = ExtResource("2_df7xa")
-canon_impact_sound = ExtResource("3_c68wa")
+canon_shoot_sound = ExtResource("2_kwa1q")
+canon_impact_sound = ExtResource("3_1uhqg")
 canon_reload_sound = ExtResource("4_2vr8l")
 
 [node name="Node_Container" type="Node2D" parent="."]
@@ -254,6 +254,18 @@ wait_time = 0.3
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -2.644
+max_polyphony = 3
+bus = &"Sounds"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+volume_db = -2.644
+max_polyphony = 3
+bus = &"Sounds"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
+volume_db = -2.644
+max_polyphony = 3
+bus = &"Sounds"
 
 [node name="Canon UI" type="Control" parent="."]
 layout_mode = 3

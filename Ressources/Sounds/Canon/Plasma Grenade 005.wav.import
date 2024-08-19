@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cr56u7sqfktt"
+path="res://.godot/imported/Plasma Grenade 005.wav-770dc44a0e50782c702fbc4b49fdd22b.sample"
+
+[deps]
+
+source_file="res://Ressources/Sounds/Canon/Plasma Grenade 005.wav"
+dest_files=["res://.godot/imported/Plasma Grenade 005.wav-770dc44a0e50782c702fbc4b49fdd22b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
