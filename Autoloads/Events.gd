@@ -13,6 +13,7 @@ signal language_changed()
 signal start_battlefield()
 
 signal last_shot_kill(nb)
+signal cannon_upgrade()
 
 signal end_game(end_type)
 

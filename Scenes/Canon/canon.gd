@@ -67,7 +67,7 @@ var pattern_array_lvl4 = [
 ,[true, true, true, true, true, true, true, false, true, false, true, false, false, true, false, false, true, false, false, false, true, false, false, false, true, false, false, false, false, true, false, false, false, false, true, false, false, true, false, false, true, false, false, true, false, false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
 ]
 
-var canon_level : int = 1
+var canon_level : int = 1 : set=_set_canon_level
 
 var move_tween
 @export var move_speed: float = 0.3
@@ -89,6 +89,17 @@ var click_buffer : bool = false
 ### Intro
 var intro_text : bool = true
 var first_shoot: bool = true
+
+
+### ACCESSORS
+
+func _set_canon_level(new_value:int):
+	canon_level = new_value
+	EVENTS.cannon_upgrade.emit()
+	_load_Next_Pattern()
+
+
+### BUILT-IN
 
 func _ready():
 	click_timer.timeout.connect(_on_ClickTimer_timeout)
@@ -257,15 +268,17 @@ func sound_play(stream : AudioStream):
 		#for hex in canonNode_array.size():
 			#canonNode_array[hex].visible = canon_upgrade[current_pattern_index][hex]
 
+
+
 ### SIGNAL RESPONSES
 
 func _on_GAME_freedom_change() -> void:
 	if GAME.freedom_meter == 2 && canon_level < 2:
-		canon_level = 2
+		_set_canon_level(2)
 	elif GAME.freedom_meter == 4 && canon_level < 3:
-		canon_level = 3
+		_set_canon_level(3)
 	elif GAME.freedom_meter == 6 && canon_level < 4:
-		canon_level = 4
+		_set_canon_level(4)
 
 func _on_ClickTimer_timeout() -> void:
 	click_buffer = false

@@ -23,6 +23,7 @@ radius = 47.0106
 TARGET_SPEED = 10.0
 WANDERING_SPEED = 5.0
 TEAM = 1
+UNIT_TYPE = 4
 
 [node name="Art" parent="." index="0"]
 scale = Vector2(0.15, 0.15)
@@ -44,6 +45,13 @@ shape = SubResource("CircleShape2D_c53vo")
 
 [node name="HealthComponent" parent="." index="7"]
 MAX_HEALTH = 29997.0
+
+[node name="ProgressBar" parent="HealthComponent" index="0"]
+visible = true
+offset_left = -19.0
+offset_top = -38.0
+offset_right = 19.0
+offset_bottom = -34.0
 
 [node name="AttackComponent" parent="." index="8"]
 DAMAGE = 100.0

@@ -38,3 +38,6 @@ theme_override_styles/background = SubResource("StyleBoxFlat_c1h3c")
 theme_override_styles/fill = SubResource("StyleBoxFlat_4gpav")
 value = 50.0
 show_percentage = false
+
+[node name="InvincibilityFrame" type="Timer" parent="."]
+wait_time = 0.2

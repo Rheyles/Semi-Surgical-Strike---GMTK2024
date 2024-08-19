@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dme3yk1qxnfp8"]
+[gd_scene load_steps=29 format=3 uid="uid://dme3yk1qxnfp8"]
 
 [ext_resource type="PackedScene" uid="uid://c3viq5fif4hiv" path="res://Scenes/basic_components/shake_component.tscn" id="1_1wdvd"]
 [ext_resource type="Script" path="res://Scenes/menu/end_menu.gd" id="1_8rfb0"]
@@ -352,7 +352,7 @@ dead_unit_scene = ExtResource("8_dbase")
 
 [node name="ShakeComponent" parent="." node_paths=PackedStringArray("TARGETS") instance=ExtResource("1_1wdvd")]
 TARGETS = [NodePath("../UI/Base")]
-RANDOM_SHAKE_STRENGTH = 5.0
+RANDOM_SHAKE_STRENGTH = 1.0
 SHAKE_DECAY_RATE = 7.0
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -385,9 +385,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -886.0
-offset_top = 57.0
+offset_top = 41.0
 offset_right = 886.0
-offset_bottom = 266.0
+offset_bottom = 250.0
 grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 8
@@ -403,10 +403,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -835.5
-offset_top = 230.0
-offset_right = 835.5
-offset_bottom = 301.0
+offset_left = -833.0
+offset_top = 198.0
+offset_right = 838.0
+offset_bottom = 269.0
 grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
@@ -419,9 +419,9 @@ horizontal_alignment = 1
 modulate = Color(1, 1, 1, 0.694118)
 layout_mode = 0
 offset_left = 278.0
-offset_top = 312.0
+offset_top = 317.0
 offset_right = 1636.0
-offset_bottom = 897.0
+offset_bottom = 902.0
 texture = ExtResource("6_itldd")
 region_rect = Rect2(5, 5, 370, 369)
 patch_margin_left = 78
@@ -429,7 +429,6 @@ patch_margin_top = 95
 patch_margin_right = 88
 patch_margin_bottom = 80
 axis_stretch_horizontal = 2
-metadata/_edit_lock_ = true
 
 [node name="Title" type="Label" parent="UI/Base/Memo"]
 layout_mode = 1
@@ -464,6 +463,7 @@ theme_override_font_sizes/font_size = 40
 text = "Enemy units destroyed :"
 
 [node name="E_count" type="Label" parent="UI/Base/Memo/Content/EnemyUnits"]
+layout_mode = 0
 offset_left = 494.0
 offset_top = 3.0
 offset_right = 562.0
@@ -489,6 +489,7 @@ theme_override_font_sizes/font_size = 40
 text = "Ally units destroyed :"
 
 [node name="A_count" type="Label" parent="UI/Base/Memo/Content/AllyUnits"]
+layout_mode = 0
 offset_left = 471.0
 offset_top = 3.0
 offset_right = 571.0
@@ -502,10 +503,11 @@ text = "0 !"
 
 [node name="Timer" type="NinePatchRect" parent="UI/Base/Memo"]
 clip_contents = true
-offset_left = 949.0
-offset_top = 1.0
-offset_right = 1356.0
-offset_bottom = 190.0
+layout_mode = 0
+offset_left = 1056.0
+offset_top = -56.0
+offset_right = 1463.0
+offset_bottom = 133.0
 scale = Vector2(1, 0.959999)
 texture = ExtResource("6_itldd")
 region_rect = Rect2(5, 5, 370, 369)
@@ -581,16 +583,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -604.0
+offset_left = -623.0
 offset_top = -99.0
-offset_right = 615.0
+offset_right = 630.0
 offset_bottom = 125.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 2
 theme_override_constants/h_separation = 25
-theme_override_constants/v_separation = 25
+theme_override_constants/v_separation = 30
 
 [node name="Allies" type="HFlowContainer" parent="UI/Base"]
 layout_mode = 1
@@ -599,16 +601,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -604.0
+offset_left = -617.0
 offset_top = 225.0
-offset_right = 615.0
+offset_right = 634.0
 offset_bottom = 434.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 2
 theme_override_constants/h_separation = 25
-theme_override_constants/v_separation = 25
+theme_override_constants/v_separation = 30
 
 [node name="ColorRect" type="ColorRect" parent="UI"]
 anchors_preset = 15
