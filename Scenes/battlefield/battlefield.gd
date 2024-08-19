@@ -29,4 +29,4 @@ func _on_EVENTS_start_battlefield():
 
 func _on_EndTimer_timeout():
 	print("End game after 5mn !")
-	EVENTS.lose_state.emit(2)
+	EVENTS.end_game.emit(DATA.END_TYPE.DEFEAT_TIMER)

@@ -12,8 +12,7 @@ signal language_changed()
 
 signal start_battlefield()
 
-signal lose_state(lose_reson : int)
-signal win_state()
+signal end_game(end_type)
 
 signal add_node_to_battlefield(obj)
 

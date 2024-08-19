@@ -384,24 +384,22 @@ tracks/12/keys = {
 "method": &"play"
 }]
 }
-tracks/13/type = "method"
+tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("../../MusicPlayer")
+tracks/13/path = NodePath("Title:modulate")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(2.7),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0.0],
-"method": &"play"
-}]
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("Title:modulate")
+tracks/14/path = NodePath("PresstoStart:modulate")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
@@ -410,25 +408,13 @@ tracks/14/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/15/type = "value"
+tracks/15/type = "method"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("PresstoStart:modulate")
+tracks/15/path = NodePath("PresstoStart/AnimationPlayer")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/16/type = "method"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("PresstoStart/AnimationPlayer")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -436,10 +422,22 @@ tracks/16/keys = {
 "method": &"stop"
 }]
 }
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("WinJauge:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("WinJauge:visible")
+tracks/17/path = NodePath("BorderTop:visible")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
@@ -451,7 +449,7 @@ tracks/17/keys = {
 tracks/18/type = "value"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("BorderTop:visible")
+tracks/18/path = NodePath("BorderBottom:visible")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
@@ -463,26 +461,14 @@ tracks/18/keys = {
 tracks/19/type = "value"
 tracks/19/imported = false
 tracks/19/enabled = true
-tracks/19/path = NodePath("BorderBottom:visible")
+tracks/19/path = NodePath("MapBorder:visible")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
-}
-tracks/20/type = "value"
-tracks/20/imported = false
-tracks/20/enabled = true
-tracks/20/path = NodePath("MapBorder:visible")
-tracks/20/interp = 1
-tracks/20/loop_wrap = true
-tracks/20/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_0m35l"]
@@ -1550,8 +1536,11 @@ libraries = {
 stream = ExtResource("13_w2ywu")
 bus = &"Music"
 
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="UI/Control"]
+stream = ExtResource("34_se7s8")
+bus = &"Music"
+
 [node name="MapDistortion" type="ColorRect" parent="UI/Control"]
-visible = false
 material = SubResource("ShaderMaterial_6dn6t")
 layout_mode = 1
 anchors_preset = 15
@@ -1571,7 +1560,6 @@ offset_bottom = 1080.0
 texture = ExtResource("15_ee22k")
 
 [node name="BorderTop" type="TextureRect" parent="UI/Control"]
-visible = false
 modulate = Color(1, 1, 1, 0.619608)
 light_mask = 3
 material = ExtResource("16_lib7b")
@@ -1584,7 +1572,6 @@ stretch_mode = 2
 flip_v = true
 
 [node name="BorderBottom" type="TextureRect" parent="UI/Control"]
-visible = false
 modulate = Color(1, 1, 1, 0.619608)
 light_mask = 3
 material = ExtResource("16_lib7b")
@@ -1650,7 +1637,6 @@ text = "LON - 300"
 vertical_alignment = 1
 
 [node name="MapBorder" type="TextureRect" parent="UI/Control"]
-visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
@@ -1974,7 +1960,6 @@ libraries = {
 }
 
 [node name="WinJauge" type="Control" parent="UI/Control"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2068,6 +2053,7 @@ libraries = {
 }
 
 [node name="Title" type="Label" parent="UI/Control"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

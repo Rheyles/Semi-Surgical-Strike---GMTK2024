@@ -12,4 +12,5 @@ func _process(_delta):
 		get_tree().paused = false
 		$AnimationPlayer.play("deploy_ui")
 		await $AnimationPlayer.animation_finished
+		$MusicPlayer.play()
 		$AnimationPlayer.play("open_windows")
