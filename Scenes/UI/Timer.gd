@@ -1,4 +1,5 @@
 extends NinePatchRect
+# warnings-disable
 
 @onready var label = $Content/Label
 
@@ -16,7 +17,7 @@ func _process(_delta):
 		var seconds_text = str(seconds_left)
 		if seconds_left < 10:
 			seconds_text = '0' + str(seconds_left)
-		label.text = '0'+str(int(GAME.time_left/60)) + ':' + seconds_text
+		label.text = '0'+str(round(int(GAME.time_left)/60)) + ':' + seconds_text
 
 
 func _on_EVENTS_start_battlefield():
