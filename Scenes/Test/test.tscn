@@ -161,6 +161,10 @@ tracks/7/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+
+[sub_resource type="Animation" id="Animation_skirg"]
+resource_name = "deploy_ui"
+length = 3.0
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
@@ -1421,40 +1425,45 @@ metadata/_edit_lock_ = true
 texture = ExtResource("5_kciau")
 texture_scale = 2.69
 
+[node name="GameTimer" type="Timer" parent="Map/Battlefield"]
+one_shot = true
+
 [node name="Units" type="Node2D" parent="Map"]
 
-[node name="BaseUnit" parent="Map/Units" instance=ExtResource("2_3866f")]
-position = Vector2(747, 537)
-
 [node name="BaseUnit5" parent="Map/Units" instance=ExtResource("2_3866f")]
-position = Vector2(720, 439)
+position = Vector2(959, 200)
 TEAM = 1
 
 [node name="BaseUnit6" parent="Map/Units" instance=ExtResource("2_3866f")]
-position = Vector2(702, 413)
+position = Vector2(941, 174)
 TEAM = 1
 
 [node name="BaseUnit7" parent="Map/Units" instance=ExtResource("2_3866f")]
-position = Vector2(682, 391)
+position = Vector2(921, 152)
 TEAM = 1
 
-[node name="BaseCity" parent="Map/Units" instance=ExtResource("1_4dj63")]
-position = Vector2(698, 679)
+[node name="BaseUnit2" parent="Map/Units" instance=ExtResource("2_3866f")]
+position = Vector2(1016, 150)
+TEAM = 1
+
+[node name="BaseUnit" parent="Map/Units" instance=ExtResource("2_3866f")]
+position = Vector2(1001, 187)
+TEAM = 1
 
 [node name="BaseCity2" parent="Map/Units" instance=ExtResource("1_4dj63")]
-position = Vector2(731, 489)
+position = Vector2(972, 145)
 TEAM = 1
 
-[node name="FactoryComponent" parent="Map/Units" node_paths=PackedStringArray("battlefield") instance=ExtResource("4_0k0eo")]
+[node name="FactoryComponentEnemy" parent="Map/Units" node_paths=PackedStringArray("battlefield") instance=ExtResource("4_0k0eo")]
 target_scene = ExtResource("1_4dj63")
-COOLDOWN = 1.0
+nb_per_wave = 3
 standalone = true
 battlefield = NodePath("../../Battlefield")
 TEAM = 1
 
-[node name="FactoryComponent2" parent="Map/Units" node_paths=PackedStringArray("battlefield") instance=ExtResource("4_0k0eo")]
+[node name="FactoryComponent2Ally" parent="Map/Units" node_paths=PackedStringArray("battlefield") instance=ExtResource("4_0k0eo")]
 target_scene = ExtResource("1_4dj63")
-COOLDOWN = 1.0
+COOLDOWN = 20.0
 standalone = true
 battlefield = NodePath("../../Battlefield")
 
@@ -1513,6 +1522,7 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("12_41m50")
 expand_mode = 2
+stretch_mode = 2
 flip_v = true
 
 [node name="BorderBottom" type="TextureRect" parent="UI/Control"]
@@ -1525,6 +1535,7 @@ offset_right = 1920.0
 offset_bottom = 1081.0
 texture = ExtResource("12_41m50")
 expand_mode = 2
+stretch_mode = 2
 
 [node name="CanonCoord" type="Control" parent="UI/Control/BorderBottom" node_paths=PackedStringArray("canon")]
 modulate = Color(1, 1, 1, 0.694118)

@@ -19,7 +19,7 @@ func _process(_delta):
 	pass
 
 func update_display():
-	var diff_y = monitored_variable * (MAX_SIZE_Y-MIN_SIZE_Y) / 1000.0
+	var diff_y = monitored_variable * (MAX_SIZE_Y-MIN_SIZE_Y) / 10.0
 	var new_size = jauge_mask.size
 	new_size.y = MIN_SIZE_Y + diff_y
 	var new_pos = jauge_mask.position

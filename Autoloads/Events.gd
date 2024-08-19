@@ -10,7 +10,9 @@ signal save_player_data()
 
 signal language_changed()
 
-signal lose_state()
+signal start_battlefield()
+
+signal lose_state(lose_reson : int)
 signal win_state()
 
 signal add_node_to_battlefield(obj)
