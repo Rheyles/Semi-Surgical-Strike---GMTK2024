@@ -50,5 +50,5 @@ func show_frags():
 				new_dead_unit.modulate = DATA.team_color[DATA.TEAMS[team]]
 				containers[team].add_child(new_dead_unit)
 
-				pop_timer.start(0.05)
+				pop_timer.start(0.02)
 				await pop_timer.timeout

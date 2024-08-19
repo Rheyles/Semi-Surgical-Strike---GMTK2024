@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://cklhctcdf3wlq"]
+[gd_scene load_steps=91 format=3 uid="uid://cklhctcdf3wlq"]
 
 [ext_resource type="Script" path="res://Scenes/main/main.gd" id="1_yh54l"]
 [ext_resource type="AudioStream" uid="uid://bocaybpf0f1r" path="res://Ressources/Sounds/mission_success.wav" id="2_knogv"]
@@ -71,6 +71,68 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_7nn6t")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ls518"]
 radius = 503.004
+
+[sub_resource type="Animation" id="Animation_7101w"]
+resource_name = "bip_60"
+loop_mode = 1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TimerBip")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_hst7b"]
+resource_name = "bip_10"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TimerBip")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_stl0j"]
+resource_name = "bip_5"
+length = 0.25
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TimerBip")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_splro"]
+_data = {
+"bip_10": SubResource("Animation_hst7b"),
+"bip_5": SubResource("Animation_stl0j"),
+"bip_60": SubResource("Animation_7101w")
+}
 
 [sub_resource type="Animation" id="Animation_tomcx"]
 length = 0.001
@@ -1576,6 +1638,11 @@ volume_db = 10.0
 max_polyphony = 10
 bus = &"Sounds"
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/Battlefield"]
+libraries = {
+"": SubResource("AnimationLibrary_splro")
+}
+
 [node name="Units" type="Node2D" parent="Map"]
 
 [node name="FactoryComponentEnemy" parent="Map/Units" node_paths=PackedStringArray("battlefield") instance=ExtResource("10_ncx7e")]
@@ -2156,10 +2223,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 3931.0
-offset_top = 2619.0
-offset_right = 4785.0
-offset_bottom = 3105.0
+offset_left = 4891.0
+offset_top = 3159.0
+offset_right = 5745.0
+offset_bottom = 3645.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)

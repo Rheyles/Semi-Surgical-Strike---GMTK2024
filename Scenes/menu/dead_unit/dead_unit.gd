@@ -10,5 +10,4 @@ func _ready():
 	$AudioStreamPlayer2D.play()
 	$Sprite2D.texture = unit_texture
 	EVENTS.emit_signal("set_shake")
-	$GPUParticles2D.emitting = true
 
