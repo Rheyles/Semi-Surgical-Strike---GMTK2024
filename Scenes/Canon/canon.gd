@@ -176,6 +176,7 @@ func _CanonActivation():
 	if reload_delay <= 1.5:
 		reload_delay = 1.5
 	print("reload delay after : " + str(GAME.last_shot_kills) + "kills is " + str(reload_delay))
+	EVENTS.last_shot_kill.emit(GAME.last_shot_kills)
 	GAME.last_shot_kills = 0
 	_load_Next_Pattern()
 

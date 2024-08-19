@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://cklhctcdf3wlq"]
+[gd_scene load_steps=82 format=3 uid="uid://cklhctcdf3wlq"]
 
 [ext_resource type="Script" path="res://Scenes/main/main.gd" id="1_yh54l"]
 [ext_resource type="PackedScene" uid="uid://c3viq5fif4hiv" path="res://Scenes/basic_components/shake_component.tscn" id="2_llpfu"]
@@ -35,6 +35,8 @@
 [ext_resource type="Texture2D" uid="uid://dx1bubblpaprp" path="res://Ressources/Sprites/Battleground/jauge_body.png" id="32_tanir"]
 [ext_resource type="FontFile" uid="uid://bxno7c1h1ee5j" path="res://Ressources/Fonts/Linebeam.ttf" id="33_lxd7y"]
 [ext_resource type="AudioStream" uid="uid://3nho6m56acmh" path="res://Ressources/Musics/game_jam_5.wav" id="34_se7s8"]
+[ext_resource type="Script" path="res://Scenes/UI/ComboCounter.gd" id="36_oc3f0"]
+[ext_resource type="Texture2D" uid="uid://cdhgogvclpeox" path="res://Ressources/Sprites/Battleground/combo.png" id="37_l51f8"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ylkdq"]
 vertices = PackedVector2Array(282, -438, 489, -225, 512, 59, 426, 303, 176, 500, -176, 498, -447, 312, -533, -27, -439, -293, -244, -461, 15, -511)
@@ -1411,6 +1413,95 @@ _data = {
 "idle": SubResource("Animation_ttrf8")
 }
 
+[sub_resource type="FontVariation" id="FontVariation_fx4jn"]
+base_font = ExtResource("19_628rh")
+spacing_glyph = -5
+
+[sub_resource type="Animation" id="Animation_m6sds"]
+resource_name = "pop"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(0.210224, 2.21914, 1),
+"update": 0,
+"values": [Vector2(0.7, 0.7), Vector2(1, 1), Vector2(0.7, 0.7)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(0.210224, 2.2974, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_ji5ea"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dqcg6"]
+_data = {
+"RESET": SubResource("Animation_ji5ea"),
+"pop": SubResource("Animation_m6sds")
+}
+
 [node name="Main" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_yh54l")
@@ -2060,10 +2151,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 3931.0
-offset_top = 2619.0
-offset_right = 4785.0
-offset_bottom = 3105.0
+offset_left = 6811.0
+offset_top = 4239.0
+offset_right = 7665.0
+offset_bottom = 4725.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -2096,6 +2187,78 @@ text = "Click to start the mission..."
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Control/PresstoStart"]
 libraries = {
 "": SubResource("AnimationLibrary_3j0en")
+}
+
+[node name="ComboCounter" type="Control" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("36_oc3f0")
+
+[node name="ComboTimer" type="Timer" parent="UI/Control/ComboCounter"]
+
+[node name="TextureRect" type="TextureRect" parent="UI/Control/ComboCounter"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -562.0
+offset_top = 196.0
+offset_right = -254.0
+offset_bottom = 436.0
+grow_horizontal = 0
+pivot_offset = Vector2(344, 200)
+texture = ExtResource("37_l51f8")
+
+[node name="Count" type="Label" parent="UI/Control/ComboCounter/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.0
+offset_top = -108.0
+offset_right = 45.0
+offset_bottom = 73.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.0820305
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = SubResource("FontVariation_fx4jn")
+theme_override_font_sizes/font_size = 180
+text = "22"
+horizontal_alignment = 1
+
+[node name="Combo" type="Label" parent="UI/Control/ComboCounter/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = 6.0
+offset_right = 134.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.164061
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = SubResource("FontVariation_fx4jn")
+theme_override_font_sizes/font_size = 65
+text = "Combo!"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Control/ComboCounter"]
+libraries = {
+"": SubResource("AnimationLibrary_dqcg6")
 }
 
 [node name="BlackScreen" type="ColorRect" parent="UI/Control"]

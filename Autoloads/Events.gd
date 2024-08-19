@@ -12,6 +12,8 @@ signal language_changed()
 
 signal start_battlefield()
 
+signal last_shot_kill(nb)
+
 signal end_game(end_type)
 
 signal add_node_to_battlefield(obj)

@@ -1,5 +1,4 @@
 extends NinePatchRect
-# warnings-disable
 
 @onready var label = $Content/Label
 
@@ -17,6 +16,7 @@ func _process(_delta):
 		var seconds_text = str(seconds_left)
 		if seconds_left < 10:
 			seconds_text = '0' + str(seconds_left)
+		@warning_ignore("integer_division")
 		label.text = '0'+str(round(int(GAME.time_left)/60)) + ':' + seconds_text
 
 

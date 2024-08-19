@@ -21,6 +21,7 @@ func damage(amount:float, damage_from_canon:bool = false):
 	
 	if health<=0:
 		if damage_from_canon:
+			GAME.last_shot_kills += 1
 			if get_parent().TEAM == DATA.TEAMS.ALLY:
 				GAME.allied_killed_dico[get_parent().UNIT_TYPE]["Nb"] += 1
 			elif get_parent().TEAM == DATA.TEAMS.ENEMY:

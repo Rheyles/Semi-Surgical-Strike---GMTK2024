@@ -3,15 +3,15 @@
 [ext_resource type="Script" path="res://Scenes/Canon/canon.gd" id="1_djkmq"]
 [ext_resource type="AudioStream" uid="uid://cr56u7sqfktt" path="res://Ressources/Sounds/Canon/Plasma Grenade 005.wav" id="2_kwa1q"]
 [ext_resource type="PackedScene" uid="uid://cujjyy8hd6kjk" path="res://Scenes/Canon/canon_node.tscn" id="2_ukktj"]
-[ext_resource type="AudioStream" uid="uid://cmststv1wsgrp" path="res://Ressources/Sounds/Canon/Megaton Far 002.wav" id="3_1uhqg"]
 [ext_resource type="Script" path="res://Scenes/Canon/TextVFX.gd" id="3_3bues"]
+[ext_resource type="AudioStream" uid="uid://cmststv1wsgrp" path="res://Ressources/Sounds/Canon/Megaton Far 002.wav" id="3_5m7bw"]
 [ext_resource type="FontFile" uid="uid://bxno7c1h1ee5j" path="res://Ressources/Fonts/Linebeam.ttf" id="3_7fwto"]
 [ext_resource type="AudioStream" uid="uid://dvkgim1xpsm0b" path="res://Ressources/Sounds/Placeholders/win.wav" id="4_2vr8l"]
 
 [node name="Canon" type="Node2D"]
 script = ExtResource("1_djkmq")
 canon_shoot_sound = ExtResource("2_kwa1q")
-canon_impact_sound = Array[Resource]([ExtResource("2_kwa1q")])
+canon_impact_sound = Array[Resource]([ExtResource("3_5m7bw")])
 canon_reload_sound = ExtResource("4_2vr8l")
 
 [node name="Node_Container" type="Node2D" parent="."]
