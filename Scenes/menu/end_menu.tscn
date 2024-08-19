@@ -387,11 +387,18 @@ horizontal_alignment = 1
 
 [node name="Memo" type="NinePatchRect" parent="UI/Base"]
 modulate = Color(1, 1, 1, 0.694118)
-layout_mode = 0
-offset_left = 276.0
-offset_top = 332.0
-offset_right = 1634.0
-offset_bottom = 917.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 2201.0
+offset_top = 1397.0
+offset_right = 3559.0
+offset_bottom = 1982.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("6_itldd")
 region_rect = Rect2(5, 5, 370, 369)
 patch_margin_left = 78

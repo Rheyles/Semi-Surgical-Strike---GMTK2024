@@ -1510,7 +1510,7 @@ battlefield = NodePath("../../Battlefield")
 
 [node name="Canon" parent="Map" node_paths=PackedStringArray("map_disto", "laserLight", "next_pattern_visual") instance=ExtResource("11_f8tyy")]
 position = Vector2(960, 540)
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.3, 0.3)
 map_disto = NodePath("../../UI/Control/MapDistortion")
 laserLight = NodePath("../../UI/Control/WinJauge/LaserLight")
 next_pattern_visual = NodePath("../../UI/Control/NextStrike/next_pattern_visual")
