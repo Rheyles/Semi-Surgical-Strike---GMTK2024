@@ -213,7 +213,7 @@ func _load_Next_Pattern():
 			if next_pattern_index > pattern_array_lvl4.size()-1:
 				next_pattern_index = 0
 			for hex in canonNode_array.size():
-				next_pattern_visual.canonNode_array[hex].visible = pattern_array_lvl3[next_pattern_index][hex]
+				next_pattern_visual.canonNode_array[hex].visible = pattern_array_lvl4[next_pattern_index][hex]
 				
 
 

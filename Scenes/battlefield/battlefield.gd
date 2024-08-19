@@ -1,8 +1,12 @@
 extends Area2D
 
 @onready var game_timer = $GameTimer
+@onready var sound_player = $TimerBip
 
 var radius := 0.0
+
+var is_10 : bool = true
+var is_60 : bool = true
 
 ### BUILT-IN
 
@@ -16,7 +20,25 @@ func _ready():
 
 func _process(_delta):
 	GAME.time_left = game_timer.time_left
+	if GAME.time_left <= 10 && is_10:
+		biplast10s()
+	elif GAME.time_left <= 20 && is_60:
+		bip60s()
+	
 
+func bip60s():
+	is_60 = false
+	sound_player.play()
+	await  get_tree().create_timer(0.16).timeout
+	sound_player.play()
+	await  get_tree().create_timer(0.16).timeout
+	sound_player.play()
+	
+func biplast10s():
+	is_10 = false
+	while GAME.time_left > 0:
+		sound_player.play()
+		await  get_tree().create_timer(0.16).timeout
 
 ### SIGNAL RESPONSES
 
