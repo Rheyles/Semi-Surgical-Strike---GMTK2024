@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://j2m8w3fy6432"]
+[gd_scene load_steps=8 format=3 uid="uid://j2m8w3fy6432"]
 
 [ext_resource type="Texture2D" uid="uid://t0hwt6wo2dit" path="res://Ressources/Sprites/Units/robot.png" id="1_ucguk"]
+[ext_resource type="Texture2D" uid="uid://mmnb81msxtbp" path="res://Ressources/Sprites/Shadow.png" id="2_aqaei"]
 [ext_resource type="Script" path="res://Scenes/menu/dead_unit/dead_unit.gd" id="2_lhqwb"]
 [ext_resource type="Texture2D" uid="uid://7qji0d4ewe7e" path="res://Ressources/Sprites/smoke1 small.png" id="3_riqon"]
 
@@ -37,11 +38,17 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("2_lhqwb")
 
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-2.5, 3.5)
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("2_aqaei")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_ucguk")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+z_index = 1
 position = Vector2(0, 20)
 scale = Vector2(1, 1)
 emitting = false

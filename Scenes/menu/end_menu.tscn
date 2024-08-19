@@ -1,12 +1,15 @@
-[gd_scene load_steps=22 format=3 uid="uid://dme3yk1qxnfp8"]
+[gd_scene load_steps=25 format=3 uid="uid://dme3yk1qxnfp8"]
 
 [ext_resource type="PackedScene" uid="uid://c3viq5fif4hiv" path="res://Scenes/basic_components/shake_component.tscn" id="1_1wdvd"]
 [ext_resource type="Script" path="res://Scenes/menu/end_menu.gd" id="1_8rfb0"]
+[ext_resource type="Texture2D" uid="uid://bdheytk1e3wjw" path="res://Ressources/Sprites/Units/factory.png" id="2_2v0of"]
 [ext_resource type="Texture2D" uid="uid://bqs04rc5eqhki" path="res://Ressources/Sprites/Battleground/battleground.png" id="2_y2341"]
 [ext_resource type="Texture2D" uid="uid://8k2dqrh2tglq" path="res://Ressources/Sprites/Battleground/background.png" id="3_pmdhm"]
+[ext_resource type="Texture2D" uid="uid://t0hwt6wo2dit" path="res://Ressources/Sprites/Units/robot.png" id="3_xecr6"]
 [ext_resource type="FontFile" uid="uid://bxno7c1h1ee5j" path="res://Ressources/Fonts/Linebeam.ttf" id="4_si5b4"]
 [ext_resource type="FontFile" uid="uid://dn3uk4r35blam" path="res://Ressources/Fonts/BorgenBold.ttf" id="5_ob026"]
 [ext_resource type="Texture2D" uid="uid://byo108b83wae" path="res://Ressources/Sprites/Battleground/window.png" id="6_itldd"]
+[ext_resource type="PackedScene" uid="uid://j2m8w3fy6432" path="res://Scenes/menu/dead_unit/dead_unit.tscn" id="8_dbase"]
 
 [sub_resource type="Animation" id="Animation_hq6wb"]
 length = 0.001
@@ -312,8 +315,13 @@ _data = {
 
 [node name="EndMenu" type="Node2D"]
 script = ExtResource("1_8rfb0")
+UNIT_TEXTURES = Array[Resource]([ExtResource("2_2v0of"), ExtResource("3_xecr6")])
+dead_unit_scene = ExtResource("8_dbase")
 
-[node name="ShakeComponent" parent="." instance=ExtResource("1_1wdvd")]
+[node name="PopTimer" type="Timer" parent="."]
+
+[node name="ShakeComponent" parent="." node_paths=PackedStringArray("TARGETS") instance=ExtResource("1_1wdvd")]
+TARGETS = [NodePath("../UI/Base")]
 RANDOM_SHAKE_STRENGTH = 8.0
 SHAKE_DECAY_RATE = 7.0
 
@@ -423,7 +431,7 @@ theme_override_colors/font_outline_color = Color(0.960784, 0.462745, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = SubResource("FontVariation_tl4wv")
 theme_override_font_sizes/font_size = 40
-text = "Enemy units detroyed :"
+text = "Enemy units destroyed :"
 
 [node name="AllyUnits" type="Label" parent="UI/Base/Memo/Content"]
 layout_mode = 1
@@ -436,7 +444,7 @@ theme_override_colors/font_outline_color = Color(0.960784, 0.462745, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = SubResource("FontVariation_tl4wv")
 theme_override_font_sizes/font_size = 40
-text = "Ally units detroyed :"
+text = "Ally units destroyed :"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Base/Memo"]
 libraries = {
@@ -466,16 +474,8 @@ libraries = {
 "": SubResource("AnimationLibrary_3j0en")
 }
 
-[node name="ColorRect" type="ColorRect" parent="UI"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0)
-metadata/_edit_lock_ = true
-
-[node name="Enemies" type="HFlowContainer" parent="UI"]
+[node name="Enemies" type="HFlowContainer" parent="UI/Base"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -492,7 +492,8 @@ size_flags_vertical = 2
 theme_override_constants/h_separation = 25
 theme_override_constants/v_separation = 300
 
-[node name="Allies" type="HFlowContainer" parent="UI"]
+[node name="Allies" type="HFlowContainer" parent="UI/Base"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -508,3 +509,12 @@ size_flags_horizontal = 0
 size_flags_vertical = 2
 theme_override_constants/h_separation = 25
 theme_override_constants/v_separation = 300
+
+[node name="ColorRect" type="ColorRect" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+metadata/_edit_lock_ = true

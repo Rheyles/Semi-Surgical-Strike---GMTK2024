@@ -6,6 +6,8 @@ extends Node
 var win_treshold = 10
 var end_timer = 300
 
+var end_condition = 0
+
 var freedom_meter = 0
 var stress_meter = 0
 var enemy_killed_dico = {0:{"Type" : "BASE_CITY", "Nb": 0},1:{"Type" : "BASIC_UNIT","Nb" : 0}}
@@ -29,21 +31,16 @@ func _ready():
 	var root = get_tree().get_root()
 	current_scene = root.get_child(root.get_child_count() -1)
 	current_path = current_scene.scene_file_path
-	
-	EVENTS.lose_state.connect(_On_Lose_State)
 
 ### LOGIC
 
 func check_freedom_meter():
 	if freedom_meter >= win_treshold:
-		EVENTS.win_state.emit()
+		EVENTS.end_game.emit(DATA.END_TYPE.VICTORY)
 	elif freedom_meter <= 0:
-		EVENTS.lose_state.emit(1)
+		EVENTS.end_game.emit(DATA.END_TYPE.DEFEAT_BASE)
 		
 	freedom_change.emit()
-
-func end_game_transition(_lose_reson : int):
-	goto_scene("res://Scenes/menu/end_menu.tscn")
 
 
 func goto_scene(path):
@@ -80,5 +77,3 @@ func _deferred_goto_scene(path):
 func reload_scene():
 	call_deferred("_deferred_goto_scene", current_path)
 
-func _On_Lose_State(lose_reson : int):
-	end_game_transition(lose_reson)
