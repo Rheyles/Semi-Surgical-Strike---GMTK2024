@@ -47,7 +47,7 @@ var canon_level : int = 1
 
 var move_tween
 @export var move_speed: float = 0.3
-@export var base_reload_delay: float = 2.5
+@export var base_reload_delay: float = 3
 @export var reload_delay_bonus: float = 0.2
 @export var impact_delay: float = 0.9
 var reload_delay : float = 4
@@ -87,8 +87,6 @@ func _process(delta):
 				error_text.text = "... ERROR"
 			ready_to_shoot = true
 			reload_timer = 0
-			_load_Next_Pattern()
-
 			for hex in canonNode_array.size():
 				canonNode_array[hex].get_node("Sprite2D").modulate = Color.WHITE
 	
@@ -128,16 +126,12 @@ func _CanonActivation():
 	energy.tween_property(laserLight,"energy", 9.5,0.1)
 	energy.tween_property(laserLight,"energy", 0,0.2)	
 
-
 #Setup et Delay avant le tir
 	move_tween.kill()
 	ready_to_shoot = false
 	follow_mouse = false
 	await  get_tree().create_timer(impact_delay).timeout
 #Call activate canonNode shoot function
-	
-
-#Global VFX (ScreenShake, distortion sur l'écran ?) 
 	for hex in canonNode_array.size():
 		if canonNode_array[hex].visible == true:
 			canonNode_array[hex].nodeShoot()
@@ -145,7 +139,6 @@ func _CanonActivation():
 	shader_disto_toggle(true)
 	error_text._start(2,6,false)
 	caution_text._start(2,6,false)
-
 #SFX
 
 # End state
@@ -154,10 +147,11 @@ func _CanonActivation():
 	#print(str(GAME.enemy_killed_list.size()) + " target erased from the surface....")
 	#print(str(GAME.allied_killed_list.size()) + " friends fallen for democracy !! <3 <3")
 	reload_delay = base_reload_delay - (GAME.last_shot_kills * reload_delay_bonus)
-	if reload_delay <= 1:
-		reload_delay = 1
+	if reload_delay <= 1.5:
+		reload_delay = 1.5
 	print("reload delay after : " + str(GAME.last_shot_kills) + "kills is " + str(reload_delay))
 	GAME.last_shot_kills = 0
+	_load_Next_Pattern()
 
 func _load_Next_Pattern():
 	current_pattern_index = next_pattern_index
