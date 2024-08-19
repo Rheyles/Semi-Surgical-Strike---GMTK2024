@@ -1,7 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://rbd27i4uel3s"]
+[gd_scene load_steps=7 format=3 uid="uid://rbd27i4uel3s"]
 
 [ext_resource type="PackedScene" uid="uid://dioy76npxq04q" path="res://Scenes/base_unit/base_unit.tscn" id="1_wly4v"]
 [ext_resource type="Texture2D" uid="uid://7pgwf7t3yir1" path="res://Ressources/Sprites/Units/weak_bug.png" id="2_whao2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1ww07"]
+resource_local_to_scene = true
+radius = 9.05539
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gj611"]
+resource_local_to_scene = true
+radius = 160.028
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sunt1"]
+resource_local_to_scene = true
+radius = 43.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mi8mj"]
+resource_local_to_scene = true
+radius = 26.0192
 
 [node name="WeakBug" instance=ExtResource("1_wly4v")]
 TARGET_SPEED = 40.0
@@ -17,6 +33,15 @@ texture = ExtResource("2_whao2")
 [node name="Cross" parent="." index="1"]
 scale = Vector2(0.047, 0.047)
 
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource("CircleShape2D_1ww07")
+
+[node name="CollisionShape2D" parent="VisionZone" index="0"]
+shape = SubResource("CircleShape2D_gj611")
+
+[node name="WanderingZone" parent="." index="5"]
+shape = SubResource("CircleShape2D_sunt1")
+
 [node name="WanderingTimer" parent="." index="6"]
 wait_time = 4.0
 
@@ -25,6 +50,6 @@ DAMAGE = 1.0
 COOLDOWN = 2.0
 
 [node name="CollisionShape2D" parent="AttackComponent" index="1"]
-visible = true
+shape = SubResource("CircleShape2D_mi8mj")
 
 [editable path="HealthComponent"]

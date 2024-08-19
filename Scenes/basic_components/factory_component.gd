@@ -1,4 +1,5 @@
 extends Node2D
+class_name FactoryComponent
 
 @export var target_scene : Resource
 @export var COOLDOWN :float = 5.0

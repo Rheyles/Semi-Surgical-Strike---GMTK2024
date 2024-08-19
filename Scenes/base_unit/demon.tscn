@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://ddnat11mahqs0"]
+
+[ext_resource type="PackedScene" uid="uid://dioy76npxq04q" path="res://Scenes/base_unit/base_unit.tscn" id="1_bcvrl"]
+[ext_resource type="Texture2D" uid="uid://dcq6k2uwxnm4r" path="res://Ressources/Sprites/Units/demon.png" id="2_6ssqs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_itj1o"]
+resource_local_to_scene = true
+radius = 26.1725
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qr5p6"]
+resource_local_to_scene = true
+radius = 453.583
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c53vo"]
+resource_local_to_scene = true
+radius = 56.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0hu2f"]
+resource_local_to_scene = true
+radius = 47.0106
+
+[node name="Demon" instance=ExtResource("1_bcvrl")]
+TARGET_SPEED = 10.0
+WANDERING_SPEED = 5.0
+TEAM = 1
+
+[node name="Art" parent="." index="0"]
+scale = Vector2(0.15, 0.15)
+
+[node name="Icon" parent="Art" index="1"]
+texture = ExtResource("2_6ssqs")
+
+[node name="Cross" parent="." index="1"]
+scale = Vector2(0.15, 0.15)
+
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource("CircleShape2D_itj1o")
+
+[node name="CollisionShape2D" parent="VisionZone" index="0"]
+shape = SubResource("CircleShape2D_qr5p6")
+
+[node name="WanderingZone" parent="." index="5"]
+shape = SubResource("CircleShape2D_c53vo")
+
+[node name="HealthComponent" parent="." index="7"]
+MAX_HEALTH = 29997.0
+
+[node name="AttackComponent" parent="." index="8"]
+DAMAGE = 100.0
+
+[node name="CollisionShape2D" parent="AttackComponent" index="1"]
+shape = SubResource("CircleShape2D_0hu2f")
+
+[editable path="HealthComponent"]

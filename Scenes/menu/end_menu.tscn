@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://7pgwf7t3yir1" path="res://Ressources/Sprites/Units/weak_bug.png" id="5_m6ca3"]
 [ext_resource type="FontFile" uid="uid://dn3uk4r35blam" path="res://Ressources/Fonts/BorgenBold.ttf" id="5_ob026"]
 [ext_resource type="Texture2D" uid="uid://byo108b83wae" path="res://Ressources/Sprites/Battleground/window.png" id="6_itldd"]
+[ext_resource type="Texture2D" uid="uid://dcq6k2uwxnm4r" path="res://Ressources/Sprites/Units/demon.png" id="6_kklt0"]
 [ext_resource type="PackedScene" uid="uid://j2m8w3fy6432" path="res://Scenes/menu/dead_unit/dead_unit.tscn" id="8_dbase"]
 
 [sub_resource type="Animation" id="Animation_hq6wb"]
@@ -344,7 +345,7 @@ _data = {
 
 [node name="EndMenu" type="Node2D"]
 script = ExtResource("1_8rfb0")
-UNIT_TEXTURES = Array[Resource]([ExtResource("2_2v0of"), ExtResource("3_xecr6"), ExtResource("4_clkdi"), ExtResource("5_m6ca3")])
+UNIT_TEXTURES = Array[Resource]([ExtResource("2_2v0of"), ExtResource("3_xecr6"), ExtResource("4_clkdi"), ExtResource("5_m6ca3"), ExtResource("6_kklt0")])
 dead_unit_scene = ExtResource("8_dbase")
 
 [node name="PopTimer" type="Timer" parent="."]

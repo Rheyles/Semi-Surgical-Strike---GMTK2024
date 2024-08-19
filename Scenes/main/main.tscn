@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://cklhctcdf3wlq"]
+[gd_scene load_steps=93 format=3 uid="uid://cklhctcdf3wlq"]
 
 [ext_resource type="Script" path="res://Scenes/main/main.gd" id="1_yh54l"]
 [ext_resource type="AudioStream" uid="uid://bocaybpf0f1r" path="res://Ressources/Sounds/mission_success.wav" id="2_knogv"]
@@ -16,9 +16,11 @@
 [ext_resource type="Script" path="res://Scenes/UI/MainUI.gd" id="12_aiuk3"]
 [ext_resource type="PackedScene" uid="uid://caftv3gvl4tty" path="res://Scenes/base_city/alien_nest.tscn" id="12_rcndg"]
 [ext_resource type="AudioStream" uid="uid://bo2nhvm1fpr4x" path="res://Ressources/Musics/Microsoft Windows XP Startup Sound.mp3" id="13_w2ywu"]
+[ext_resource type="PackedScene" uid="uid://bdx1a04odiu7n" path="res://Scenes/basic_components/conditionnal_factory.tscn" id="14_1xu8p"]
 [ext_resource type="Shader" path="res://Scenes/battlefield/distortion.gdshader" id="14_3i60f"]
 [ext_resource type="AudioStream" uid="uid://ctecf1frla0oo" path="res://Ressources/Sounds/intro_noise.mp3" id="14_jnpvx"]
 [ext_resource type="Texture2D" uid="uid://8k2dqrh2tglq" path="res://Ressources/Sprites/Battleground/background.png" id="15_ee22k"]
+[ext_resource type="PackedScene" uid="uid://ddnat11mahqs0" path="res://Scenes/base_unit/demon.tscn" id="15_v7uts"]
 [ext_resource type="Material" uid="uid://cwx8868onn75y" path="res://Scenes/battlefield/border.tres" id="16_lib7b"]
 [ext_resource type="AudioStream" uid="uid://bchs6182w0170" path="res://Ressources/Sounds/intro_click_sound.mp3" id="16_n6yhi"]
 [ext_resource type="Texture2D" uid="uid://degatmmhecwwu" path="res://Ressources/Sprites/Battleground/border.png" id="17_bh2pb"]
@@ -72,24 +74,6 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_7nn6t")
 [sub_resource type="CircleShape2D" id="CircleShape2D_ls518"]
 radius = 503.004
 
-[sub_resource type="Animation" id="Animation_7101w"]
-resource_name = "bip_60"
-loop_mode = 1
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TimerBip")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0.0],
-"method": &"play"
-}]
-}
-
 [sub_resource type="Animation" id="Animation_hst7b"]
 resource_name = "bip_10"
 length = 0.5
@@ -112,6 +96,24 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_stl0j"]
 resource_name = "bip_5"
 length = 0.25
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TimerBip")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_7101w"]
+resource_name = "bip_60"
+loop_mode = 1
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1660,6 +1662,13 @@ COOLDOWN = 12.0
 standalone = true
 battlefield = NodePath("../../Battlefield")
 
+[node name="ConditionnalFactory" parent="Map/Units" node_paths=PackedStringArray("battlefield") instance=ExtResource("14_1xu8p")]
+target_scene = ExtResource("15_v7uts")
+COOLDOWN = 15.0
+standalone = true
+battlefield = NodePath("../../Battlefield")
+TEAM = 1
+
 [node name="Canon" parent="Map" node_paths=PackedStringArray("map_disto", "laserLight", "next_pattern_visual") instance=ExtResource("11_f8tyy")]
 position = Vector2(960, 540)
 scale = Vector2(0.3, 0.3)
@@ -2224,10 +2233,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 4891.0
-offset_top = 3159.0
-offset_right = 5745.0
-offset_bottom = 3645.0
+offset_left = 5851.0
+offset_top = 3699.0
+offset_right = 6705.0
+offset_bottom = 4185.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)

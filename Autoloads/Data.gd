@@ -4,7 +4,7 @@ extends Node
 ## This autoload contains all the constants used along the game
 
 enum TEAMS {ALLY,ENEMY}
-enum UNIT_TYPE {BASE_CITY,BASIC_UNIT, ALIEN_NEST, WEAK_BUG}
+enum UNIT_TYPE {BASE_CITY,BASIC_UNIT, ALIEN_NEST, WEAK_BUG, DEMON}
 
 enum END_TYPE {VICTORY, DEFEAT_BASE, DEFEAT_TIMER}
 
