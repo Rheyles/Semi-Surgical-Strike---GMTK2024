@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://j2m8w3fy6432"]
+
+[ext_resource type="Texture2D" uid="uid://t0hwt6wo2dit" path="res://Ressources/Sprites/Units/robot.png" id="1_ucguk"]
+[ext_resource type="Script" path="res://Scenes/menu/dead_unit/dead_unit.gd" id="2_lhqwb"]
+[ext_resource type="Texture2D" uid="uid://7qji0d4ewe7e" path="res://Ressources/Sprites/smoke1 small.png" id="3_riqon"]
+
+[sub_resource type="Gradient" id="Gradient_wlvt7"]
+offsets = PackedFloat32Array(0, 0.125, 0.220588, 0.367647, 0.639706, 1)
+colors = PackedColorArray(1, 1, 1, 0, 0, 0, 0, 0.233333, 0.457785, 0.197392, 0.164786, 1, 1, 0.4, 0.0862745, 1, 1, 0.658824, 0, 1, 1, 1, 0.4, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_llqh5"]
+gradient = SubResource("Gradient_wlvt7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_thbs1"]
+resource_local_to_scene = true
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+angle_min = -195.0
+angle_max = 420.0
+direction = Vector3(0, -1, 0)
+spread = 26.25
+initial_velocity_min = 20.0
+initial_velocity_max = 35.0
+gravity = Vector3(0, 10, 0)
+damping_min = 2.083
+damping_max = 4.167
+scale_min = 0.05
+scale_max = 0.3
+color_ramp = SubResource("GradientTexture1D_llqh5")
+hue_variation_min = -0.01
+hue_variation_max = -0.01
+
+[node name="DeadUnit" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_lhqwb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_ucguk")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, 20)
+scale = Vector2(1, 1)
+emitting = false
+amount = 40
+process_material = SubResource("ParticleProcessMaterial_thbs1")
+texture = ExtResource("3_riqon")
+lifetime = 4.5
+one_shot = true
+speed_scale = 8.0
+explosiveness = 1.0
+randomness = 0.2
