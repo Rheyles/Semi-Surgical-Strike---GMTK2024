@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://cklhctcdf3wlq"]
+[gd_scene load_steps=85 format=3 uid="uid://cklhctcdf3wlq"]
 
 [ext_resource type="Script" path="res://Scenes/main/main.gd" id="1_yh54l"]
 [ext_resource type="PackedScene" uid="uid://c3viq5fif4hiv" path="res://Scenes/basic_components/shake_component.tscn" id="2_llpfu"]
@@ -8,14 +8,17 @@
 [ext_resource type="Texture2D" uid="uid://dheb2avfqvxhq" path="res://Ressources/Sprites/Battleground/grille.png" id="6_c6boa"]
 [ext_resource type="Texture2D" uid="uid://cusg415dvvmt2" path="res://Ressources/Sprites/light.png" id="7_jhsvy"]
 [ext_resource type="PackedScene" uid="uid://dioy76npxq04q" path="res://Scenes/base_unit/base_unit.tscn" id="8_q3y24"]
+[ext_resource type="AudioStream" uid="uid://b8sc1yyb4ycr1" path="res://Ressources/Sounds/Bip_timer.wav" id="8_s5vkf"]
 [ext_resource type="PackedScene" uid="uid://ouwypy3gld76" path="res://Scenes/base_city/base_city.tscn" id="9_dme8d"]
 [ext_resource type="PackedScene" uid="uid://ta3blwa24sqb" path="res://Scenes/basic_components/factory_component.tscn" id="10_ncx7e"]
 [ext_resource type="PackedScene" uid="uid://puw8u16e2oqa" path="res://Scenes/Canon/canon.tscn" id="11_f8tyy"]
 [ext_resource type="Script" path="res://Scenes/UI/MainUI.gd" id="12_aiuk3"]
 [ext_resource type="AudioStream" uid="uid://bo2nhvm1fpr4x" path="res://Ressources/Musics/Microsoft Windows XP Startup Sound.mp3" id="13_w2ywu"]
 [ext_resource type="Shader" path="res://Scenes/battlefield/distortion.gdshader" id="14_3i60f"]
+[ext_resource type="AudioStream" uid="uid://ctecf1frla0oo" path="res://Ressources/Sounds/intro_noise.mp3" id="14_jnpvx"]
 [ext_resource type="Texture2D" uid="uid://8k2dqrh2tglq" path="res://Ressources/Sprites/Battleground/background.png" id="15_ee22k"]
 [ext_resource type="Material" uid="uid://cwx8868onn75y" path="res://Scenes/battlefield/border.tres" id="16_lib7b"]
+[ext_resource type="AudioStream" uid="uid://bchs6182w0170" path="res://Ressources/Sounds/intro_click_sound.mp3" id="16_n6yhi"]
 [ext_resource type="Texture2D" uid="uid://degatmmhecwwu" path="res://Ressources/Sprites/Battleground/border.png" id="17_bh2pb"]
 [ext_resource type="Script" path="res://Scenes/UI/CanonCoord.gd" id="18_028d5"]
 [ext_resource type="FontFile" uid="uid://c8f0ndoan20ok" path="res://Ressources/Fonts/BorgenBoldOblique.ttf" id="19_628rh"]
@@ -1417,6 +1420,45 @@ _data = {
 base_font = ExtResource("19_628rh")
 spacing_glyph = -5
 
+[sub_resource type="Animation" id="Animation_ji5ea"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_m6sds"]
 resource_name = "pop"
 length = 1.5
@@ -1455,45 +1497,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_ji5ea"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TextureRect:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dqcg6"]
@@ -1560,6 +1563,11 @@ texture_scale = 2.69
 [node name="GameTimer" type="Timer" parent="Map/Battlefield"]
 one_shot = true
 
+[node name="TimerBip" type="AudioStreamPlayer" parent="Map/Battlefield"]
+stream = ExtResource("8_s5vkf")
+max_polyphony = 10
+bus = &"Sounds"
+
 [node name="Units" type="Node2D" parent="Map"]
 
 [node name="BaseUnit5" parent="Map/Units" instance=ExtResource("8_q3y24")]
@@ -1617,6 +1625,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("12_aiuk3")
+main_theme = ExtResource("34_se7s8")
+intro_theme = ExtResource("14_jnpvx")
+windows_sound = ExtResource("13_w2ywu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Control"]
 libraries = {
@@ -1624,14 +1635,16 @@ libraries = {
 }
 
 [node name="StartSound" type="AudioStreamPlayer" parent="UI/Control"]
-stream = ExtResource("13_w2ywu")
-bus = &"Music"
+stream = ExtResource("16_n6yhi")
+max_polyphony = 2
+bus = &"Sounds"
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="UI/Control"]
-stream = ExtResource("34_se7s8")
+stream = ExtResource("14_jnpvx")
 bus = &"Music"
 
 [node name="MapDistortion" type="ColorRect" parent="UI/Control"]
+visible = false
 material = SubResource("ShaderMaterial_6dn6t")
 layout_mode = 1
 anchors_preset = 15
@@ -1728,6 +1741,7 @@ text = "LON - 300"
 vertical_alignment = 1
 
 [node name="MapBorder" type="TextureRect" parent="UI/Control"]
+visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
@@ -2144,7 +2158,6 @@ libraries = {
 }
 
 [node name="Title" type="Label" parent="UI/Control"]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2188,6 +2201,8 @@ text = "Click to start the mission..."
 libraries = {
 "": SubResource("AnimationLibrary_3j0en")
 }
+
+[node name="TransitionSound" type="AudioStreamPlayer" parent="UI/Control/PresstoStart"]
 
 [node name="ComboCounter" type="Control" parent="UI/Control"]
 layout_mode = 1
@@ -2262,7 +2277,6 @@ libraries = {
 }
 
 [node name="BlackScreen" type="ColorRect" parent="UI/Control"]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
