@@ -171,7 +171,13 @@ metadata/_edit_lock_ = true
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_v75ac")]
-MAX_HEALTH = 40.0
+MAX_HEALTH = 50.0
+
+[node name="ProgressBar" parent="HealthComponent" index="0"]
+offset_left = -25.0
+offset_top = -27.0
+offset_right = 25.0
+offset_bottom = -22.0
 
 [node name="AttackComponent" parent="." instance=ExtResource("4_ia1o0")]
 collision_mask = 3
@@ -194,3 +200,5 @@ COOLDOWN = 3.0
 libraries = {
 "": SubResource("AnimationLibrary_vrlga")
 }
+
+[editable path="HealthComponent"]

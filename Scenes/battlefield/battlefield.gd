@@ -14,6 +14,10 @@ func _ready():
 	
 	radius = $CollisionShape2D.shape.radius
 
+func _process(_delta):
+	GAME.time_left = game_timer.time_left
+
+
 ### SIGNAL RESPONSES
 
 func _on_EVENTS_add_node_to_battlefield(obj:Node):

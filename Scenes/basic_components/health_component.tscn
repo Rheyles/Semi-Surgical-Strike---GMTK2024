@@ -1,6 +1,40 @@
-[gd_scene load_steps=2 format=3 uid="uid://bcas4k2m4wmak"]
+[gd_scene load_steps=4 format=3 uid="uid://bcas4k2m4wmak"]
 
 [ext_resource type="Script" path="res://Scenes/basic_components/health_component.gd" id="1_uifxq"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c1h3c"]
+bg_color = Color(1, 0.00784314, 0.0745098, 1)
+skew = Vector2(1, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 1
+shadow_offset = Vector2(0, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4gpav"]
+bg_color = Color(0.305882, 1, 0, 1)
+skew = Vector2(1, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+anti_aliasing = false
+
 [node name="HealthComponent" type="Node2D"]
 script = ExtResource("1_uifxq")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -52.0
+offset_top = -57.0
+offset_right = 52.0
+offset_bottom = -46.0
+grow_horizontal = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_c1h3c")
+theme_override_styles/fill = SubResource("StyleBoxFlat_4gpav")
+value = 50.0
+show_percentage = false

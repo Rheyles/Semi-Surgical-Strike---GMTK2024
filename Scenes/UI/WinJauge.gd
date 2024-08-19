@@ -13,6 +13,7 @@ var monitored_variable : float = 0
 func _ready():
 	GAME.freedom_change.connect(on_freedom_meter_change)
 	update_display()
+	$AnimationPlayer.play("idle")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):

@@ -109,9 +109,10 @@ _data = {
 collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_wfj7a")
+TARGET_SPEED = 25.0
+WANDERING_SPEED = 15.0
 
 [node name="Art" type="Node2D" parent="."]
-visible = false
 modulate = Color(1, 1, 1, 0.901961)
 position = Vector2(-1.19209e-07, 0)
 scale = Vector2(0.047, 0.047)
@@ -138,6 +139,7 @@ libraries = {
 }
 
 [node name="Cross" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0.901961)
 z_index = 1
 scale = Vector2(0.047, 0.047)
@@ -172,6 +174,13 @@ wait_time = 6.0
 [node name="HealthComponent" parent="." instance=ExtResource("3_jichy")]
 MAX_HEALTH = 6.0
 
+[node name="ProgressBar" parent="HealthComponent" index="0"]
+visible = false
+offset_left = -10.0
+offset_top = -16.0
+offset_right = 9.0
+offset_bottom = -14.0
+
 [node name="AttackComponent" parent="." instance=ExtResource("3_qg651")]
 collision_mask = 3
 COOLDOWN = 3.0
@@ -185,3 +194,5 @@ shape = SubResource("CircleShape2D_58jmq")
 libraries = {
 "": SubResource("AnimationLibrary_2droa")
 }
+
+[editable path="HealthComponent"]

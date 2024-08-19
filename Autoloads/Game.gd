@@ -16,7 +16,7 @@ var last_shot_kills : int = 0
 var current_scene = null
 var current_path = ""
 
-var item_hold = null
+var time_left = 300
 
 signal freedom_change()
 signal stress_change()
@@ -30,7 +30,6 @@ func _ready():
 	
 	EVENTS.lose_state.connect(_On_Lose_State)
 
-
 ### LOGIC
 
 func check_freedom_meter():
@@ -41,7 +40,7 @@ func check_freedom_meter():
 		
 	freedom_change.emit()
 
-func end_game_transition(lose_reson : int):
+func end_game_transition(_lose_reson : int):
 	goto_scene("res://Scenes/menu/end_menu.tscn")
 
 
