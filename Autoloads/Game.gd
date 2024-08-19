@@ -4,7 +4,7 @@ extends Node
 ## This autoload contains all the method and variable used along the game
 
 var win_treshold = 10
-var end_timer = 300
+var end_timer = 240
 
 var end_condition = 0
 
@@ -20,7 +20,7 @@ var last_shot_kills : int = 0
 var current_scene = null
 var current_path = ""
 
-var time_left = 300
+var time_left = 240
 
 signal freedom_change()
 signal stress_change()

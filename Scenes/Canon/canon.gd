@@ -4,6 +4,8 @@ extends Node2D
 @onready var error_text=$"Canon UI/Label"
 @onready var caution_text=$"Canon UI/Label2"
 @onready var sound_player=$AudioStreamPlayer
+@onready var sound_player2=$AudioStreamPlayer2
+@onready var sound_player3=$AudioStreamPlayer3
 
 @export var map_disto: ColorRect
 @export var laserLight : Light2D
@@ -238,8 +240,16 @@ func first_shoot_spawn(new_pos : Vector2):
 	first_shoot = false
 
 func sound_play(stream : AudioStream):
-	sound_player.stream = stream
-	sound_player.play()
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	var audio_players = [sound_player, sound_player2, sound_player3]
+	var i = 0
+	while audio_players[i].is_playing() and i < audio_players.size() -1 :
+		i+=1
+	var free_player = audio_players[i%audio_players.size()]
+	free_player.stream = stream
+	free_player.pitch_scale = rng.randf_range(0.95,1.05)
+	free_player.play()
 
 #func upgrade_canon(level : int):
 	#if level == 1:

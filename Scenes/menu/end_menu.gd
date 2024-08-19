@@ -47,7 +47,8 @@ func show_frags():
 			for j in range (unit_dict[unit_type]['Nb']):
 				var new_dead_unit = dead_unit_scene.instantiate()
 				new_dead_unit.unit_texture = UNIT_TEXTURES[unit_type]
+				new_dead_unit.modulate = DATA.team_color[DATA.TEAMS[team]]
 				containers[team].add_child(new_dead_unit)
 
-				pop_timer.start(0.2)
+				pop_timer.start(0.05)
 				await pop_timer.timeout
