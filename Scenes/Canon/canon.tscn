@@ -1,12 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://puw8u16e2oqa"]
+[gd_scene load_steps=8 format=3 uid="uid://puw8u16e2oqa"]
 
 [ext_resource type="Script" path="res://Scenes/Canon/canon.gd" id="1_djkmq"]
+[ext_resource type="AudioStream" uid="uid://c5qhh0g5nqdum" path="res://Ressources/Sounds/Placeholders/minecraft-fireworks.wav" id="2_df7xa"]
 [ext_resource type="PackedScene" uid="uid://cujjyy8hd6kjk" path="res://Scenes/Canon/canon_node.tscn" id="2_ukktj"]
 [ext_resource type="Script" path="res://Scenes/Canon/TextVFX.gd" id="3_3bues"]
 [ext_resource type="FontFile" uid="uid://bxno7c1h1ee5j" path="res://Ressources/Fonts/Linebeam.ttf" id="3_7fwto"]
+[ext_resource type="AudioStream" uid="uid://xi2rt3ax8cyk" path="res://Ressources/Sounds/Megaton Near 003.wav" id="3_c68wa"]
+[ext_resource type="AudioStream" uid="uid://dvkgim1xpsm0b" path="res://Ressources/Sounds/Placeholders/win.wav" id="4_2vr8l"]
 
 [node name="Canon" type="Node2D"]
 script = ExtResource("1_djkmq")
+canon_shoot_sound = ExtResource("2_df7xa")
+canon_impact_sound = ExtResource("3_c68wa")
+canon_reload_sound = ExtResource("4_2vr8l")
 
 [node name="Node_Container" type="Node2D" parent="."]
 z_index = 10
@@ -46,168 +52,198 @@ offset_right = 0.0
 offset_bottom = -55.0
 
 [node name="LaserNode8" parent="Node_Container" instance=ExtResource("2_ukktj")]
+visible = false
 offset_left = -475.0
 offset_right = -285.0
 
 [node name="LaserNode9" parent="Node_Container" instance=ExtResource("2_ukktj")]
+visible = false
 offset_left = -380.0
 offset_top = 55.0
 offset_right = -190.0
 offset_bottom = 275.0
 
 [node name="LaserNode10" parent="Node_Container" instance=ExtResource("2_ukktj")]
+visible = false
 offset_left = -380.0
 offset_top = -275.0
 offset_right = -190.0
 offset_bottom = -55.0
 
 [node name="LaserNode11" parent="Node_Container" instance=ExtResource("2_ukktj")]
+visible = false
 offset_left = 190.0
 offset_top = -275.0
 offset_right = 380.0
 offset_bottom = -53.0
 
 [node name="LaserNode12" parent="Node_Container" instance=ExtResource("2_ukktj")]
+visible = false
 offset_left = 190.0
 offset_top = 55.0
 offset_right = 380.0
 offset_bottom = 275.0
 
 [node name="LaserNode13" parent="Node_Container" instance=ExtResource("2_ukktj")]
+visible = false
 offset_left = 285.0
 offset_right = 475.0
 
 [node name="LaserNode14" parent="Node_Container" instance=ExtResource("2_ukktj")]
+visible = false
 offset_top = -440.0
 offset_bottom = -220.0
 
 [node name="LaserNode15" parent="Node_Container" instance=ExtResource("2_ukktj")]
+visible = false
 offset_left = 95.0
 offset_top = -440.0
 offset_right = 285.0
 offset_bottom = -220.0
 
 [node name="LaserNode16" parent="Node_Container" instance=ExtResource("2_ukktj")]
+visible = false
 offset_left = -285.0
 offset_top = -440.0
 offset_right = -95.0
 offset_bottom = -220.0
 
 [node name="LaserNode17" parent="Node_Container" instance=ExtResource("2_ukktj")]
+visible = false
 offset_top = 220.0
 offset_bottom = 440.0
 
 [node name="LaserNode18" parent="Node_Container" instance=ExtResource("2_ukktj")]
+visible = false
 offset_left = 95.0
 offset_top = 220.0
 offset_right = 285.0
 offset_bottom = 440.0
 
 [node name="LaserNode19" parent="Node_Container" instance=ExtResource("2_ukktj")]
+visible = false
 offset_left = -285.0
 offset_top = 220.0
 offset_right = -95.0
 offset_bottom = 440.0
 
 [node name="LaserNode20" parent="Node_Container" instance=ExtResource("2_ukktj")]
+visible = false
 offset_left = -665.0
 offset_right = -475.0
 
 [node name="LaserNode21" parent="Node_Container" instance=ExtResource("2_ukktj")]
+visible = false
 offset_left = -570.0
 offset_top = 55.0
 offset_right = -380.0
 offset_bottom = 275.0
 
 [node name="LaserNode22" parent="Node_Container" instance=ExtResource("2_ukktj")]
+visible = false
 offset_left = -570.0
 offset_top = -275.0
 offset_right = -380.0
 offset_bottom = -55.0
 
 [node name="LaserNode23" parent="Node_Container" instance=ExtResource("2_ukktj")]
+visible = false
 offset_left = -475.0
 offset_top = -440.0
 offset_right = -285.0
 offset_bottom = -220.0
 
 [node name="LaserNode24" parent="Node_Container" instance=ExtResource("2_ukktj")]
+visible = false
 offset_left = -475.0
 offset_top = 220.0
 offset_right = -285.0
 offset_bottom = 440.0
 
 [node name="LaserNode25" parent="Node_Container" instance=ExtResource("2_ukktj")]
+visible = false
 offset_left = 380.0
 offset_top = -275.0
 offset_right = 570.0
 offset_bottom = -53.0
 
 [node name="LaserNode26" parent="Node_Container" instance=ExtResource("2_ukktj")]
+visible = false
 offset_left = 380.0
 offset_top = 55.0
 offset_right = 570.0
 offset_bottom = 275.0
 
 [node name="LaserNode27" parent="Node_Container" instance=ExtResource("2_ukktj")]
+visible = false
 offset_left = 475.0
 offset_right = 665.0
 
 [node name="LaserNode28" parent="Node_Container" instance=ExtResource("2_ukktj")]
+visible = false
 offset_left = 285.0
 offset_top = -440.0
 offset_right = 475.0
 offset_bottom = -220.0
 
 [node name="LaserNode29" parent="Node_Container" instance=ExtResource("2_ukktj")]
+visible = false
 offset_left = 285.0
 offset_top = 220.0
 offset_right = 475.0
 offset_bottom = 440.0
 
 [node name="LaserNode30" parent="Node_Container" instance=ExtResource("2_ukktj")]
+visible = false
 offset_left = 0.0
 offset_top = 385.0
 offset_right = 190.0
 offset_bottom = 605.0
 
 [node name="LaserNode31" parent="Node_Container" instance=ExtResource("2_ukktj")]
+visible = false
 offset_left = -190.0
 offset_top = 385.0
 offset_right = 0.0
 offset_bottom = 605.0
 
 [node name="LaserNode32" parent="Node_Container" instance=ExtResource("2_ukktj")]
+visible = false
 offset_left = -380.0
 offset_top = 385.0
 offset_right = -190.0
 offset_bottom = 605.0
 
 [node name="LaserNode33" parent="Node_Container" instance=ExtResource("2_ukktj")]
+visible = false
 offset_left = 190.0
 offset_top = 385.0
 offset_right = 380.0
 offset_bottom = 605.0
 
 [node name="LaserNode34" parent="Node_Container" instance=ExtResource("2_ukktj")]
+visible = false
 offset_left = 0.0
 offset_top = -605.0
 offset_right = 190.0
 offset_bottom = -385.0
 
 [node name="LaserNode35" parent="Node_Container" instance=ExtResource("2_ukktj")]
+visible = false
 offset_left = -190.0
 offset_top = -605.0
 offset_right = 0.0
 offset_bottom = -385.0
 
 [node name="LaserNode36" parent="Node_Container" instance=ExtResource("2_ukktj")]
+visible = false
 offset_left = -380.0
 offset_top = -605.0
 offset_right = -190.0
 offset_bottom = -385.0
 
 [node name="LaserNode37" parent="Node_Container" instance=ExtResource("2_ukktj")]
+visible = false
 offset_left = 190.0
 offset_top = -605.0
 offset_right = 380.0
@@ -215,6 +251,9 @@ offset_bottom = -385.0
 
 [node name="ClickTimer" type="Timer" parent="."]
 wait_time = 0.3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -2.644
 
 [node name="Canon UI" type="Control" parent="."]
 layout_mode = 3
