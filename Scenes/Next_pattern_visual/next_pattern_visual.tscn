@@ -248,3 +248,163 @@ offset_left = 190.0
 offset_top = -605.0
 offset_right = 380.0
 offset_bottom = -385.0
+
+[node name="LaserNode38" parent="Node_Container" instance=ExtResource("1_6uye3")]
+visible = false
+offset_top = -769.0
+offset_bottom = -549.0
+
+[node name="LaserNode39" parent="Node_Container" instance=ExtResource("1_6uye3")]
+visible = false
+offset_left = 95.0
+offset_top = -769.0
+offset_right = 285.0
+offset_bottom = -549.0
+
+[node name="LaserNode40" parent="Node_Container" instance=ExtResource("1_6uye3")]
+visible = false
+offset_left = -285.0
+offset_top = -769.0
+offset_right = -95.0
+offset_bottom = -549.0
+
+[node name="LaserNode41" parent="Node_Container" instance=ExtResource("1_6uye3")]
+visible = false
+offset_top = 550.0
+offset_bottom = 770.0
+
+[node name="LaserNode42" parent="Node_Container" instance=ExtResource("1_6uye3")]
+visible = false
+offset_left = 95.0
+offset_top = 550.0
+offset_right = 285.0
+offset_bottom = 770.0
+
+[node name="LaserNode43" parent="Node_Container" instance=ExtResource("1_6uye3")]
+visible = false
+offset_left = -285.0
+offset_top = 550.0
+offset_right = -95.0
+offset_bottom = 770.0
+
+[node name="LaserNode44" parent="Node_Container" instance=ExtResource("1_6uye3")]
+visible = false
+offset_left = 475.0
+offset_top = -440.0
+offset_right = 665.0
+offset_bottom = -218.0
+
+[node name="LaserNode45" parent="Node_Container" instance=ExtResource("1_6uye3")]
+visible = false
+offset_left = 570.0
+offset_top = -275.0
+offset_right = 760.0
+offset_bottom = -55.0
+
+[node name="LaserNode46" parent="Node_Container" instance=ExtResource("1_6uye3")]
+visible = false
+offset_left = 380.0
+offset_top = -605.0
+offset_right = 570.0
+offset_bottom = -385.0
+
+[node name="LaserNode47" parent="Node_Container" instance=ExtResource("1_6uye3")]
+visible = false
+offset_left = -666.0
+offset_top = 220.0
+offset_right = -476.0
+offset_bottom = 442.0
+
+[node name="LaserNode48" parent="Node_Container" instance=ExtResource("1_6uye3")]
+visible = false
+offset_left = -571.0
+offset_top = 385.0
+offset_right = -381.0
+offset_bottom = 605.0
+
+[node name="LaserNode49" parent="Node_Container" instance=ExtResource("1_6uye3")]
+visible = false
+offset_left = -761.0
+offset_top = 55.0
+offset_right = -571.0
+offset_bottom = 275.0
+
+[node name="LaserNode50" parent="Node_Container" instance=ExtResource("1_6uye3")]
+visible = false
+offset_left = -760.0
+offset_top = -275.0
+offset_right = -570.0
+offset_bottom = -55.0
+
+[node name="LaserNode51" parent="Node_Container" instance=ExtResource("1_6uye3")]
+visible = false
+offset_left = -665.0
+offset_top = -440.0
+offset_right = -475.0
+offset_bottom = -220.0
+
+[node name="LaserNode52" parent="Node_Container" instance=ExtResource("1_6uye3")]
+visible = false
+offset_left = -570.0
+offset_top = -605.0
+offset_right = -380.0
+offset_bottom = -385.0
+
+[node name="LaserNode53" parent="Node_Container" instance=ExtResource("1_6uye3")]
+visible = false
+offset_left = 380.0
+offset_top = 385.0
+offset_right = 570.0
+offset_bottom = 605.0
+
+[node name="LaserNode54" parent="Node_Container" instance=ExtResource("1_6uye3")]
+visible = false
+offset_left = 475.0
+offset_top = 220.0
+offset_right = 665.0
+offset_bottom = 440.0
+
+[node name="LaserNode55" parent="Node_Container" instance=ExtResource("1_6uye3")]
+visible = false
+offset_left = 570.0
+offset_top = 55.0
+offset_right = 760.0
+offset_bottom = 275.0
+
+[node name="LaserNode56" parent="Node_Container" instance=ExtResource("1_6uye3")]
+visible = false
+offset_left = 285.0
+offset_top = -769.0
+offset_right = 475.0
+offset_bottom = -549.0
+
+[node name="LaserNode57" parent="Node_Container" instance=ExtResource("1_6uye3")]
+visible = false
+offset_left = 285.0
+offset_top = 550.0
+offset_right = 475.0
+offset_bottom = 770.0
+
+[node name="LaserNode58" parent="Node_Container" instance=ExtResource("1_6uye3")]
+visible = false
+offset_left = -476.0
+offset_top = 550.0
+offset_right = -286.0
+offset_bottom = 770.0
+
+[node name="LaserNode59" parent="Node_Container" instance=ExtResource("1_6uye3")]
+visible = false
+offset_left = -475.0
+offset_top = -769.0
+offset_right = -285.0
+offset_bottom = -549.0
+
+[node name="LaserNode60" parent="Node_Container" instance=ExtResource("1_6uye3")]
+visible = false
+offset_left = -855.0
+offset_right = -665.0
+
+[node name="LaserNode61" parent="Node_Container" instance=ExtResource("1_6uye3")]
+visible = false
+offset_left = 665.0
+offset_right = 855.0
