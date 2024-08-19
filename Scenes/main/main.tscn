@@ -7,12 +7,12 @@
 [ext_resource type="Shader" path="res://Scenes/battlefield/map_shader.gdshader" id="5_bqpke"]
 [ext_resource type="Texture2D" uid="uid://dheb2avfqvxhq" path="res://Ressources/Sprites/Battleground/grille.png" id="6_c6boa"]
 [ext_resource type="Texture2D" uid="uid://cusg415dvvmt2" path="res://Ressources/Sprites/light.png" id="7_jhsvy"]
-[ext_resource type="PackedScene" uid="uid://dioy76npxq04q" path="res://Scenes/base_unit/base_unit.tscn" id="8_q3y24"]
 [ext_resource type="AudioStream" uid="uid://b8sc1yyb4ycr1" path="res://Ressources/Sounds/Bip_timer.wav" id="8_s5vkf"]
 [ext_resource type="PackedScene" uid="uid://ouwypy3gld76" path="res://Scenes/base_city/base_city.tscn" id="9_dme8d"]
 [ext_resource type="PackedScene" uid="uid://ta3blwa24sqb" path="res://Scenes/basic_components/factory_component.tscn" id="10_ncx7e"]
 [ext_resource type="PackedScene" uid="uid://puw8u16e2oqa" path="res://Scenes/Canon/canon.tscn" id="11_f8tyy"]
 [ext_resource type="Script" path="res://Scenes/UI/MainUI.gd" id="12_aiuk3"]
+[ext_resource type="PackedScene" uid="uid://caftv3gvl4tty" path="res://Scenes/base_city/alien_nest.tscn" id="12_rcndg"]
 [ext_resource type="AudioStream" uid="uid://bo2nhvm1fpr4x" path="res://Ressources/Musics/Microsoft Windows XP Startup Sound.mp3" id="13_w2ywu"]
 [ext_resource type="Shader" path="res://Scenes/battlefield/distortion.gdshader" id="14_3i60f"]
 [ext_resource type="AudioStream" uid="uid://ctecf1frla0oo" path="res://Ressources/Sounds/intro_noise.mp3" id="14_jnpvx"]
@@ -1565,45 +1565,24 @@ one_shot = true
 
 [node name="TimerBip" type="AudioStreamPlayer" parent="Map/Battlefield"]
 stream = ExtResource("8_s5vkf")
+volume_db = 10.0
 max_polyphony = 10
 bus = &"Sounds"
 
 [node name="Units" type="Node2D" parent="Map"]
 
-[node name="BaseUnit5" parent="Map/Units" instance=ExtResource("8_q3y24")]
-position = Vector2(959, 200)
-TEAM = 1
-
-[node name="BaseUnit6" parent="Map/Units" instance=ExtResource("8_q3y24")]
-position = Vector2(941, 174)
-TEAM = 1
-
-[node name="BaseUnit7" parent="Map/Units" instance=ExtResource("8_q3y24")]
-position = Vector2(921, 152)
-TEAM = 1
-
-[node name="BaseUnit2" parent="Map/Units" instance=ExtResource("8_q3y24")]
-position = Vector2(1016, 150)
-TEAM = 1
-
-[node name="BaseUnit" parent="Map/Units" instance=ExtResource("8_q3y24")]
-position = Vector2(1001, 187)
-TEAM = 1
-
-[node name="BaseCity2" parent="Map/Units" instance=ExtResource("9_dme8d")]
-position = Vector2(972, 145)
-TEAM = 1
-
 [node name="FactoryComponentEnemy" parent="Map/Units" node_paths=PackedStringArray("battlefield") instance=ExtResource("10_ncx7e")]
-target_scene = ExtResource("9_dme8d")
+target_scene = ExtResource("12_rcndg")
+COOLDOWN = 6.0
 nb_per_wave = 3
+create_at_ready = true
 standalone = true
 battlefield = NodePath("../../Battlefield")
 TEAM = 1
 
 [node name="FactoryComponent2Ally" parent="Map/Units" node_paths=PackedStringArray("battlefield") instance=ExtResource("10_ncx7e")]
 target_scene = ExtResource("9_dme8d")
-COOLDOWN = 20.0
+COOLDOWN = 12.0
 standalone = true
 battlefield = NodePath("../../Battlefield")
 
@@ -1613,6 +1592,7 @@ scale = Vector2(0.3, 0.3)
 map_disto = NodePath("../../UI/Control/MapDistortion")
 laserLight = NodePath("../../UI/Control/WinJauge/LaserLight")
 next_pattern_visual = NodePath("../../UI/Control/NextStrike/next_pattern_visual")
+metadata/_edit_lock_ = true
 
 [node name="UI" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -1628,6 +1608,7 @@ script = ExtResource("12_aiuk3")
 main_theme = ExtResource("34_se7s8")
 intro_theme = ExtResource("14_jnpvx")
 windows_sound = ExtResource("13_w2ywu")
+metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Control"]
 libraries = {
@@ -1644,7 +1625,6 @@ stream = ExtResource("14_jnpvx")
 bus = &"Music"
 
 [node name="MapDistortion" type="ColorRect" parent="UI/Control"]
-visible = false
 material = SubResource("ShaderMaterial_6dn6t")
 layout_mode = 1
 anchors_preset = 15
@@ -1656,12 +1636,14 @@ offset_right = 25.0
 offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_lock_ = true
 
 [node name="PlanetBackGround" type="TextureRect" parent="UI/Control"]
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("15_ee22k")
+metadata/_edit_lock_ = true
 
 [node name="BorderTop" type="TextureRect" parent="UI/Control"]
 modulate = Color(1, 1, 1, 0.619608)
@@ -1674,6 +1656,7 @@ texture = ExtResource("17_bh2pb")
 expand_mode = 2
 stretch_mode = 2
 flip_v = true
+metadata/_edit_lock_ = true
 
 [node name="BorderBottom" type="TextureRect" parent="UI/Control"]
 modulate = Color(1, 1, 1, 0.619608)
@@ -1686,6 +1669,7 @@ offset_bottom = 1081.0
 texture = ExtResource("17_bh2pb")
 expand_mode = 2
 stretch_mode = 2
+metadata/_edit_lock_ = true
 
 [node name="CanonCoord" type="Control" parent="UI/Control/BorderBottom" node_paths=PackedStringArray("canon")]
 modulate = Color(1, 1, 1, 0.694118)
@@ -1741,11 +1725,11 @@ text = "LON - 300"
 vertical_alignment = 1
 
 [node name="MapBorder" type="TextureRect" parent="UI/Control"]
-visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("20_rvpqn")
+metadata/_edit_lock_ = true
 
 [node name="NextStrike" type="TextureRect" parent="UI/Control"]
 modulate = Color(1, 1, 1, 0.694118)
@@ -2158,16 +2142,17 @@ libraries = {
 }
 
 [node name="Title" type="Label" parent="UI/Control"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 6811.0
-offset_top = 4239.0
-offset_right = 7665.0
-offset_bottom = 4725.0
+offset_left = 2971.0
+offset_top = 2079.0
+offset_right = 3825.0
+offset_bottom = 2565.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -2212,6 +2197,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("36_oc3f0")
+metadata/_edit_lock_ = true
 
 [node name="ComboTimer" type="Timer" parent="UI/Control/ComboCounter"]
 
@@ -2277,6 +2263,7 @@ libraries = {
 }
 
 [node name="BlackScreen" type="ColorRect" parent="UI/Control"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

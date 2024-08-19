@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dme3yk1qxnfp8"]
+[gd_scene load_steps=27 format=3 uid="uid://dme3yk1qxnfp8"]
 
 [ext_resource type="PackedScene" uid="uid://c3viq5fif4hiv" path="res://Scenes/basic_components/shake_component.tscn" id="1_1wdvd"]
 [ext_resource type="Script" path="res://Scenes/menu/end_menu.gd" id="1_8rfb0"]
@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://bqs04rc5eqhki" path="res://Ressources/Sprites/Battleground/battleground.png" id="2_y2341"]
 [ext_resource type="Texture2D" uid="uid://8k2dqrh2tglq" path="res://Ressources/Sprites/Battleground/background.png" id="3_pmdhm"]
 [ext_resource type="Texture2D" uid="uid://t0hwt6wo2dit" path="res://Ressources/Sprites/Units/robot.png" id="3_xecr6"]
+[ext_resource type="Texture2D" uid="uid://dj88tfaar6u88" path="res://Ressources/Sprites/Units/nest.png" id="4_clkdi"]
 [ext_resource type="FontFile" uid="uid://bxno7c1h1ee5j" path="res://Ressources/Fonts/Linebeam.ttf" id="4_si5b4"]
+[ext_resource type="Texture2D" uid="uid://7pgwf7t3yir1" path="res://Ressources/Sprites/Units/weak_bug.png" id="5_m6ca3"]
 [ext_resource type="FontFile" uid="uid://dn3uk4r35blam" path="res://Ressources/Fonts/BorgenBold.ttf" id="5_ob026"]
 [ext_resource type="Texture2D" uid="uid://byo108b83wae" path="res://Ressources/Sprites/Battleground/window.png" id="6_itldd"]
 [ext_resource type="PackedScene" uid="uid://j2m8w3fy6432" path="res://Scenes/menu/dead_unit/dead_unit.tscn" id="8_dbase"]
@@ -315,7 +317,7 @@ _data = {
 
 [node name="EndMenu" type="Node2D"]
 script = ExtResource("1_8rfb0")
-UNIT_TEXTURES = Array[Resource]([ExtResource("2_2v0of"), ExtResource("3_xecr6")])
+UNIT_TEXTURES = Array[Resource]([ExtResource("2_2v0of"), ExtResource("3_xecr6"), ExtResource("4_clkdi"), ExtResource("5_m6ca3")])
 dead_unit_scene = ExtResource("8_dbase")
 
 [node name="PopTimer" type="Timer" parent="."]

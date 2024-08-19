@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://caftv3gvl4tty"]
+
+[ext_resource type="PackedScene" uid="uid://ouwypy3gld76" path="res://Scenes/base_city/base_city.tscn" id="1_vv0ff"]
+[ext_resource type="Texture2D" uid="uid://dj88tfaar6u88" path="res://Ressources/Sprites/Units/nest.png" id="2_w8l6b"]
+[ext_resource type="PackedScene" uid="uid://rbd27i4uel3s" path="res://Scenes/base_unit/weak_bug.tscn" id="3_uk8x0"]
+
+[node name="AlienNest" instance=ExtResource("1_vv0ff")]
+TEAM = 1
+UNIT_TYPE = 2
+
+[node name="Shadow" parent="Art" index="0"]
+position = Vector2(0, 5.74711)
+scale = Vector2(15.3257, 15.8046)
+
+[node name="Icon" parent="Art" index="1"]
+texture = ExtResource("2_w8l6b")
+
+[node name="Contour" parent="Art" index="2"]
+position = Vector2(5.74715, 4.76837e-07)
+scale = Vector2(1, 1)
+
+[node name="Glow" parent="Art" index="3"]
+position = Vector2(-7.62939e-06, 7.62939e-06)
+scale = Vector2(1.16739, 1.03269)
+
+[node name="CollisionShape2D" parent="." index="2"]
+visible = true
+
+[node name="HealthComponent" parent="." index="4"]
+MAX_HEALTH = 25.0
+
+[node name="ProgressBar" parent="HealthComponent" index="0"]
+offset_top = -30.0
+offset_bottom = -25.0
+
+[node name="FactoryComponent" parent="." index="7"]
+target_scene = ExtResource("3_uk8x0")
+COOLDOWN = 5.0
+nb_per_wave = 3
+standalone = false
+TEAM = 0
+
+[editable path="HealthComponent"]

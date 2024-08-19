@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://rbd27i4uel3s"]
+
+[ext_resource type="PackedScene" uid="uid://dioy76npxq04q" path="res://Scenes/base_unit/base_unit.tscn" id="1_wly4v"]
+[ext_resource type="Texture2D" uid="uid://7pgwf7t3yir1" path="res://Ressources/Sprites/Units/weak_bug.png" id="2_whao2"]
+
+[node name="WeakBug" instance=ExtResource("1_wly4v")]
+TARGET_SPEED = 40.0
+TEAM = 1
+UNIT_TYPE = 3
+
+[node name="Art" parent="." index="0"]
+scale = Vector2(0.047, 0.047)
+
+[node name="Icon" parent="Art" index="1"]
+texture = ExtResource("2_whao2")
+
+[node name="Cross" parent="." index="1"]
+scale = Vector2(0.047, 0.047)
+
+[node name="WanderingTimer" parent="." index="6"]
+wait_time = 4.0
+
+[node name="AttackComponent" parent="." index="8"]
+DAMAGE = 1.0
+COOLDOWN = 2.0
+
+[node name="CollisionShape2D" parent="AttackComponent" index="1"]
+visible = true
+
+[editable path="HealthComponent"]

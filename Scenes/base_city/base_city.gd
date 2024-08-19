@@ -28,6 +28,9 @@ func _ready():
 		print("Freedom : " + str(GAME.freedom_meter))
 		GAME.check_freedom_meter()
 		### ALLY SFX
+		var rng = RandomNumberGenerator.new()
+		rng.randomize()
+		sound_player.pitch_scale = rng.randf_range(0.95,1.05)
 		sound_player.stream = sound_spawn
 		sound_player.play()
 

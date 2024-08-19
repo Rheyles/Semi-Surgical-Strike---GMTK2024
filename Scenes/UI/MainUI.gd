@@ -14,6 +14,7 @@ func _ready():
 func _process(_delta):
 	if Input.is_action_just_pressed("Click") and state=="MainMenu" and not $AnimationPlayer.is_playing():
 		state="InGame"
+		GAME.init_frag_dicts()
 		$StartSound.play()
 		get_tree().paused = false
 		$StartSound.stream = windows_sound

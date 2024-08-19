@@ -10,8 +10,8 @@ var end_condition = 0
 
 var freedom_meter = 0
 var stress_meter = 0
-var enemy_killed_dico = {0:{"Type" : "BASE_CITY", "Nb": 0},1:{"Type" : "BASIC_UNIT","Nb" : 0}}
-var allied_killed_dico = {0:{"Type" : "BASE_CITY", "Nb": 0},1:{"Type" : "BASIC_UNIT","Nb" : 0}}
+var enemy_killed_dico = {}
+var allied_killed_dico = {}
 
 var target
 
@@ -32,7 +32,15 @@ func _ready():
 	current_scene = root.get_child(root.get_child_count() -1)
 	current_path = current_scene.scene_file_path
 
+
 ### LOGIC
+
+func init_frag_dicts():
+	for unit_type in DATA.UNIT_TYPE:
+		enemy_killed_dico[DATA.UNIT_TYPE[unit_type]] = {"Type": unit_type,
+														"Nb": 0}
+		allied_killed_dico[DATA.UNIT_TYPE[unit_type]] = {"Type": unit_type,
+														 "Nb": 0}
 
 func check_freedom_meter():
 	if freedom_meter >= win_treshold:
