@@ -3,9 +3,15 @@ extends Node2D
 @onready var click_timer = $ClickTimer
 @onready var error_text=$"Canon UI/Label"
 @onready var caution_text=$"Canon UI/Label2"
+@onready var sound_player=$AudioStreamPlayer
+
 @export var map_disto: ColorRect
 @export var laserLight : Light2D
 @export var next_pattern_visual : Control
+
+@export var canon_shoot_sound : Resource
+@export var canon_impact_sound : Resource
+@export var canon_reload_sound : Resource
 
 var canonNode_array = []
 
@@ -87,6 +93,7 @@ func _process(delta):
 				error_text.text = "... ERROR"
 			ready_to_shoot = true
 			reload_timer = 0
+			sound_play(canon_reload_sound)
 			for hex in canonNode_array.size():
 				canonNode_array[hex].get_node("Sprite2D").modulate = Color.WHITE
 	
@@ -120,11 +127,12 @@ func _process(delta):
 
 func _CanonActivation():
 
-#VFX au clic :
+#VFX & SFX au clic :
 	EVENTS.emit_signal("set_shake")
 	var energy = get_tree().create_tween()
 	energy.tween_property(laserLight,"energy", 9.5,0.1)
-	energy.tween_property(laserLight,"energy", 0,0.2)	
+	energy.tween_property(laserLight,"energy", 0,0.2)
+	sound_play(canon_shoot_sound)
 
 #Setup et Delay avant le tir
 	move_tween.kill()
@@ -132,6 +140,7 @@ func _CanonActivation():
 	follow_mouse = false
 	await  get_tree().create_timer(impact_delay).timeout
 #Call activate canonNode shoot function
+	sound_play(canon_impact_sound)
 	for hex in canonNode_array.size():
 		if canonNode_array[hex].visible == true:
 			canonNode_array[hex].nodeShoot()
@@ -139,7 +148,6 @@ func _CanonActivation():
 	shader_disto_toggle(true)
 	error_text._start(2,6,false)
 	caution_text._start(2,6,false)
-#SFX
 
 # End state
 	follow_mouse = true;
@@ -203,6 +211,10 @@ func first_shoot_spawn(new_pos : Vector2):
 	get_node("../Units/FactoryComponent2Ally").create_unit_at_position(new_pos)
 	EVENTS.start_battlefield.emit()
 	first_shoot = false
+
+func sound_play(stream : AudioStream):
+	sound_player.stream = stream
+	sound_player.play()
 
 #func upgrade_canon(level : int):
 	#if level == 1:
