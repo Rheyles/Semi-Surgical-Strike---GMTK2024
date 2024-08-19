@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dme3yk1qxnfp8"]
+[gd_scene load_steps=28 format=3 uid="uid://dme3yk1qxnfp8"]
 
 [ext_resource type="PackedScene" uid="uid://c3viq5fif4hiv" path="res://Scenes/basic_components/shake_component.tscn" id="1_1wdvd"]
 [ext_resource type="Script" path="res://Scenes/menu/end_menu.gd" id="1_8rfb0"]
@@ -164,6 +164,9 @@ spacing_glyph = -2
 [sub_resource type="FontVariation" id="FontVariation_tl4wv"]
 base_font = ExtResource("5_ob026")
 
+[sub_resource type="FontVariation" id="FontVariation_y6pqo"]
+base_font = ExtResource("5_ob026")
+
 [sub_resource type="Animation" id="Animation_xi5k6"]
 length = 0.001
 tracks/0/type = "value"
@@ -213,6 +216,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Timer:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_7ltui"]
@@ -265,6 +280,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Timer:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.6, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jrvry"]
@@ -435,6 +462,18 @@ theme_override_fonts/font = SubResource("FontVariation_tl4wv")
 theme_override_font_sizes/font_size = 40
 text = "Enemy units destroyed :"
 
+[node name="E_count" type="Label" parent="UI/Base/Memo/Content/EnemyUnits"]
+offset_left = 494.0
+offset_top = 3.0
+offset_right = 562.0
+offset_bottom = 56.0
+theme_override_colors/font_color = Color(0.960784, 0.462745, 0, 1)
+theme_override_colors/font_outline_color = Color(0.960784, 0.462745, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = SubResource("FontVariation_tl4wv")
+theme_override_font_sizes/font_size = 40
+text = "0 !"
+
 [node name="AllyUnits" type="Label" parent="UI/Base/Memo/Content"]
 layout_mode = 1
 offset_left = 55.0
@@ -447,6 +486,64 @@ theme_override_constants/outline_size = 2
 theme_override_fonts/font = SubResource("FontVariation_tl4wv")
 theme_override_font_sizes/font_size = 40
 text = "Ally units destroyed :"
+
+[node name="A_count" type="Label" parent="UI/Base/Memo/Content/AllyUnits"]
+offset_left = 471.0
+offset_top = 3.0
+offset_right = 571.0
+offset_bottom = 56.0
+theme_override_colors/font_color = Color(0.960784, 0.462745, 0, 1)
+theme_override_colors/font_outline_color = Color(0.960784, 0.462745, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = SubResource("FontVariation_tl4wv")
+theme_override_font_sizes/font_size = 40
+text = "0 !"
+
+[node name="Timer" type="NinePatchRect" parent="UI/Base/Memo"]
+clip_contents = true
+offset_left = 949.0
+offset_top = 1.0
+offset_right = 1356.0
+offset_bottom = 190.0
+scale = Vector2(1, 0.959999)
+texture = ExtResource("6_itldd")
+region_rect = Rect2(5, 5, 370, 369)
+patch_margin_left = 78
+patch_margin_top = 95
+patch_margin_right = 88
+patch_margin_bottom = 80
+axis_stretch_horizontal = 2
+
+[node name="Title" type="Label" parent="UI/Base/Memo/Timer"]
+layout_mode = 1
+offset_left = 26.0
+offset_top = 16.0
+offset_right = 205.0
+offset_bottom = 57.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_y6pqo")
+theme_override_font_sizes/font_size = 40
+text = "TIME_LEFT_"
+
+[node name="Content" type="Control" parent="UI/Base/Memo/Timer"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="UI/Base/Memo/Timer/Content"]
+clip_contents = true
+layout_mode = 1
+offset_left = 28.0
+offset_top = 58.0
+offset_right = 378.0
+offset_bottom = 159.0
+theme_override_colors/font_color = Color(0.960784, 0.462745, 0, 1)
+theme_override_colors/font_outline_color = Color(0.960784, 0.462745, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = SubResource("FontVariation_y6pqo")
+theme_override_font_sizes/font_size = 100
+text = "04:00"
+horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Base/Memo"]
 libraries = {

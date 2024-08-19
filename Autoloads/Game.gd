@@ -3,7 +3,7 @@ extends Node
 ## GAME
 ## This autoload contains all the method and variable used along the game
 
-var win_treshold = 10
+var win_treshold = 2
 var end_timer = 240
 
 var end_condition = 0
