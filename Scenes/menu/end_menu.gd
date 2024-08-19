@@ -56,7 +56,7 @@ func show_frags():
 				unit_count[team] += 1
 				count_text[team].text = str(unit_count[team])
 				
-				pop_timer.start(0.04)
+				pop_timer.start(0.03)
 				await pop_timer.timeout
 
 func timer_left():
