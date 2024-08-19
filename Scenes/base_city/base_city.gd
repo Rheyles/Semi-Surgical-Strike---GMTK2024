@@ -1,6 +1,7 @@
 extends StaticBody2D
 
 @export var TEAM : DATA.TEAMS
+@export var UNIT_TYPE : DATA.UNIT_TYPE
 
 @onready var health_component = $HealthComponent
 

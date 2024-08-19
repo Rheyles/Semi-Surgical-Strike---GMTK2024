@@ -8,8 +8,10 @@ var end_timer = 300
 
 var freedom_meter = 0
 var stress_meter = 0
-var enemy_killed_list = []
-var allied_killed_list = []
+var enemy_killed_dico = {0:{"Type" : "BASE_CITY", "Nb": 0},1:{"Type" : "BASIC_UNIT","Nb" : 0}}
+var allied_killed_dico = {0:{"Type" : "BASE_CITY", "Nb": 0},1:{"Type" : "BASIC_UNIT","Nb" : 0}}
+
+var target
 
 var last_shot_kills : int = 0
 

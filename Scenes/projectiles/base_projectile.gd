@@ -28,7 +28,7 @@ func target_reached():
 	if is_instance_valid(target_object): 
 		if "health_component" in target_object:
 			if is_instance_valid(target_object.health_component):
-				target_object.health_component.damage(DAMAGE)
+				target_object.health_component.damage(DAMAGE,false)
 	destroy()
 
 func destroy():

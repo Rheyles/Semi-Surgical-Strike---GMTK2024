@@ -16,8 +16,12 @@ func _ready():
 	health_bar.max_value = MAX_HEALTH
 	_set_health(MAX_HEALTH)
 
-func damage(amount:float):
+func damage(amount:float, damage_from_canon:bool = false):
 	_set_health(health - amount)
 	
 	if health<=0:
+		if get_parent().TEAM == DATA.TEAMS.ALLY:
+			GAME.allied_killed_dico[get_parent().UNIT_TYPE]["Nb"] += 1
+		elif get_parent().TEAM == DATA.TEAMS.ENEMY:
+			GAME.enemy_killed_dico[get_parent().UNIT_TYPE]["Nb"] += 1
 		get_parent().destroy()
