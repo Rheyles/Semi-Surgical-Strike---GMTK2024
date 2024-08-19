@@ -4,6 +4,7 @@ class_name BaseUnit
 @export var TARGET_SPEED = 50.0
 @export var WANDERING_SPEED = 25.0
 @export var TEAM : DATA.TEAMS
+@export var UNIT_TYPE : DATA.UNIT_TYPE
 
 @onready var health_component = $HealthComponent
 @onready var attack_component = $AttackComponent

@@ -24,14 +24,14 @@ func nodeShoot():
 	var targets = shoot_area.get_overlapping_bodies()
 	for unit in targets:
 		if "health_component" in unit:
-			if unit.TEAM == DATA.TEAMS.ALLY:
-				if unit not in GAME.allied_killed_list:
-					GAME.allied_killed_list.append(unit)
-			elif unit.TEAM == DATA.TEAMS.ENEMY:
-				if unit not in GAME.enemy_killed_list:
-					GAME.enemy_killed_list.append(unit)
-					GAME.last_shot_kills += 1
-			unit.health_component.damage(9999)
+			#if unit.TEAM == DATA.TEAMS.ALLY:
+				#if unit not in GAME.allied_killed_list:
+					#GAME.allied_killed_list.append(unit)
+			#elif unit.TEAM == DATA.TEAMS.ENEMY:
+				#if unit not in GAME.enemy_killed_list:
+					#GAME.enemy_killed_list.append(unit)
+					#GAME.last_shot_kills += 1
+			unit.health_component.damage(9999,true)
 # Local VFX
 	var part = shoot_particule.instantiate()
 	get_tree().get_current_scene().add_child(part)
