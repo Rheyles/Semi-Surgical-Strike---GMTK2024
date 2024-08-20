@@ -20,7 +20,7 @@ func _process(_delta):
 		await $AnimationPlayer.animation_finished
 		$AnimationPlayer.play("open_windows")
 	
-	if Input.is_action_just_pressed("Click") and state=="Brief":
+	if Input.is_action_just_pressed("Click") and state=="Brief" and not $AnimationPlayer.is_playing():
 		state="InGame"
 		GAME.init_frag_dicts()
 		get_tree().paused = false
