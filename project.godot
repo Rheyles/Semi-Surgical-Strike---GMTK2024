@@ -14,7 +14,7 @@ config/name="Collateral: Unavoidable"
 run/main_scene="res://Scenes/main/main.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 boot_splash/image="res://Splashscreen.png"
-config/icon="res://icon.svg"
+config/icon="res://Ressources/Sprites/Site/project_icone.png"
 
 [autoload]
 
