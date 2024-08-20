@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=3 uid="uid://cklhctcdf3wlq"]
+[gd_scene load_steps=103 format=3 uid="uid://cklhctcdf3wlq"]
 
 [ext_resource type="Script" path="res://Scenes/main/main.gd" id="1_yh54l"]
 [ext_resource type="AudioStream" uid="uid://bocaybpf0f1r" path="res://Ressources/Sounds/mission_success.wav" id="2_knogv"]
@@ -936,6 +936,68 @@ shader_parameter/scanlines_spacing = 1.0
 shader_parameter/vhs_line_onoff = 1.0
 shader_parameter/disto_onoff = 1.0
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_feloi")
+
+[sub_resource type="Animation" id="Animation_mx2j8"]
+resource_name = "ship_idle"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1713, 179), Vector2(1731, 189), Vector2(1713, 179)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5, 3.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-0.486947, -0.541052, -0.436332, -0.486947]
+}
+
+[sub_resource type="Animation" id="Animation_mbhhx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1713, 179)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.486947]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bi3ij"]
+_data = {
+"RESET": SubResource("Animation_mbhhx"),
+"ship_idle": SubResource("Animation_mx2j8")
+}
 
 [sub_resource type="FontVariation" id="FontVariation_7f0nf"]
 base_font = ExtResource("19_628rh")
@@ -1914,7 +1976,8 @@ metadata/_edit_lock_ = true
 modulate = Color(1, 1, 1, 0)
 clip_children = 2
 z_as_relative = false
-position = Vector2(1511, 302)
+position = Vector2(1713, 179)
+rotation = -0.486947
 
 [node name="Sprite_light2" type="Sprite2D" parent="UI/Control/Ship_Sprite"]
 modulate = Color(1, 1, 1, 0.490196)
@@ -1959,6 +2022,13 @@ texture = ExtResource("7_jhsvy")
 clip_children = 2
 z_as_relative = false
 texture = ExtResource("43_8t6g3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Control/Ship_Sprite"]
+libraries = {
+"": SubResource("AnimationLibrary_bi3ij")
+}
+autoplay = "ship_idle"
+speed_scale = 0.2
 
 [node name="BorderTop" type="TextureRect" parent="UI/Control"]
 modulate = Color(1, 1, 1, 0.619608)
