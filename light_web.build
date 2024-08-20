@@ -1,12 +1,15 @@
 {
 	"disabled_build_options": {
+		"brotli": false,
 		"disable_3d": true,
 		"disable_3d_physics": true,
+		"graphite": false,
 		"module_text_server_adv_enabled": false,
 		"openxr": false,
 		"vulkan": false
 	},
 	"disabled_classes": [
+		"AnimationTree",
 		"ArrayOccluder3D",
 		"BoxOccluder3D",
 		"Mesh",

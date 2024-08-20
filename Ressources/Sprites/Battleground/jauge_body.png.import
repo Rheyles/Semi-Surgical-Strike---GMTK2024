@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/jauge_body.png-bd8cfeffc2b4a5bb871f935048ce63
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

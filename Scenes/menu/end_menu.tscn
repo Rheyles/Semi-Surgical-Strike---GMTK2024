@@ -765,6 +765,7 @@ libraries = {
 [node name="Codex" type="NinePatchRect" parent="UI/Base/Memo"]
 modulate = Color(1, 1, 1, 0)
 clip_contents = true
+layout_mode = 0
 offset_left = 1338.0
 offset_top = 161.0
 offset_right = 1745.0

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/circle.png-27ff5620463c182699412c8016fa127f.c
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

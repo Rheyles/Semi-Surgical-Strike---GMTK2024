@@ -15,9 +15,9 @@ dest_files=["res://.godot/imported/cross.png-6d8e98a42d6649abbae2a820779fa734.ct
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
-compress/lossy_quality=0.7
+compress/lossy_quality=0.5
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
