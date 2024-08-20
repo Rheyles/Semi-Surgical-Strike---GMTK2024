@@ -2,6 +2,7 @@ extends Node2D
 
 @export var UNIT_TEXTURES : Array[Resource]
 @export var dead_unit_scene : Resource
+@export var general_ge : Resource
 
 @onready var pop_timer = $PopTimer
 
@@ -58,6 +59,9 @@ func show_frags():
 				
 				pop_timer.start(0.03)
 				await pop_timer.timeout
+		if unit_count["ALLY"] > 0:
+			get_node("UI/Base/Call/General_sprite").texture = general_ge
+			get_node("UI/Base/Call/General_sprite/SubTitle").text = "Some Casuality ?" + char(10) + " Goodenough ..."
 
 func timer_left():
 	var seconds_left = int(GAME.time_left)%60

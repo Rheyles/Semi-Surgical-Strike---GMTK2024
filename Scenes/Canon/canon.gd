@@ -122,7 +122,7 @@ func _process(delta):
 		if reload_timer >= reload_delay:
 			if(intro_text):
 				intro_text = false
-				error_text.text = "... ERROR"
+				error_text.text = "Pattern Error / UPLOAD"
 			ready_to_shoot = true
 			reload_text.visible = false
 			reload_timer = 0

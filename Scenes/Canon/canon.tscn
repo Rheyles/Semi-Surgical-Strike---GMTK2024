@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Scenes/Canon/TextVFX.gd" id="3_3bues"]
 [ext_resource type="AudioStream" uid="uid://cmststv1wsgrp" path="res://Ressources/Sounds/Canon/Megaton Far 002.wav" id="3_5m7bw"]
 [ext_resource type="FontFile" uid="uid://bxno7c1h1ee5j" path="res://Ressources/Fonts/Linebeam.ttf" id="3_7fwto"]
-[ext_resource type="AudioStream" uid="uid://dvkgim1xpsm0b" path="res://Ressources/Sounds/Placeholders/win.wav" id="4_2vr8l"]
+[ext_resource type="AudioStream" uid="uid://dvkgim1xpsm0b" path="res://Ressources/Sounds/Canon/win.wav" id="4_2vr8l"]
 
 [node name="Canon" type="Node2D"]
 script = ExtResource("1_djkmq")

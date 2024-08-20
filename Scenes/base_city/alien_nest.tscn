@@ -17,7 +17,6 @@ texture = ExtResource("2_w8l6b")
 
 [node name="Contour" parent="Art" index="2"]
 position = Vector2(5.74715, 4.76837e-07)
-scale = Vector2(1, 1)
 
 [node name="Glow" parent="Art" index="3"]
 position = Vector2(-7.62939e-06, 7.62939e-06)
@@ -27,7 +26,7 @@ scale = Vector2(1.16739, 1.03269)
 visible = true
 
 [node name="HealthComponent" parent="." index="4"]
-MAX_HEALTH = 25.0
+MAX_HEALTH = 35.0
 
 [node name="ProgressBar" parent="HealthComponent" index="0"]
 offset_top = -30.0

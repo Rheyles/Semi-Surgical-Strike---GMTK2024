@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=3 uid="uid://cklhctcdf3wlq"]
+[gd_scene load_steps=124 format=3 uid="uid://cklhctcdf3wlq"]
 
 [ext_resource type="Script" path="res://Scenes/main/main.gd" id="1_yh54l"]
 [ext_resource type="AudioStream" uid="uid://bocaybpf0f1r" path="res://Ressources/Sounds/mission_success.wav" id="2_knogv"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dheb2avfqvxhq" path="res://Ressources/Sprites/Battleground/grille.png" id="6_c6boa"]
 [ext_resource type="Texture2D" uid="uid://cusg415dvvmt2" path="res://Ressources/Sprites/light.png" id="7_jhsvy"]
 [ext_resource type="PackedScene" uid="uid://ouwypy3gld76" path="res://Scenes/base_city/base_city.tscn" id="9_dme8d"]
+[ext_resource type="AudioStream" uid="uid://b8sc1yyb4ycr1" path="res://Ressources/Sounds/Bip_timer.wav" id="10_l4nsg"]
 [ext_resource type="PackedScene" uid="uid://ta3blwa24sqb" path="res://Scenes/basic_components/factory_component.tscn" id="10_ncx7e"]
 [ext_resource type="AudioStream" uid="uid://b062bc3vp742l" path="res://Ressources/Sounds/1.wav" id="10_sinmf"]
 [ext_resource type="PackedScene" uid="uid://puw8u16e2oqa" path="res://Scenes/Canon/canon.tscn" id="11_f8tyy"]
@@ -53,6 +54,7 @@
 [ext_resource type="FontFile" uid="uid://bmfkrq8hlr2ml" path="res://Ressources/Fonts/Borgen.ttf" id="44_3ffgr"]
 [ext_resource type="Texture2D" uid="uid://chyyvffjlstur" path="res://Ressources/Sprites/Battleground/cannon_upgrade.png" id="45_l7s4n"]
 [ext_resource type="Script" path="res://Scenes/UI/CannonUpgrade.gd" id="46_4ge8k"]
+[ext_resource type="Texture2D" uid="uid://uwulc0fr5q4" path="res://Ressources/Sprites/UI/General Proud_solo.png" id="49_n452x"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ylkdq"]
 vertices = PackedVector2Array(282, -438, 489, -225, 512, 59, 426, 303, 176, 500, -176, 498, -447, 312, -533, -27, -439, -293, -244, -461, 15, -511)
@@ -1714,57 +1716,6 @@ _data = {
 base_font = ExtResource("44_3ffgr")
 spacing_glyph = -4
 
-[sub_resource type="Animation" id="Animation_ps0lr"]
-resource_name = "appear"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("UI/Control/Briefing:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("UI/Control/Briefing:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.694118)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("UI/Control/Briefing:size")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(991, 0), Vector2(991, 359)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("UI/Control/Briefing/Content:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.4, 0.7),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_0rcv5"]
 length = 0.001
 tracks/0/type = "value"
@@ -1815,12 +1766,230 @@ tracks/3/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UI/Control/Briefing/Codex/Call/General_sprite:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.495, 0.495)]
+}
+
+[sub_resource type="Animation" id="Animation_ps0lr"]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Control/Briefing:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/Control/Briefing:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.694118)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UI/Control/Briefing:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(991, 0), Vector2(991, 359)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI/Control/Briefing/Content:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UI/Control/Briefing/Codex/Call/General_sprite:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.495, 0), Vector2(0.495, 0.495)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pgi3g"]
 _data = {
 "RESET": SubResource("Animation_0rcv5"),
 "appear": SubResource("Animation_ps0lr")
 }
+
+[sub_resource type="FontVariation" id="FontVariation_bm5a8"]
+base_font = ExtResource("24_4jfve")
+
+[sub_resource type="FontVariation" id="FontVariation_7fb80"]
+base_font = ExtResource("24_4jfve")
+spacing_glyph = -2
+
+[sub_resource type="Shader" id="Shader_t8cxs"]
+code = "/* License CC BY-NC-SA 4.0 Deed */
+/* https://creativecommons.org/licenses/by-nc-sa/4.0/ */
+/* Fork of Ryk's VCR distortion shader */
+/* https://www.shadertoy.com/view/ldjGzV */
+
+shader_type canvas_item;
+
+uniform sampler2D screen_texture: hint_screen_texture, filter_linear_mipmap, repeat_disable;
+
+uniform float offset;
+
+group_uniforms Image;
+uniform float curvature: hint_range(0., 10., .01) = 2.;
+uniform float skip: hint_range(0., 1., .01) = 1.;
+uniform float image_flicker: hint_range(0., 1., .01) = 1.;
+
+group_uniforms Vignette;
+uniform float vignette_flicker_speed: hint_range(0., 2., .01) = 1.;
+uniform float vignette_strength: hint_range(0., 2., 0.01) = 1.;
+
+group_uniforms Scanlines;
+uniform float small_scanlines_speed: hint_range(0., 10., .01) = 1.;
+uniform float small_scanlines_proximity: hint_range(.01, 2., .01) = 1.;
+uniform float small_scanlines_opacity: hint_range(0.01, 5., .01) = 1.;
+uniform float scanlines_opacity: hint_range(0., 2., .01) = 1.;
+uniform float scanlines_speed: hint_range(0., 5., .01) = 1.;
+uniform float scanline_thickness: hint_range(0., .6, .01) = 0.5;
+uniform float scanlines_spacing: hint_range(0.3, 3., .01) = 1.;
+
+group_uniforms Noise;
+uniform sampler2D noise_texture: filter_linear_mipmap, repeat_enable;
+
+uniform float vhs_line_onoff = 0;
+uniform float disto_onoff = 1;
+
+float noise(vec2 p, vec2 uv)
+{
+	float s = texture(noise_texture,vec2(1.*TIME,2.*TIME)*8. + p*1.).x;
+	s *= s;
+	return s;
+}
+
+float onOff(float a, float b, float c)
+{
+	return step(c, sin(TIME + a*cos(TIME*b)));
+}
+
+float ramp(float y, float start, float end)
+{
+	float inside = step(start,y) - step(end,y);
+	float fact = (y-start)/(end-start)*inside;
+	return (1.-fact) * inside;
+}
+
+float stripes(vec2 uv)
+{
+	float noi = noise(uv*vec2(0.5,1.) + vec2(1.,3.), uv)*scanlines_opacity;
+	return ramp(mod(uv.y*4.*scanlines_spacing + TIME*scanlines_speed/(2.*scanlines_spacing)+sin(TIME*scanlines_speed + sin(TIME*scanlines_speed*0.63*scanlines_spacing)),1.),scanline_thickness,.6)*noi;
+}
+
+float lilstrips(vec2 uv)
+{
+	float noi =  (12./small_scanlines_opacity+mod(uv.y*30.*small_scanlines_proximity+TIME*small_scanlines_speed,1.))/13.*(small_scanlines_opacity);
+	return noi;
+}
+
+vec3 getVideo(vec2 uv)
+{
+	vec2 look = uv;
+	float window = 1./(1.+20.*(look.y-mod(TIME/4.,1.))*(look.y-mod(TIME/4.,1.)));
+	//look.x = (look.x + sin(look.y*50. + TIME)/120.*onOff(4.,4.,.3)*(1.+cos(TIME*120.))*window)*disto_onoff;
+	//float vShift = 0.4*onOff(2.,3.,.9)*(sin(TIME)*sin(TIME*20.)+(0.5 + 0.1*sin(TIME*200.)*cos(TIME)))*skip;
+	//look.y = mod(look.y + vShift, 1.);
+	vec3 video = texture(screen_texture,look).xyz;
+	video.r = texture(screen_texture,vec2(look.x + offset * 0.01, look.y)).r;
+	video.g = texture(screen_texture,look).g;
+	video.b = texture(screen_texture,vec2(look.x - offset * 0.01, look.y)).b;
+	return video;
+}
+
+vec2 screenDistort(vec2 uv)
+{
+	uv -= vec2(.5,.5);
+	uv = uv*1.2*(1./1.2+curvature*uv.x*uv.x*uv.y*uv.y);
+	uv += vec2(.5,.5);
+	return uv;
+}
+
+void fragment()
+{
+	vec2 uv = FRAGCOORD.xy / (1.0 / SCREEN_PIXEL_SIZE).xy;
+	uv = screenDistort(uv);
+	vec3 video = getVideo(uv);
+	float vigAmt = 3.+.3*sin(TIME*vignette_flicker_speed+1. + 5.*cos(TIME*5.*vignette_flicker_speed+1.));
+	vigAmt *= vignette_strength;
+	float vignette = (1.-vigAmt*(uv.y-.5)*(uv.y-.5))*(1.-vigAmt*(uv.x-.5)*(uv.x-.5));
+
+	video += stripes(uv)*vhs_line_onoff;
+	video += noise(uv*2., uv)/2.;
+	video *= vignette;
+	video *= lilstrips(uv);
+	
+	COLOR = vec4(video,1.0);
+}"
+
+[sub_resource type="Gradient" id="Gradient_yd3u0"]
+offsets = PackedFloat32Array(0.367647, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ujk05"]
+frequency = 0.7305
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_feloi"]
+color_ramp = SubResource("Gradient_yd3u0")
+noise = SubResource("FastNoiseLite_ujk05")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d7mxm"]
+shader = SubResource("Shader_t8cxs")
+shader_parameter/offset = 0.1
+shader_parameter/curvature = 0.0
+shader_parameter/skip = 1.0
+shader_parameter/image_flicker = 0.54
+shader_parameter/vignette_flicker_speed = 0.58
+shader_parameter/vignette_strength = 0.59
+shader_parameter/small_scanlines_speed = 1.0
+shader_parameter/small_scanlines_proximity = 1.0
+shader_parameter/small_scanlines_opacity = 0.86
+shader_parameter/scanlines_opacity = 0.67
+shader_parameter/scanlines_speed = 1.0
+shader_parameter/scanline_thickness = 0.5
+shader_parameter/scanlines_spacing = 1.0
+shader_parameter/vhs_line_onoff = 1.0
+shader_parameter/disto_onoff = 1.0
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_feloi")
 
 [sub_resource type="FontVariation" id="FontVariation_ihbvt"]
 base_font = ExtResource("33_lxd7y")
@@ -2088,7 +2257,7 @@ texture_scale = 2.69
 one_shot = true
 
 [node name="TimerBip" type="AudioStreamPlayer" parent="Map/Battlefield"]
-stream = ExtResource("10_sinmf")
+stream = ExtResource("10_l4nsg")
 volume_db = 10.0
 max_polyphony = 10
 bus = &"Sounds"
@@ -2248,7 +2417,6 @@ autoplay = "ship_idle"
 speed_scale = 0.2
 
 [node name="BorderTop" type="TextureRect" parent="UI/Control"]
-visible = false
 modulate = Color(1, 1, 1, 0.619608)
 light_mask = 3
 material = ExtResource("16_lib7b")
@@ -2262,7 +2430,6 @@ flip_v = true
 metadata/_edit_lock_ = true
 
 [node name="BorderBottom" type="TextureRect" parent="UI/Control"]
-visible = false
 modulate = Color(1, 1, 1, 0.619608)
 light_mask = 3
 material = ExtResource("16_lib7b")
@@ -2329,7 +2496,6 @@ text = "LON - 300"
 vertical_alignment = 1
 
 [node name="MapBorder" type="TextureRect" parent="UI/Control"]
-visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
@@ -2577,7 +2743,7 @@ theme_override_colors/font_outline_color = Color(0.960784, 0.462745, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_poo3n")
 theme_override_font_sizes/font_size = 32
 text = "Now playing:
-Big Laser
+Slaughter Rain
 by PercheSoleil"
 horizontal_alignment = 2
 
@@ -2680,7 +2846,6 @@ libraries = {
 }
 
 [node name="WinJauge" type="Control" parent="UI/Control"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2901,17 +3066,97 @@ libraries = {
 "": SubResource("AnimationLibrary_pgi3g")
 }
 
+[node name="Codex" type="NinePatchRect" parent="UI/Control/Briefing"]
+clip_contents = true
+layout_mode = 0
+offset_left = -355.0
+offset_top = -1.0
+offset_right = 15.565
+offset_bottom = 376.18
+scale = Vector2(1, 0.959999)
+texture = ExtResource("23_02ehi")
+region_rect = Rect2(5, 5, 370, 369)
+patch_margin_left = 78
+patch_margin_top = 95
+patch_margin_right = 88
+patch_margin_bottom = 80
+axis_stretch_horizontal = 2
+
+[node name="Title" type="Label" parent="UI/Control/Briefing/Codex"]
+layout_mode = 1
+offset_left = 26.0
+offset_top = 15.9999
+offset_right = 341.0
+offset_bottom = 56.9999
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_bm5a8")
+theme_override_font_sizes/font_size = 40
+text = "COMMANDER CALL_"
+
+[node name="Content" type="Control" parent="UI/Control/Briefing/Codex"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Call" type="Control" parent="UI/Control/Briefing/Codex"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -109.0
+offset_top = -403.125
+offset_right = -69.0
+offset_bottom = -363.125
+
+[node name="General_sprite" type="Sprite2D" parent="UI/Control/Briefing/Codex/Call"]
+position = Vector2(299, 608.334)
+scale = Vector2(0.495, 0.495)
+texture = ExtResource("49_n452x")
+
+[node name="SubTitle" type="Label" parent="UI/Control/Briefing/Codex/Call/General_sprite"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -603.227
+offset_top = -294.017
+offset_right = -59.0915
+offset_bottom = -152.002
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = SubResource("FontVariation_7fb80")
+theme_override_font_sizes/font_size = 65
+text = "4 mn should 
+be enough !"
+horizontal_alignment = 1
+max_lines_visible = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="MapDistortion" type="ColorRect" parent="UI/Control/Briefing/Codex/Call"]
+visible = false
+material = SubResource("ShaderMaterial_d7mxm")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 107.0
+offset_top = 378.0
+offset_right = 107.0
+offset_bottom = 378.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(9.121, 8.767)
+
 [node name="Title" type="Label" parent="UI/Control"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 1051.0
-offset_top = 990.0
-offset_right = 2473.0
-offset_bottom = 1374.0
+offset_left = -961.074
+offset_top = -90.0
+offset_right = 460.926
+offset_bottom = 294.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -3079,7 +3324,7 @@ libraries = {
 }
 
 [node name="BlackScreen" type="ColorRect" parent="UI/Control"]
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.2)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
