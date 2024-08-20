@@ -130,10 +130,10 @@ func _process(delta):
 		click_buffer = true
 		click_timer.start()
 	
-	if Input.is_action_just_pressed("Rotate_Up"):
+	if Input.is_action_just_pressed("Rotate_Up") or Input.is_action_just_pressed("ui_left"):
 		get_node("Node_Container").rotation_degrees += 60
 	
-	if Input.is_action_just_pressed("Rotate_Down"):
+	if Input.is_action_just_pressed("Rotate_Down") or Input.is_action_just_pressed("ui_right"):
 		get_node("Node_Container").rotation_degrees -= 60
 	
 	
