@@ -1,0 +1,17 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=3 format=3 uid="uid://baaro3un8sb7a"]
+
+[sub_resource type="Curve" id="Curve_dyssd"]
+max_value = 3.0
+_data = [Vector2(0, 0.120879), 0.0, 0.0, 0, 0, Vector2(0.109756, 2.40659), 0.438372, 0.438372, 0, 0, Vector2(0.231707, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_v01d2"]
+curve = SubResource("Curve_dyssd")
+
+[resource]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+scale_min = 0.1
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_v01d2")
+color = Color(1, 1, 0.576471, 1)

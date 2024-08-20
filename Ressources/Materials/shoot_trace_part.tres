@@ -1,0 +1,17 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=3 format=3 uid="uid://cio76q0vudlyb"]
+
+[sub_resource type="Curve" id="Curve_ktf0o"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0731707, 1), 0.0, 0.0, 0, 0, Vector2(0.219512, 1), -0.146124, -0.146124, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_lkqnp"]
+curve = SubResource("Curve_ktf0o")
+
+[resource]
+particle_flag_disable_z = true
+angle_max = 255.5
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.2
+color = Color(0.109804, 0.109804, 0.109804, 1)
+alpha_curve = SubResource("CurveTexture_lkqnp")

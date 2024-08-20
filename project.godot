@@ -21,6 +21,7 @@ config/icon="res://Ressources/Sprites/Site/project_icone.png"
 EVENTS="*res://Autoloads/Events.gd"
 DATA="*res://Autoloads/Data.gd"
 GAME="*res://Autoloads/Game.gd"
+PARTICLESCACHE="*res://Autoloads/ParticlesCache.gd"
 
 [display]
 

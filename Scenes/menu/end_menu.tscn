@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dme3yk1qxnfp8"]
+[gd_scene load_steps=35 format=3 uid="uid://dme3yk1qxnfp8"]
 
 [ext_resource type="PackedScene" uid="uid://c3viq5fif4hiv" path="res://Scenes/basic_components/shake_component.tscn" id="1_1wdvd"]
 [ext_resource type="Script" path="res://Scenes/menu/end_menu.gd" id="1_8rfb0"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://byo108b83wae" path="res://Ressources/Sprites/Battleground/window.png" id="6_itldd"]
 [ext_resource type="Texture2D" uid="uid://dcq6k2uwxnm4r" path="res://Ressources/Sprites/Units/demon.png" id="6_kklt0"]
 [ext_resource type="PackedScene" uid="uid://j2m8w3fy6432" path="res://Scenes/menu/dead_unit/dead_unit.tscn" id="8_dbase"]
+[ext_resource type="Texture2D" uid="uid://d4ebh3ihgtdqy" path="res://Ressources/Sprites/UI/General GoodEnough_solo.png" id="14_kh5us"]
 
 [sub_resource type="Animation" id="Animation_hq6wb"]
 length = 0.001
@@ -230,6 +231,42 @@ tracks/4/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Call:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Codex:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Call/General_sprite:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.585, 0.585)]
+}
 
 [sub_resource type="Animation" id="Animation_7ltui"]
 resource_name = "appear"
@@ -294,6 +331,42 @@ tracks/4/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Call:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.9, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Codex:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Call/General_sprite:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.9, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.585, 0.1), Vector2(0.585, 0.585)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jrvry"]
 _data = {
@@ -342,6 +415,142 @@ _data = {
 "RESET": SubResource("Animation_j3ycn"),
 "idle": SubResource("Animation_ttrf8")
 }
+
+[sub_resource type="Shader" id="Shader_t8cxs"]
+code = "/* License CC BY-NC-SA 4.0 Deed */
+/* https://creativecommons.org/licenses/by-nc-sa/4.0/ */
+/* Fork of Ryk's VCR distortion shader */
+/* https://www.shadertoy.com/view/ldjGzV */
+
+shader_type canvas_item;
+
+uniform sampler2D screen_texture: hint_screen_texture, filter_linear_mipmap, repeat_disable;
+
+uniform float offset;
+
+group_uniforms Image;
+uniform float curvature: hint_range(0., 10., .01) = 2.;
+uniform float skip: hint_range(0., 1., .01) = 1.;
+uniform float image_flicker: hint_range(0., 1., .01) = 1.;
+
+group_uniforms Vignette;
+uniform float vignette_flicker_speed: hint_range(0., 2., .01) = 1.;
+uniform float vignette_strength: hint_range(0., 2., 0.01) = 1.;
+
+group_uniforms Scanlines;
+uniform float small_scanlines_speed: hint_range(0., 10., .01) = 1.;
+uniform float small_scanlines_proximity: hint_range(.01, 2., .01) = 1.;
+uniform float small_scanlines_opacity: hint_range(0.01, 5., .01) = 1.;
+uniform float scanlines_opacity: hint_range(0., 2., .01) = 1.;
+uniform float scanlines_speed: hint_range(0., 5., .01) = 1.;
+uniform float scanline_thickness: hint_range(0., .6, .01) = 0.5;
+uniform float scanlines_spacing: hint_range(0.3, 3., .01) = 1.;
+
+group_uniforms Noise;
+uniform sampler2D noise_texture: filter_linear_mipmap, repeat_enable;
+
+uniform float vhs_line_onoff = 0;
+uniform float disto_onoff = 1;
+
+float noise(vec2 p, vec2 uv)
+{
+	float s = texture(noise_texture,vec2(1.*TIME,2.*TIME)*8. + p*1.).x;
+	s *= s;
+	return s;
+}
+
+float onOff(float a, float b, float c)
+{
+	return step(c, sin(TIME + a*cos(TIME*b)));
+}
+
+float ramp(float y, float start, float end)
+{
+	float inside = step(start,y) - step(end,y);
+	float fact = (y-start)/(end-start)*inside;
+	return (1.-fact) * inside;
+}
+
+float stripes(vec2 uv)
+{
+	float noi = noise(uv*vec2(0.5,1.) + vec2(1.,3.), uv)*scanlines_opacity;
+	return ramp(mod(uv.y*4.*scanlines_spacing + TIME*scanlines_speed/(2.*scanlines_spacing)+sin(TIME*scanlines_speed + sin(TIME*scanlines_speed*0.63*scanlines_spacing)),1.),scanline_thickness,.6)*noi;
+}
+
+float lilstrips(vec2 uv)
+{
+	float noi =  (12./small_scanlines_opacity+mod(uv.y*30.*small_scanlines_proximity+TIME*small_scanlines_speed,1.))/13.*(small_scanlines_opacity);
+	return noi;
+}
+
+vec3 getVideo(vec2 uv)
+{
+	vec2 look = uv;
+	float window = 1./(1.+20.*(look.y-mod(TIME/4.,1.))*(look.y-mod(TIME/4.,1.)));
+	//look.x = (look.x + sin(look.y*50. + TIME)/120.*onOff(4.,4.,.3)*(1.+cos(TIME*120.))*window)*disto_onoff;
+	//float vShift = 0.4*onOff(2.,3.,.9)*(sin(TIME)*sin(TIME*20.)+(0.5 + 0.1*sin(TIME*200.)*cos(TIME)))*skip;
+	//look.y = mod(look.y + vShift, 1.);
+	vec3 video = texture(screen_texture,look).xyz;
+	video.r = texture(screen_texture,vec2(look.x + offset * 0.01, look.y)).r;
+	video.g = texture(screen_texture,look).g;
+	video.b = texture(screen_texture,vec2(look.x - offset * 0.01, look.y)).b;
+	return video;
+}
+
+vec2 screenDistort(vec2 uv)
+{
+	uv -= vec2(.5,.5);
+	uv = uv*1.2*(1./1.2+curvature*uv.x*uv.x*uv.y*uv.y);
+	uv += vec2(.5,.5);
+	return uv;
+}
+
+void fragment()
+{
+	vec2 uv = FRAGCOORD.xy / (1.0 / SCREEN_PIXEL_SIZE).xy;
+	uv = screenDistort(uv);
+	vec3 video = getVideo(uv);
+	float vigAmt = 3.+.3*sin(TIME*vignette_flicker_speed+1. + 5.*cos(TIME*5.*vignette_flicker_speed+1.));
+	vigAmt *= vignette_strength;
+	float vignette = (1.-vigAmt*(uv.y-.5)*(uv.y-.5))*(1.-vigAmt*(uv.x-.5)*(uv.x-.5));
+
+	video += stripes(uv)*vhs_line_onoff;
+	video += noise(uv*2., uv)/2.;
+	video *= vignette;
+	video *= lilstrips(uv);
+	
+	COLOR = vec4(video,1.0);
+}"
+
+[sub_resource type="Gradient" id="Gradient_l6trg"]
+offsets = PackedFloat32Array(0.367647, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ighd4"]
+frequency = 0.7305
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_feloi"]
+color_ramp = SubResource("Gradient_l6trg")
+noise = SubResource("FastNoiseLite_ighd4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_63pxh"]
+shader = SubResource("Shader_t8cxs")
+shader_parameter/offset = 0.1
+shader_parameter/curvature = 0.0
+shader_parameter/skip = 1.0
+shader_parameter/image_flicker = 0.54
+shader_parameter/vignette_flicker_speed = 0.58
+shader_parameter/vignette_strength = 0.59
+shader_parameter/small_scanlines_speed = 1.0
+shader_parameter/small_scanlines_proximity = 1.0
+shader_parameter/small_scanlines_opacity = 0.86
+shader_parameter/scanlines_opacity = 0.67
+shader_parameter/scanlines_speed = 1.0
+shader_parameter/scanline_thickness = 0.5
+shader_parameter/scanlines_spacing = 1.0
+shader_parameter/vhs_line_onoff = 1.0
+shader_parameter/disto_onoff = 1.0
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_feloi")
 
 [node name="EndMenu" type="Node2D"]
 script = ExtResource("1_8rfb0")
@@ -418,9 +627,9 @@ horizontal_alignment = 1
 [node name="Memo" type="NinePatchRect" parent="UI/Base"]
 modulate = Color(1, 1, 1, 0.694118)
 layout_mode = 0
-offset_left = 278.0
+offset_left = 114.0
 offset_top = 317.0
-offset_right = 1636.0
+offset_right = 1472.0
 offset_bottom = 902.0
 texture = ExtResource("6_itldd")
 region_rect = Rect2(5, 5, 370, 369)
@@ -504,10 +713,10 @@ text = "0 !"
 [node name="Timer" type="NinePatchRect" parent="UI/Base/Memo"]
 clip_contents = true
 layout_mode = 0
-offset_left = 1056.0
-offset_top = -56.0
-offset_right = 1463.0
-offset_bottom = 133.0
+offset_left = 1336.0
+offset_top = 2.0
+offset_right = 1743.0
+offset_bottom = 191.0
 scale = Vector2(1, 0.959999)
 texture = ExtResource("6_itldd")
 region_rect = Rect2(5, 5, 370, 369)
@@ -526,7 +735,7 @@ offset_bottom = 57.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_y6pqo")
 theme_override_font_sizes/font_size = 40
-text = "TIME_LEFT_"
+text = "TIME LEFT_"
 
 [node name="Content" type="Control" parent="UI/Base/Memo/Timer"]
 anchors_preset = 0
@@ -552,6 +761,38 @@ horizontal_alignment = 1
 libraries = {
 "": SubResource("AnimationLibrary_jrvry")
 }
+
+[node name="Codex" type="NinePatchRect" parent="UI/Base/Memo"]
+modulate = Color(1, 1, 1, 0)
+clip_contents = true
+offset_left = 1338.0
+offset_top = 161.0
+offset_right = 1745.0
+offset_bottom = 601.895
+scale = Vector2(1, 0.959999)
+texture = ExtResource("6_itldd")
+region_rect = Rect2(5, 5, 370, 369)
+patch_margin_left = 78
+patch_margin_top = 95
+patch_margin_right = 88
+patch_margin_bottom = 80
+axis_stretch_horizontal = 2
+
+[node name="Title" type="Label" parent="UI/Base/Memo/Codex"]
+layout_mode = 1
+offset_left = 26.0
+offset_top = 16.0
+offset_right = 205.0
+offset_bottom = 57.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_y6pqo")
+theme_override_font_sizes/font_size = 40
+text = "COMMANDER CALL_"
+
+[node name="Content" type="Control" parent="UI/Base/Memo/Codex"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="PresstoStart" type="Label" parent="UI/Base"]
 layout_mode = 1
@@ -611,6 +852,50 @@ size_flags_horizontal = 0
 size_flags_vertical = 2
 theme_override_constants/h_separation = 25
 theme_override_constants/v_separation = 30
+
+[node name="Call" type="Control" parent="UI/Base"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="General_sprite" type="Sprite2D" parent="UI/Base/Call"]
+position = Vector2(1656, 742)
+scale = Vector2(0.585, 0.585)
+texture = ExtResource("14_kh5us")
+
+[node name="SubTitle" type="Label" parent="UI/Base/Call/General_sprite"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -603.227
+offset_top = -353.846
+offset_right = -59.0915
+offset_bottom = -211.831
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = SubResource("FontVariation_ly8fo")
+theme_override_font_sizes/font_size = 65
+text = "Some casuality ?
+Goodenough ...."
+horizontal_alignment = 1
+max_lines_visible = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="MapDistortion" type="ColorRect" parent="UI/Base/Call"]
+material = SubResource("ShaderMaterial_63pxh")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1473.17
+offset_top = 529.675
+offset_right = 1473.17
+offset_bottom = 529.675
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(9.146, 8.737)
 
 [node name="ColorRect" type="ColorRect" parent="UI"]
 anchors_preset = 15
