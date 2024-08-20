@@ -13,13 +13,17 @@ func _ready():
 	
 func _process(_delta):
 	if Input.is_action_just_pressed("Click") and state=="MainMenu" and not $AnimationPlayer.is_playing():
-		state="InGame"
-		GAME.init_frag_dicts()
+		state="Brief"
 		$StartSound.play()
-		get_tree().paused = false
 		$StartSound.stream = windows_sound
 		$AnimationPlayer.play("deploy_ui")
 		await $AnimationPlayer.animation_finished
+		$AnimationPlayer.play("open_windows")
+	
+	if Input.is_action_just_pressed("Click") and state=="Brief" and not $AnimationPlayer.is_playing():
+		state="InGame"
+		GAME.init_frag_dicts()
+		get_tree().paused = false
 		$MusicPlayer.stream = main_theme
 		$MusicPlayer.play()
-		$AnimationPlayer.play("open_windows")
+		$Briefing/AnimationPlayer.play_backwards("appear")

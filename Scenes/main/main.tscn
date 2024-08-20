@@ -1,4 +1,4 @@
-[gd_scene load_steps=108 format=3 uid="uid://cklhctcdf3wlq"]
+[gd_scene load_steps=115 format=3 uid="uid://cklhctcdf3wlq"]
 
 [ext_resource type="Script" path="res://Scenes/main/main.gd" id="1_yh54l"]
 [ext_resource type="AudioStream" uid="uid://bocaybpf0f1r" path="res://Ressources/Sounds/mission_success.wav" id="2_knogv"]
@@ -48,7 +48,9 @@
 [ext_resource type="AudioStream" uid="uid://3nho6m56acmh" path="res://Ressources/Musics/game_jam_5.wav" id="34_se7s8"]
 [ext_resource type="Script" path="res://Scenes/UI/ComboCounter.gd" id="36_oc3f0"]
 [ext_resource type="Texture2D" uid="uid://cdhgogvclpeox" path="res://Ressources/Sprites/Battleground/combo.png" id="37_l51f8"]
+[ext_resource type="Texture2D" uid="uid://cpi5cossrdxuw" path="res://Ressources/Sprites/UI/arrow.png" id="40_w8uit"]
 [ext_resource type="Texture2D" uid="uid://bcdndmdpw78cc" path="res://Ressources/Sprites/space ship.png" id="43_8t6g3"]
+[ext_resource type="FontFile" uid="uid://bmfkrq8hlr2ml" path="res://Ressources/Fonts/Borgen.ttf" id="44_3ffgr"]
 [ext_resource type="Texture2D" uid="uid://chyyvffjlstur" path="res://Ressources/Sprites/Battleground/cannon_upgrade.png" id="45_l7s4n"]
 [ext_resource type="Script" path="res://Scenes/UI/CannonUpgrade.gd" id="46_4ge8k"]
 
@@ -332,6 +334,18 @@ tracks/11/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Briefing:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_evxbf"]
@@ -676,6 +690,18 @@ tracks/22/keys = {
 "update": 0,
 "values": [Vector2(1, 1), Vector2(0.56, 0.56)]
 }
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("Briefing:visible")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_0m35l"]
 resource_name = "open_windows"
@@ -700,7 +726,7 @@ tracks/1/path = NodePath("Memo/AnimationPlayer")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.6),
+"times": PackedFloat32Array(0.5),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": ["appear", -1, 1.0, false],
@@ -728,6 +754,20 @@ tracks/3/path = NodePath("Timer/AnimationPlayer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["appear", -1, 1.0, false],
+"method": &"play"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Briefing/AnimationPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(1),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -773,7 +813,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 1.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-200, 600), Vector2(91, 600)]
+"values": [Vector2(-200, 450), Vector2(91, 450)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -944,6 +984,18 @@ tracks/16/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(2272, 302), Vector2(1531, 302)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Briefing:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cfm4p"]
@@ -1658,8 +1710,124 @@ _data = {
 "idle": SubResource("Animation_sb3gn")
 }
 
+[sub_resource type="FontVariation" id="FontVariation_r8kae"]
+base_font = ExtResource("44_3ffgr")
+spacing_glyph = -4
+
+[sub_resource type="Animation" id="Animation_ps0lr"]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Control/Briefing:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/Control/Briefing:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.694118)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UI/Control/Briefing:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(991, 0), Vector2(991, 359)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI/Control/Briefing/Content:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0rcv5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Control/Briefing:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/Control/Briefing:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.694118)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UI/Control/Briefing:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(991, 359)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI/Control/Briefing/Content:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pgi3g"]
+_data = {
+"RESET": SubResource("Animation_0rcv5"),
+"appear": SubResource("Animation_ps0lr")
+}
+
 [sub_resource type="FontVariation" id="FontVariation_ihbvt"]
 base_font = ExtResource("33_lxd7y")
+
+[sub_resource type="FontVariation" id="FontVariation_778qy"]
+base_font = ExtResource("44_3ffgr")
+spacing_glyph = -3
 
 [sub_resource type="FontVariation" id="FontVariation_ypeix"]
 base_font = ExtResource("24_4jfve")
@@ -2262,11 +2430,37 @@ autowrap_mode = 2
 
 [node name="TextureRect2" type="TextureRect" parent="UI/Control/Memo/Content"]
 layout_mode = 0
-offset_left = 171.0
-offset_top = 379.0
-offset_right = 249.0
-offset_bottom = 476.0
+offset_left = 56.0
+offset_top = 382.0
+offset_right = 134.0
+offset_bottom = 479.0
 texture = ExtResource("26_m0m3n")
+expand_mode = 1
+
+[node name="Command3" type="Label" parent="UI/Control/Memo/Content"]
+layout_mode = 1
+offset_left = 12.0
+offset_top = 384.0
+offset_right = 370.0
+offset_bottom = 469.0
+theme_override_colors/font_color = Color(0.960784, 0.462745, 0, 1)
+theme_override_colors/font_outline_color = Color(0.960784, 0.462745, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_constants/line_spacing = -9
+theme_override_fonts/font = SubResource("FontVariation_poo3n")
+theme_override_font_sizes/font_size = 40
+text = "or"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="UI/Control/Memo/Content"]
+layout_mode = 0
+offset_left = 241.0
+offset_top = 382.0
+offset_right = 357.0
+offset_bottom = 479.0
+texture = ExtResource("40_w8uit")
 expand_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Control/Memo"]
@@ -2523,6 +2717,7 @@ offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(960, 1080)
+metadata/_edit_lock_ = true
 
 [node name="JaugeFill" type="TextureRect" parent="UI/Control/WinJauge/JaugeMask"]
 layout_mode = 1
@@ -2579,6 +2774,133 @@ libraries = {
 "": SubResource("AnimationLibrary_18rxl")
 }
 
+[node name="Label2" type="Label" parent="UI/Control/WinJauge"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -112.5
+offset_top = -180.0
+offset_right = 91.5
+offset_bottom = -124.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.486275)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = SubResource("FontVariation_r8kae")
+theme_override_font_sizes/font_size = 40
+text = "Goal"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="UI/Control/WinJauge"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -112.5
+offset_top = -103.0
+offset_right = 91.5
+offset_bottom = -47.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.486275)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = SubResource("FontVariation_r8kae")
+theme_override_font_sizes/font_size = 40
+text = "bases"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="UI/Control/WinJauge"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -106.0
+offset_top = -135.0
+offset_right = 77.0
+offset_bottom = -79.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.486275)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = SubResource("FontVariation_r8kae")
+theme_override_font_sizes/font_size = 55
+text = "10/10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Briefing" type="NinePatchRect" parent="UI/Control"]
+modulate = Color(1, 1, 1, 0.694118)
+layout_mode = 2
+offset_left = 464.0
+offset_top = 371.0
+offset_right = 1455.0
+offset_bottom = 730.0
+texture = ExtResource("23_02ehi")
+region_rect = Rect2(5, 5, 370, 369)
+patch_margin_left = 78
+patch_margin_top = 95
+patch_margin_right = 88
+patch_margin_bottom = 80
+axis_stretch_horizontal = 2
+
+[node name="Title" type="Label" parent="UI/Control/Briefing"]
+layout_mode = 1
+offset_left = 26.0
+offset_top = 16.0
+offset_right = 205.0
+offset_bottom = 57.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_poo3n")
+theme_override_font_sizes/font_size = 40
+text = "MISSION BRIEFING_"
+
+[node name="Content" type="Control" parent="UI/Control/Briefing"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Command1" type="Label" parent="UI/Control/Briefing/Content"]
+layout_mode = 1
+offset_left = 56.0
+offset_top = 81.0
+offset_right = 963.0
+offset_bottom = 342.0
+theme_override_colors/font_color = Color(0.960784, 0.462745, 0, 1)
+theme_override_colors/font_outline_color = Color(0.960784, 0.462745, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = SubResource("FontVariation_poo3n")
+theme_override_font_sizes/font_size = 40
+text = "Secure 10 allied bases on the battlefield.
+
+Your first shot sets the first base.
+
+Good luck."
+autowrap_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Control/Briefing"]
+root_node = NodePath("../../../..")
+libraries = {
+"": SubResource("AnimationLibrary_pgi3g")
+}
+
 [node name="Title" type="Label" parent="UI/Control"]
 layout_mode = 1
 anchors_preset = 8
@@ -2587,9 +2909,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 1051.0
-offset_top = 1140.0
+offset_top = 990.0
 offset_right = 2473.0
-offset_bottom = 1524.0
+offset_bottom = 1374.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -2600,6 +2922,23 @@ theme_override_fonts/font = SubResource("FontVariation_ihbvt")
 theme_override_font_sizes/font_size = 160
 text = "Collateral :
   unavoidable_"
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="UI/Control/Title"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 57.5
+offset_top = -63.0
+offset_right = 204.5
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = SubResource("FontVariation_778qy")
+theme_override_font_sizes/font_size = 40
+text = "Game made in 4 days for GMTK Game Jam 2024 by Sakd'Os, PercheSoleil and Strange Journey"
 
 [node name="PresstoStart" type="Label" parent="UI/Control"]
 layout_mode = 1
@@ -2617,6 +2956,7 @@ grow_vertical = 2
 theme_override_fonts/font = SubResource("FontVariation_ypeix")
 theme_override_font_sizes/font_size = 65
 text = "Click to start the mission..."
+metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Control/PresstoStart"]
 libraries = {
@@ -2702,13 +3042,14 @@ libraries = {
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = -2.0
-offset_top = -12.0
-offset_right = -2.0
-offset_bottom = 1068.0
+offset_left = 80.0
+offset_top = -8.0
+offset_right = 80.0
+offset_bottom = 1072.0
 grow_horizontal = 2
 texture = ExtResource("45_l7s4n")
 script = ExtResource("46_4ge8k")
+metadata/_edit_lock_ = true
 
 [node name="CannonUpgrade" type="Label" parent="UI/Control/CannonUpgrade"]
 layout_mode = 1

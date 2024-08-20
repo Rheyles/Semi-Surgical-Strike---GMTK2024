@@ -1,6 +1,7 @@
 extends Control
 
 @onready var jauge_mask = $JaugeMask
+@onready var goal_label = $Label
 
 var MAX_SIZE_Y = 389.0
 var MIN_SIZE_Y = 53.0
@@ -28,6 +29,8 @@ func update_display():
 	
 	jauge_mask.set_deferred("size",new_size)
 	jauge_mask.set_deferred("position",new_pos)
+	
+	goal_label.text = str(GAME.freedom_meter)+"/10"
 
 ### SIGNAL RESPONSES ###
 

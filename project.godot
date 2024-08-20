@@ -11,6 +11,17 @@ config_version=5
 [application]
 
 config/name="Collateral: Unavoidable"
+config/description="Sometimes, you neither have the right tools nor the time, but you have a job to do. 4 min before your shift ends, you're issued a tactical-surgical strike mission to support your bots on an enemy planet... But you only have the Uber-Cannon-5000 ready... 
+
+   Your weapon is too big, 
+   you are too far, 
+   you have 4 min. 
+
+Did I mention your weapons are malfunctioning and inaccurate? 
+Meh, it will be OK  ¯¯\\_(ツ)_/¯ 
+
+Help your team secure 10 bases on the battlefield before you have to leave (pick up your kids after space school)  to win!"
+config/version="1.0"
 run/main_scene="res://Scenes/main/main.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 boot_splash/image="res://Splashscreen.png"

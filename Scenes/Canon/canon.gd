@@ -3,6 +3,7 @@ extends Node2D
 @onready var click_timer = $ClickTimer
 @onready var error_text=$"Canon UI/Label"
 @onready var caution_text=$"Canon UI/Label2"
+@onready var reload_text=$"Canon UI/Label3"
 @onready var sound_player=$AudioStreamPlayer
 @onready var sound_player2=$AudioStreamPlayer2
 @onready var sound_player3=$AudioStreamPlayer3
@@ -112,6 +113,8 @@ func _ready():
 		canonNode_array.append(node)
 	error_text._start()
 	caution_text._start()
+	reload_text.visible = true
+	reload_timer = 0.0
 
 func _process(delta):
 	if ready_to_shoot == false:
@@ -121,6 +124,7 @@ func _process(delta):
 				intro_text = false
 				error_text.text = "... ERROR"
 			ready_to_shoot = true
+			reload_text.visible = false
 			reload_timer = 0
 			sound_play(canon_reload_sound)
 			for hex in canonNode_array.size():
@@ -130,10 +134,10 @@ func _process(delta):
 		click_buffer = true
 		click_timer.start()
 	
-	if Input.is_action_just_pressed("Rotate_Up"):
+	if Input.is_action_just_pressed("Rotate_Up") or Input.is_action_just_pressed("ui_left"):
 		get_node("Node_Container").rotation_degrees += 60
 	
-	if Input.is_action_just_pressed("Rotate_Down"):
+	if Input.is_action_just_pressed("Rotate_Down") or Input.is_action_just_pressed("ui_right"):
 		get_node("Node_Container").rotation_degrees -= 60
 	
 	
@@ -177,6 +181,7 @@ func _CanonActivation():
 	shader_disto_toggle(true)
 	error_text._start(2,6,false)
 	caution_text._start(2,6,false)
+	reload_text.visible = true
 
 # End state
 	follow_mouse = true;
