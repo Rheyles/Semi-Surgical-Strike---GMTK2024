@@ -19,11 +19,11 @@ func _process(_delta):
 	GAME.time_left = game_timer.time_left
 	if GAME.time_left == 0:
 		$AnimationPlayer.stop()
-	elif GAME.time_left <= 5 :
-		$AnimationPlayer.play("bip_5")
-	elif GAME.time_left <= 10 :
-		$AnimationPlayer.play("bip_10")
-	elif GAME.time_left <= 20 :
+	elif GAME.time_left <= 6 :
+		$AnimationPlayer.play("countdown")
+	elif GAME.time_left <= 58 :
+		$AnimationPlayer.pause()
+	elif GAME.time_left <= 60 :
 		$AnimationPlayer.play("bip_60")
 
 ### SIGNAL RESPONSES

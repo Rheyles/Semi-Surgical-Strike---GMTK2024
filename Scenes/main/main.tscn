@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=3 uid="uid://cklhctcdf3wlq"]
+[gd_scene load_steps=110 format=3 uid="uid://cklhctcdf3wlq"]
 
 [ext_resource type="Script" path="res://Scenes/main/main.gd" id="1_yh54l"]
 [ext_resource type="AudioStream" uid="uid://bocaybpf0f1r" path="res://Ressources/Sounds/mission_success.wav" id="2_knogv"]
@@ -9,14 +9,18 @@
 [ext_resource type="Shader" path="res://Scenes/battlefield/map_shader.gdshader" id="5_bqpke"]
 [ext_resource type="Texture2D" uid="uid://dheb2avfqvxhq" path="res://Ressources/Sprites/Battleground/grille.png" id="6_c6boa"]
 [ext_resource type="Texture2D" uid="uid://cusg415dvvmt2" path="res://Ressources/Sprites/light.png" id="7_jhsvy"]
-[ext_resource type="AudioStream" uid="uid://b8sc1yyb4ycr1" path="res://Ressources/Sounds/Bip_timer.wav" id="8_s5vkf"]
 [ext_resource type="PackedScene" uid="uid://ouwypy3gld76" path="res://Scenes/base_city/base_city.tscn" id="9_dme8d"]
 [ext_resource type="PackedScene" uid="uid://ta3blwa24sqb" path="res://Scenes/basic_components/factory_component.tscn" id="10_ncx7e"]
+[ext_resource type="AudioStream" uid="uid://b062bc3vp742l" path="res://Ressources/Sounds/1.wav" id="10_sinmf"]
 [ext_resource type="PackedScene" uid="uid://puw8u16e2oqa" path="res://Scenes/Canon/canon.tscn" id="11_f8tyy"]
+[ext_resource type="AudioStream" uid="uid://dqj4gsgrhowwl" path="res://Ressources/Sounds/5.wav" id="11_fc1ba"]
 [ext_resource type="Script" path="res://Scenes/UI/MainUI.gd" id="12_aiuk3"]
+[ext_resource type="AudioStream" uid="uid://ctu8xfrgp3ykg" path="res://Ressources/Sounds/4.wav" id="12_qn2fn"]
 [ext_resource type="PackedScene" uid="uid://caftv3gvl4tty" path="res://Scenes/base_city/alien_nest.tscn" id="12_rcndg"]
+[ext_resource type="AudioStream" uid="uid://dpx3lfkv85hm2" path="res://Ressources/Sounds/3.wav" id="13_4ve1j"]
 [ext_resource type="AudioStream" uid="uid://bo2nhvm1fpr4x" path="res://Ressources/Musics/Microsoft Windows XP Startup Sound.mp3" id="13_w2ywu"]
 [ext_resource type="PackedScene" uid="uid://bdx1a04odiu7n" path="res://Scenes/basic_components/conditionnal_factory.tscn" id="14_1xu8p"]
+[ext_resource type="AudioStream" uid="uid://ct21xhi5yiqhr" path="res://Ressources/Sounds/2.wav" id="14_2rgl4"]
 [ext_resource type="Shader" path="res://Scenes/battlefield/distortion.gdshader" id="14_3i60f"]
 [ext_resource type="AudioStream" uid="uid://ctecf1frla0oo" path="res://Ressources/Sounds/intro_noise.mp3" id="14_jnpvx"]
 [ext_resource type="Texture2D" uid="uid://8k2dqrh2tglq" path="res://Ressources/Sprites/Battleground/background.png" id="15_ee22k"]
@@ -117,6 +121,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_7101w"]
 resource_name = "bip_60"
+length = 0.16
 loop_mode = 1
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -133,11 +138,54 @@ tracks/0/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_ae5mv"]
+resource_name = "countdown"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TimerBip:stream")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3.2, 4.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("11_fc1ba"), ExtResource("12_qn2fn"), ExtResource("13_4ve1j"), ExtResource("14_2rgl4"), ExtResource("10_sinmf")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TimerBip")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3.2, 4.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_splro"]
 _data = {
 "bip_10": SubResource("Animation_hst7b"),
 "bip_5": SubResource("Animation_stl0j"),
-"bip_60": SubResource("Animation_7101w")
+"bip_60": SubResource("Animation_7101w"),
+"countdown": SubResource("Animation_ae5mv")
 }
 
 [sub_resource type="Animation" id="Animation_tomcx"]
@@ -1877,7 +1925,7 @@ texture_scale = 2.69
 one_shot = true
 
 [node name="TimerBip" type="AudioStreamPlayer" parent="Map/Battlefield"]
-stream = ExtResource("8_s5vkf")
+stream = ExtResource("10_sinmf")
 volume_db = 10.0
 max_polyphony = 10
 bus = &"Sounds"
