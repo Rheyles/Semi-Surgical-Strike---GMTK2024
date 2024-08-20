@@ -640,7 +640,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 1.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-200, 459), Vector2(91, 459)]
+"values": [Vector2(-200, 600), Vector2(91, 600)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -1576,6 +1576,33 @@ _data = {
 [sub_resource type="FontVariation" id="FontVariation_rvuo2"]
 base_font = ExtResource("33_lxd7y")
 
+[sub_resource type="Animation" id="Animation_qxtg5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_cgg2k"]
 resource_name = "upgrade"
 length = 3.0
@@ -1602,33 +1629,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_qxtg5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("..:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("..:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x005x"]
@@ -1781,6 +1781,7 @@ stream = ExtResource("14_jnpvx")
 bus = &"Music"
 
 [node name="MapDistortion" type="ColorRect" parent="UI/Control"]
+visible = false
 material = SubResource("ShaderMaterial_6dn6t")
 layout_mode = 1
 anchors_preset = 15
@@ -1802,6 +1803,7 @@ texture = ExtResource("15_ee22k")
 metadata/_edit_lock_ = true
 
 [node name="BorderTop" type="TextureRect" parent="UI/Control"]
+visible = false
 modulate = Color(1, 1, 1, 0.619608)
 light_mask = 3
 material = ExtResource("16_lib7b")
@@ -1815,6 +1817,7 @@ flip_v = true
 metadata/_edit_lock_ = true
 
 [node name="BorderBottom" type="TextureRect" parent="UI/Control"]
+visible = false
 modulate = Color(1, 1, 1, 0.619608)
 light_mask = 3
 material = ExtResource("16_lib7b")
@@ -1881,6 +1884,7 @@ text = "LON - 300"
 vertical_alignment = 1
 
 [node name="MapBorder" type="TextureRect" parent="UI/Control"]
+visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
@@ -2205,6 +2209,7 @@ libraries = {
 }
 
 [node name="WinJauge" type="Control" parent="UI/Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2305,10 +2310,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -869.0
-offset_top = -1.0
-offset_right = 553.0
-offset_bottom = 383.0
+offset_left = -1160.0
+offset_top = -81.0
+offset_right = 262.0
+offset_bottom = 303.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -2457,7 +2462,6 @@ libraries = {
 }
 
 [node name="BlackScreen" type="ColorRect" parent="UI/Control"]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
