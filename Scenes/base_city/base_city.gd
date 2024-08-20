@@ -19,8 +19,12 @@ func _ready():
 	modulate = DATA.team_color[TEAM]
 	$Art.visible = true
 	$Cross.visible = false
-	$Art/AnimationPlayer.play("idle")
+	if TEAM == DATA.TEAMS.ALLY:
+		$Art/AnimationPlayer.play("Spawn")
+		await $Art/AnimationPlayer.animation_finished
+		$Art/AnimationPlayer.play("idle")
 	$NavigationObstacle2D.radius = $CollisionShape2D.shape.radius
+
 
 ### Freedom win point on Allied base spawn
 	if TEAM == DATA.TEAMS.ALLY:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dme3yk1qxnfp8"]
+[gd_scene load_steps=36 format=3 uid="uid://dme3yk1qxnfp8"]
 
 [ext_resource type="PackedScene" uid="uid://c3viq5fif4hiv" path="res://Scenes/basic_components/shake_component.tscn" id="1_1wdvd"]
 [ext_resource type="Script" path="res://Scenes/menu/end_menu.gd" id="1_8rfb0"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dcq6k2uwxnm4r" path="res://Ressources/Sprites/Units/demon.png" id="6_kklt0"]
 [ext_resource type="PackedScene" uid="uid://j2m8w3fy6432" path="res://Scenes/menu/dead_unit/dead_unit.tscn" id="8_dbase"]
 [ext_resource type="Texture2D" uid="uid://d4ebh3ihgtdqy" path="res://Ressources/Sprites/UI/General GoodEnough_solo.png" id="14_kh5us"]
+[ext_resource type="Texture2D" uid="uid://uwulc0fr5q4" path="res://Ressources/Sprites/UI/General Proud_solo.png" id="14_w8p66"]
 
 [sub_resource type="Animation" id="Animation_hq6wb"]
 length = 0.001
@@ -416,7 +417,7 @@ _data = {
 "idle": SubResource("Animation_ttrf8")
 }
 
-[sub_resource type="Shader" id="Shader_t8cxs"]
+[sub_resource type="Shader" id="Shader_8f6jp"]
 code = "/* License CC BY-NC-SA 4.0 Deed */
 /* https://creativecommons.org/licenses/by-nc-sa/4.0/ */
 /* Fork of Ryk's VCR distortion shader */
@@ -529,12 +530,12 @@ colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ighd4"]
 frequency = 0.7305
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_feloi"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_o6agv"]
 color_ramp = SubResource("Gradient_l6trg")
 noise = SubResource("FastNoiseLite_ighd4")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_63pxh"]
-shader = SubResource("Shader_t8cxs")
+shader = SubResource("Shader_8f6jp")
 shader_parameter/offset = 0.1
 shader_parameter/curvature = 0.0
 shader_parameter/skip = 1.0
@@ -550,12 +551,13 @@ shader_parameter/scanline_thickness = 0.5
 shader_parameter/scanlines_spacing = 1.0
 shader_parameter/vhs_line_onoff = 1.0
 shader_parameter/disto_onoff = 1.0
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_feloi")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_o6agv")
 
 [node name="EndMenu" type="Node2D"]
 script = ExtResource("1_8rfb0")
 UNIT_TEXTURES = Array[Resource]([ExtResource("2_2v0of"), ExtResource("3_xecr6"), ExtResource("4_clkdi"), ExtResource("5_m6ca3"), ExtResource("6_kklt0")])
 dead_unit_scene = ExtResource("8_dbase")
+general_ge = ExtResource("14_kh5us")
 
 [node name="PopTimer" type="Timer" parent="."]
 
@@ -782,9 +784,9 @@ axis_stretch_horizontal = 2
 [node name="Title" type="Label" parent="UI/Base/Memo/Codex"]
 layout_mode = 1
 offset_left = 26.0
-offset_top = 16.0
-offset_right = 205.0
-offset_bottom = 57.0
+offset_top = 15.9999
+offset_right = 341.0
+offset_bottom = 56.9999
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_y6pqo")
 theme_override_font_sizes/font_size = 40
@@ -825,9 +827,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -623.0
+offset_left = -799.0
 offset_top = -99.0
-offset_right = 630.0
+offset_right = 454.0
 offset_bottom = 125.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -843,9 +845,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -617.0
+offset_left = -799.0
 offset_top = 225.0
-offset_right = 634.0
+offset_right = 452.0
 offset_bottom = 434.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -861,25 +863,24 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="General_sprite" type="Sprite2D" parent="UI/Base/Call"]
-position = Vector2(1656, 742)
+position = Vector2(1656, 705)
 scale = Vector2(0.585, 0.585)
-texture = ExtResource("14_kh5us")
+texture = ExtResource("14_w8p66")
 
 [node name="SubTitle" type="Label" parent="UI/Base/Call/General_sprite"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -603.227
-offset_top = -353.846
+offset_top = -294.017
 offset_right = -59.0915
-offset_bottom = -211.831
+offset_bottom = -152.002
 grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
 theme_override_fonts/font = SubResource("FontVariation_ly8fo")
 theme_override_font_sizes/font_size = 65
-text = "Some casuality ?
-Goodenough ...."
+text = "Nice Job son !"
 horizontal_alignment = 1
 max_lines_visible = 2
 metadata/_edit_use_anchors_ = true
