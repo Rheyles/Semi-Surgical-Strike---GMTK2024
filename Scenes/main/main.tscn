@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=3 uid="uid://cklhctcdf3wlq"]
+[gd_scene load_steps=100 format=3 uid="uid://cklhctcdf3wlq"]
 
 [ext_resource type="Script" path="res://Scenes/main/main.gd" id="1_yh54l"]
 [ext_resource type="AudioStream" uid="uid://bocaybpf0f1r" path="res://Ressources/Sounds/mission_success.wav" id="2_knogv"]
@@ -44,6 +44,7 @@
 [ext_resource type="AudioStream" uid="uid://3nho6m56acmh" path="res://Ressources/Musics/game_jam_5.wav" id="34_se7s8"]
 [ext_resource type="Script" path="res://Scenes/UI/ComboCounter.gd" id="36_oc3f0"]
 [ext_resource type="Texture2D" uid="uid://cdhgogvclpeox" path="res://Ressources/Sprites/Battleground/combo.png" id="37_l51f8"]
+[ext_resource type="Texture2D" uid="uid://bcdndmdpw78cc" path="res://Ressources/Sprites/space ship.png" id="43_8t6g3"]
 [ext_resource type="Texture2D" uid="uid://chyyvffjlstur" path="res://Ressources/Sprites/Battleground/cannon_upgrade.png" id="45_l7s4n"]
 [ext_resource type="Script" path="res://Scenes/UI/CannonUpgrade.gd" id="46_4ge8k"]
 
@@ -235,6 +236,54 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Ship_Sprite:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Ship_Sprite:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1511, 302)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Ship_Sprite:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Ship_Sprite:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_evxbf"]
@@ -543,6 +592,42 @@ tracks/19/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Ship_Sprite:position")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1511, 302), Vector2(1713, 179)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Ship_Sprite:rotation")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.486947]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("Ship_Sprite:scale")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.56, 0.56)]
+}
 
 [sub_resource type="Animation" id="Animation_0m35l"]
 resource_name = "open_windows"
@@ -787,6 +872,30 @@ tracks/14/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Ship_Sprite:modulate")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Ship_Sprite:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2272, 302), Vector2(1531, 302)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cfm4p"]
@@ -1576,6 +1685,33 @@ _data = {
 [sub_resource type="FontVariation" id="FontVariation_rvuo2"]
 base_font = ExtResource("33_lxd7y")
 
+[sub_resource type="Animation" id="Animation_qxtg5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_cgg2k"]
 resource_name = "upgrade"
 length = 3.0
@@ -1602,33 +1738,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_qxtg5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("..:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("..:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x005x"]
@@ -1800,6 +1909,56 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("15_ee22k")
 metadata/_edit_lock_ = true
+
+[node name="Ship_Sprite" type="Sprite2D" parent="UI/Control"]
+modulate = Color(1, 1, 1, 0)
+clip_children = 2
+z_as_relative = false
+position = Vector2(1511, 302)
+
+[node name="Sprite_light2" type="Sprite2D" parent="UI/Control/Ship_Sprite"]
+modulate = Color(1, 1, 1, 0.490196)
+z_as_relative = false
+position = Vector2(69, -62)
+scale = Vector2(1.877, 0.615)
+texture = ExtResource("7_jhsvy")
+
+[node name="Sprite_light3" type="Sprite2D" parent="UI/Control/Ship_Sprite"]
+modulate = Color(0.729412, 1, 1, 1)
+z_as_relative = false
+position = Vector2(78, -51)
+scale = Vector2(1.877, 0.615)
+texture = ExtResource("7_jhsvy")
+
+[node name="Sprite_light" type="Sprite2D" parent="UI/Control/Ship_Sprite"]
+modulate = Color(1, 1, 1, 0.490196)
+z_as_relative = false
+position = Vector2(-93, 112)
+rotation = -0.139626
+scale = Vector2(2.005, 0.85)
+texture = ExtResource("7_jhsvy")
+
+[node name="Sprite_light4" type="Sprite2D" parent="UI/Control/Ship_Sprite"]
+modulate = Color(0.729412, 1, 1, 1)
+z_as_relative = false
+position = Vector2(-142, 97)
+rotation = -0.1309
+scale = Vector2(1.395, 0.405)
+skew = -0.195477
+texture = ExtResource("7_jhsvy")
+
+[node name="Sprite_light_Canon" type="Sprite2D" parent="UI/Control/Ship_Sprite"]
+modulate = Color(1, 0.25098, 0.101961, 1)
+z_as_relative = false
+position = Vector2(-225, 123)
+rotation = -0.1309
+scale = Vector2(0.406, 0.475)
+texture = ExtResource("7_jhsvy")
+
+[node name="Ship_Sprite2" type="Sprite2D" parent="UI/Control/Ship_Sprite"]
+clip_children = 2
+z_as_relative = false
+texture = ExtResource("43_8t6g3")
 
 [node name="BorderTop" type="TextureRect" parent="UI/Control"]
 modulate = Color(1, 1, 1, 0.619608)
@@ -2306,9 +2465,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -869.0
-offset_top = -1.0
+offset_top = -81.0
 offset_right = 553.0
-offset_bottom = 383.0
+offset_bottom = 303.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
