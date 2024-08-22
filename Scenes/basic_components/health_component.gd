@@ -20,10 +20,11 @@ func _ready():
 	_set_health(MAX_HEALTH)
 
 func damage(amount:float, damage_from_canon:bool = false):
-	if not invincible:
+	if not damage_from_canon or (damage_from_canon and not invincible):
 		_set_health(health - amount)
-		invincible = true
-		invincibility_timer.start()
+		if damage_from_canon:
+			invincible = true
+			invincibility_timer.start()
 		if health<=0:
 			if damage_from_canon:
 				GAME.last_shot_kills += 1
